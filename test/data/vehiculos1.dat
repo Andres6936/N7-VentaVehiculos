@@ -1,0 +1,113 @@
+#---------------------------------------------------------
+# Venta de vehículos
+#---------------------------------------------------------
+
+total.vehiculos= 12
+
+vehiculo1.modelo= modelo_1
+vehiculo1.marca= modelo_1
+vehiculo1.imagen= modelo_1
+vehiculo1.tipo= Automóvil
+vehiculo1.anio= 1
+vehiculo1.cilindrada= 1000
+vehiculo1.ejes= 2
+vehiculo1.valor= 12000
+
+vehiculo2.modelo= modelo_2
+vehiculo2.marca= modelo_2
+vehiculo2.imagen= modelo_2
+vehiculo2.tipo= Automóvil
+vehiculo2.anio= 2
+vehiculo2.cilindrada= 1000
+vehiculo2.ejes= 2
+vehiculo2.valor= 11000
+
+vehiculo3.modelo= modelo_3
+vehiculo3.marca= modelo_3
+vehiculo3.imagen= modelo_3
+vehiculo3.tipo= Automóvil
+vehiculo3.anio= 3
+vehiculo3.cilindrada= 1000
+vehiculo3.ejes= 2
+vehiculo3.valor= 9000
+
+vehiculo4.modelo= modelo_4
+vehiculo4.marca= modelo_4
+vehiculo4.imagen= modelo_4
+vehiculo4.tipo= Automóvil
+vehiculo4.anio= 4
+vehiculo4.cilindrada= 1000
+vehiculo4.ejes= 2
+vehiculo4.valor= 8000
+
+vehiculo5.modelo= modelo_5
+vehiculo5.marca= modelo_5
+vehiculo5.imagen= modelo_5
+vehiculo5.tipo= Automóvil
+vehiculo5.anio= 5
+vehiculo5.cilindrada= 1000
+vehiculo5.ejes= 2
+vehiculo5.valor= 7000
+
+vehiculo6.modelo= modelo_6
+vehiculo6.marca= modelo_6
+vehiculo6.imagen= modelo_6
+vehiculo6.tipo= Automóvil
+vehiculo6.anio= 6
+vehiculo6.cilindrada= 1000
+vehiculo6.ejes= 2
+vehiculo6.valor= 6000
+
+vehiculo7.modelo= modelo_7
+vehiculo7.marca= modelo_7
+vehiculo7.imagen= modelo_7
+vehiculo7.tipo= Automóvil
+vehiculo7.anio= 7
+vehiculo7.cilindrada= 1000
+vehiculo7.ejes= 2
+vehiculo7.valor= 5000
+
+vehiculo8.modelo= modelo_8
+vehiculo8.marca= modelo_8
+vehiculo8.imagen= modelo_8
+vehiculo8.tipo= Automóvil
+vehiculo8.anio= 8
+vehiculo8.cilindrada= 1000
+vehiculo8.ejes= 2
+vehiculo8.valor= 4000
+
+vehiculo9.modelo= modelo_9
+vehiculo9.marca= modelo_9
+vehiculo9.imagen= modelo_9
+vehiculo9.tipo= Automóvil
+vehiculo9.anio= 9
+vehiculo9.cilindrada= 5000
+vehiculo9.ejes= 2
+vehiculo9.valor= 3000
+
+vehiculo10.modelo= modelo_10
+vehiculo10.marca= modelo_10
+vehiculo10.imagen= modelo_10
+vehiculo10.tipo= Automóvil
+vehiculo10.anio= 10
+vehiculo10.cilindrada= 1000
+vehiculo10.ejes= 2
+vehiculo10.valor= 2000
+
+vehiculo11.modelo= modelo_11
+vehiculo11.marca= modelo_11
+vehiculo11.imagen= modelo_11
+vehiculo11.tipo= Automóvil
+vehiculo11.anio= 11
+vehiculo11.cilindrada= 1000
+vehiculo11.ejes= 2
+vehiculo11.valor= 1000
+
+vehiculo12.modelo= modelo_12
+vehiculo12.marca= modelo_12
+vehiculo12.imagen= modelo_12
+vehiculo12.tipo= Automóvil
+vehiculo12.anio= 12
+vehiculo12.cilindrada= 1000
+vehiculo12.ejes= 2
+vehiculo12.valor= 500
