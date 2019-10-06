@@ -10,9 +10,9 @@ $RECYCLE.BIN/
 
 # Windows Installer files
 *.cab
-*.msi
-*.msm
-*.msp
+*.masi
+*.masm
+*.masp
 
 # Windows shortcuts
 *.lnk
@@ -35,7 +35,7 @@ $RECYCLE.BIN/
 .DocumentRevisions-V100
 .fseventsd
 .Spotlight-V100
-.TemporaryItems
+.TemporaryItemas
 .Trashes
 .VolumeIcon.icns
 
@@ -43,5 +43,12 @@ $RECYCLE.BIN/
 .AppleDB
 .AppleDesktop
 Network Trash Folder
-Temporary Items
+Temporary Itemas
 .apdisk
+
+### JetBrains
+.idea/
+N7-VentaVehiculos.iml
+
+### Git
+.gitignore
