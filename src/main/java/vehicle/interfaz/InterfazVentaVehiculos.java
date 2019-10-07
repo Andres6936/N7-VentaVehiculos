@@ -83,12 +83,17 @@ public class InterfazVentaVehiculos extends JFrame
 
         cargarVehiculos( );
 
+        // Layout : Banner
+        // Layout : List | Data
+        // Layout : Find | Consult
+        // Layout : Extension
         setLayout( new BoxLayout( getContentPane( ), BoxLayout.Y_AXIS ) );
 
+        // Layout : Banner
         panelImagen = new PanelImagen( );
         add( panelImagen );
 
-        // Layout : List <---> Data
+        // Layout : List | Data
         JPanel panelDataAndList = new JPanel( );
         panelDataAndList.setLayout( new BoxLayout( panelDataAndList, BoxLayout.X_AXIS ) );
 
@@ -100,7 +105,7 @@ public class InterfazVentaVehiculos extends JFrame
 
         add( panelDataAndList );
 
-        // Layout : Find <---> Consult
+        // Layout : Find | Consult
         JPanel panelFindAndConsult = new JPanel( );
         panelFindAndConsult.setLayout( new BoxLayout( panelFindAndConsult, BoxLayout.X_AXIS ) );
 
@@ -112,6 +117,7 @@ public class InterfazVentaVehiculos extends JFrame
 
         add( panelFindAndConsult );
 
+        // Layout : Extension
         panelExtension = new PanelExtension( this );
         add( panelExtension );
 
