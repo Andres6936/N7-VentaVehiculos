@@ -1,15 +1,3 @@
-/**~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
- * $Id: PanelDatosVehiculo.java,v 1.4 2007/04/05 00:31:11 carl-veg Exp $ 
- * Universidad de los Andes (Bogot - Colombia)
- * Departamento de Ingeniera de Sistemas y Computacin
- * Todos los derechos reservados 2005 
- *
- * Proyecto Cupi2 (http://cupi2.uniandes.edu.co)
- * Ejercicio: n7_ventaVehiculos 
- * Autor: Mario Snchez - 06/12/2005
- * Autor: Daniel Romero - 17-Nov-2006 
- * ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ 
- */
 package vehicle.interfaz;
 
 import java.awt.Color;
