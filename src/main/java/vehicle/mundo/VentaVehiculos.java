@@ -164,24 +164,10 @@ public class VentaVehiculos
      */
     public int buscarVehiculoMasAntiguo( )
     {
-        int posicion = -1;
+        vehiculos.sort( Vehiculo::compareForYear );
 
-        if( vehiculos.size( ) > 0 )
-        {
-            Vehiculo vMasAntiguo = vehiculos.get( 0 );
-            posicion = 0;
-            for( int i = 1; i < vehiculos.size( ); i++ )
-            {
-                Vehiculo vPosicion = vehiculos.get( i );
-
-                if ( vMasAntiguo.compareForYear( vPosicion ) == 1 )
-                {
-                    posicion = i;
-                    vMasAntiguo = vPosicion;
-                }
-            }
-        }
-        return posicion;
+        // The first element of list always is the more old.
+        return 0;
     }
 
     /**
