@@ -126,23 +126,13 @@ public class InterfazVentaVehiculos extends JFrame
 
         setResizable( false );
 
-        centrar( );
+        // Center the windows
+        setLocationRelativeTo( null );
     }
 
     // -----------------------------------------------------------------
     // Mtodos
     // -----------------------------------------------------------------
-
-    /**
-     * Centra la ventana en la pantalla
-     */
-    private void centrar( )
-    {
-        Dimension screen = Toolkit.getDefaultToolkit( ).getScreenSize( );
-        int xEsquina = ( screen.width - getWidth( ) ) / 2;
-        int yEsquina = ( screen.height - getHeight( ) ) / 2;
-        setLocation( xEsquina, yEsquina );
-    }
 
     /**
      * Actualiza la lista de vehiculos mostrada
