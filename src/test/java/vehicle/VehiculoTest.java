@@ -1,16 +1,3 @@
-/**~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
- * $Id: VehiculoTest.java,v 1.7 2007/04/10 23:02:19 carl-veg Exp $ 
- * Universidad de los Andes (Bogota - Colombia)
- * Departamento de Ingeniera de Sistemas y Computacin
- * Todos los derechos reservados 2006
- *
- * Proyecto Cupi2 (http://cupi2.uniandes.edu.co)
- * Ejercicio: n7_ventaVehiculos
- * Autor: Mario Snchez - 07/02/2006
- * Autor: Daniel Romero - 17-Nov-2006
- * ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ 
- */
-
 package vehicle;
 
 import junit.framework.TestCase;
