@@ -134,6 +134,7 @@ public class InterfazVentaVehiculos extends JFrame
 
         // Center the windows
         setLocationRelativeTo( null );
+        pack( );
     }
 
     // -----------------------------------------------------------------
