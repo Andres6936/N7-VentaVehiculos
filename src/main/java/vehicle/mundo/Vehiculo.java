@@ -38,7 +38,7 @@ public class Vehiculo
     /**
      * Indica que el vehiculo es un automvil
      */
-    public static final String AUTOMOVIL = "Automvil";
+    public static final String AUTOMOVIL = "Automovil";
 
     /**
      * Indica que el vehiculo es una motocicleta
@@ -48,7 +48,7 @@ public class Vehiculo
     /**
      * Indica que el vehiculo es un camin
      */
-    public static final String CAMION = "Camin";
+    public static final String CAMION = "Camion";
 
     // -----------------------------------------------------------------
     // Atributos

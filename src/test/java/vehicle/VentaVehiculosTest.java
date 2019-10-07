@@ -17,6 +17,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.Properties;
 import vehicle.mundo.Vehiculo;
@@ -43,23 +44,23 @@ public class VentaVehiculosTest extends TestCase
     // -----------------------------------------------------------------
 
     /**
-     * Crea un manejador a partir del archivo vehiculos1.dat
+     * Crea un manejador a partir del archivo vehiculosTest1.properties
      */
     private void setupEscenario1( )
     {
 
         ventaVehiculos = new VentaVehiculos( );
-        cargarVehiculos( "./test/data/vehiculos1.dat" );
+        cargarVehiculos( "vehiculosTest1.properties" );
 
     }
 
     /**
-     * Crea un manejador a partir del archivo vehiculos2.dat
+     * Crea un manejador a partir del archivo vehiculosTest2.properties
      */
     private void setupEscenario2( )
     {
         ventaVehiculos = new VentaVehiculos( );
-        cargarVehiculos( "./test/data/vehiculos2.dat" );
+        cargarVehiculos( "vehiculosTest2.properties" );
     }
 
     /**
@@ -508,7 +509,7 @@ public class VentaVehiculosTest extends TestCase
     {
         try
         {
-            FileInputStream fis = new FileInputStream( new File( archivo ) );
+            FileInputStream fis = new FileInputStream( getFileFromResource( archivo ) );
             Properties propiedades = new Properties( );
             propiedades.load( fis );
 
@@ -564,13 +565,32 @@ public class VentaVehiculosTest extends TestCase
                 fis.close( );
             }
         }
-        catch( FileNotFoundException e )
-        {
-            fail( "No se debi arrojar excepcin" );
-        }
         catch( IOException e )
         {
-            fail( "No se debi arrojar excepcin" );
+            fail( "No se debio arrojar excepcion" );
+        }
+    }
+
+    /**
+     * Método utilizado para cargar archivos desde el directorio /resource, es decir,
+     * la estructura de proyectos basados en Maven y Gradle.
+     *
+     * @param filename Nombre del archivo.
+     * @return Referencia al archivo.
+     */
+    private File getFileFromResource( final String filename )
+    {
+        ClassLoader classLoader = getClass().getClassLoader();
+
+        URL resource = classLoader.getResource( filename );
+
+        if (resource == null)
+        {
+            throw new IllegalArgumentException( "File is not found." );
+        }
+        else
+        {
+            return new File( resource.getFile() );
         }
     }
 
