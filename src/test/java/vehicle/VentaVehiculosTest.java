@@ -2,7 +2,6 @@ package vehicle;
 
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
@@ -152,7 +151,7 @@ public class VentaVehiculosTest extends TestCase
 
         assertEquals( "No se debi modificar la informacin del vehiculo", v.darTipo( ), v2.darTipo( ) );
 
-        assertEquals( "No se debi modificar la informacin del vehiculo", v.darValor( ), v2.darValor( ) );
+        assertEquals( "No se debi modificar la informacin del vehiculo", v.getValue( ), v2.getValue( ) );
 
     }
 
@@ -315,7 +314,7 @@ public class VentaVehiculosTest extends TestCase
 
         Vehiculo v = ( Vehiculo )ventaVehiculos.darVehiculos( ).get( pos );
 
-        assertEquals( "El vehiculo mas econmico no se encontr de forma correcta", 500, v.darValor( ) );
+        assertEquals( "El vehiculo mas econmico no se encontr de forma correcta", 500, v.getValue( ) );
         assertEquals( "El vehiculo mas econmico no se encontr de forma correcta", "modelo_12", v.darModelo( ) );
         assertEquals( "El vehiculo mas econmico no se encontr de forma correcta", 12, v.darAnio( ) );
 
@@ -327,7 +326,7 @@ public class VentaVehiculosTest extends TestCase
 
         v = ( Vehiculo )ventaVehiculos.darVehiculos( ).get( pos );
 
-        assertEquals( "El vehiculo mas econmico no se encontr de forma correcta", 40000000, v.darValor( ) );
+        assertEquals( "El vehiculo mas econmico no se encontr de forma correcta", 40000000, v.getValue( ) );
         assertEquals( "El vehiculo mas econmico no se encontr de forma correcta", "New Beetle", v.darModelo( ) );
         assertEquals( "El vehiculo mas econmico no se encontr de forma correcta", 2000, v.darAnio( ) );
     }
@@ -451,11 +450,11 @@ public class VentaVehiculosTest extends TestCase
         setupEscenario1( );
 
         Vehiculo vehiculo = ( Vehiculo )ventaVehiculos.darVehiculos( ).get( 0 );
-        int valor = vehiculo.darValor( );
+        int valor = vehiculo.getValue( );
         assertEquals( "No se disminuy el precio de forma correcta", 1, ventaVehiculos.disminuirPrecio( 11500 ) );
 
         vehiculo = ( Vehiculo )ventaVehiculos.darVehiculos( ).get( 0 );
-        int valorNuevo = vehiculo.darValor( );
+        int valorNuevo = vehiculo.getValue( );
 
         assertEquals( "No se disminuy el precio de forma correcta", ( int ) ( valor * 0.9 ), valorNuevo );
 
@@ -465,18 +464,18 @@ public class VentaVehiculosTest extends TestCase
         setupEscenario2( );
 
         vehiculo = ( Vehiculo )ventaVehiculos.darVehiculos( ).get( 0 );
-        valor = vehiculo.darValor( );
+        valor = vehiculo.getValue( );
 
         vehiculo = ( Vehiculo )ventaVehiculos.darVehiculos( ).get( 6 );
-        int valor2 = vehiculo.darValor( );
+        int valor2 = vehiculo.getValue( );
 
         assertEquals( "No se disminuy el precio de forma correcta", 2, ventaVehiculos.disminuirPrecio( 89000000 ) );
 
         vehiculo = ( Vehiculo )ventaVehiculos.darVehiculos( ).get( 0 );
-        valorNuevo = vehiculo.darValor( );
+        valorNuevo = vehiculo.getValue( );
 
         vehiculo = ( Vehiculo )ventaVehiculos.darVehiculos( ).get( 6 );
-        int valorNuevo2 = vehiculo.darValor( );
+        int valorNuevo2 = vehiculo.getValue( );
 
         assertEquals( "No se disminuy el precio de forma correcta", ( int ) ( valor * 0.9 ), valorNuevo );
 

@@ -322,13 +322,13 @@ public class VentaVehiculos
 
         for ( Vehiculo v : vehiculos )
         {
-            if ( v.darValor( ) > valor )
+            if ( v.getValue( ) > valor )
             {
-                int nValor = ( int ) ( v.darValor( ) * 0.9 );
+                int nValor = ( int ) ( v.getValue( ) * 0.9 );
 
                 if ( nValor > 0 )
                 {
-                    v.cambiarValor( nValor );
+                    v.setValue( nValor );
                     disminuidos++;
                 }
             }

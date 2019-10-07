@@ -182,9 +182,20 @@ public class Vehiculo
      * Retorna el valor del vehiculo
      * @return valor
      */
-    public int darValor( )
+    public int getValue( )
     {
         return valor;
+    }
+
+    /**
+     * Cambia el valor del vehiculo.
+     *
+     * @param nValor Nuevo valor del vehiculo.
+     * @precondition The new value must be greater to 0.
+     */
+    void setValue( final int nValor )
+    {
+        valor = nValor;
     }
 
     /**
@@ -194,7 +205,7 @@ public class Vehiculo
      *         Retorna -1 si el vehiculo v tiene una valor "MAYOR" para la cilindrada. <br>
      *         Retorna 1 si el vehiculo v tiene una valor "MENOR" para la cilindrada. <br>
      */
-    public int compararPorCilindrada( Vehiculo v )
+    public int compararPorCilindrada( final Vehiculo v )
     {
         return Integer.compare( cilindrada, v.darCilindrada( ) );
     }
@@ -206,7 +217,7 @@ public class Vehiculo
      *         Retorna -1 si el vehiculo v tiene una valor "MAYOR" para la marca. <br>
      *         Retorna 1 si el vehiculo v tiene una valor "MENOR" para la marca. <br>
      */
-    public int compararPorMarca( Vehiculo v )
+    public int compararPorMarca( final Vehiculo v )
     {
         return marca.toLowerCase( ).compareTo( v.darMarca( ).toLowerCase( ) );
     }
@@ -218,7 +229,7 @@ public class Vehiculo
      *         Retorna -1 si el vehiculo v es de un ao posterior. <br>
      *         Retorna 1 si el vehiculo v es de un ao anterior. <br>
      */
-    public int compararPorAnio( Vehiculo v )
+    public int compararPorAnio( final Vehiculo v )
     {
         return Integer.compare( anio, v.darAnio( ) );
     }
@@ -230,18 +241,9 @@ public class Vehiculo
      *         Retorna -1 si el vehiculo v tiene una valor "MAYOR" para el valor. <br>
      *         Retorna 1 si el vehiculo v tiene una valor "MENOR" para el valor. <br>
      */
-    public int compararPorValor( Vehiculo v )
+    public int compararPorValor( final Vehiculo v )
     {
-        return Integer.compare( valor, v.darValor( ) );
-    }
-
-    /**
-     * Cambia el valor del vehiculo
-     * @param nValor Nuevo valor del vehiculo
-     */
-    public void cambiarValor( int nValor )
-    {
-        valor = nValor;
+        return Integer.compare( valor, v.getValue( ) );
     }
 
     /**

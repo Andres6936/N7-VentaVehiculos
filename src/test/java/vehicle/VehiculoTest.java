@@ -56,7 +56,7 @@ public class VehiculoTest extends TestCase
         assertEquals( "La cilindrada del vehiculo est mal", 1, vehiculo1.darCilindrada( ) );
         assertEquals( "El nmero de ejes del vehiculo est mal", 2, vehiculo1.darEjes( ) );
         assertEquals( "El ao del vehiculo est mal", 1, vehiculo1.darAnio( ) );
-        assertEquals( "El vehiculo del vehiculo est mal", 8000000, vehiculo1.darValor( ) );
+        assertEquals( "El vehiculo del vehiculo est mal", 8000000, vehiculo1.getValue( ) );
     }
 
     /**
