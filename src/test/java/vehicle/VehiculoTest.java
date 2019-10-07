@@ -135,8 +135,8 @@ public class VehiculoTest extends TestCase
     {
         setupEscenario1( );
 
-        assertEquals( "Compar mal el Valor: deba ser menor", 1, vehiculo1.compararPorValor( vehiculo2 ) );
-        assertEquals( "Compar mal el Valor: deba ser igual", 0, vehiculo1.compararPorValor( vehiculo1 ) );
-        assertEquals( "Compar mal el Valor: deba ser mayor", -1, vehiculo2.compararPorValor( vehiculo1 ) );
+        assertEquals( "Compar mal el Valor: deba ser menor", 1, vehiculo1.compareForValue( vehiculo2 ) );
+        assertEquals( "Compar mal el Valor: deba ser igual", 0, vehiculo1.compareForValue( vehiculo1 ) );
+        assertEquals( "Compar mal el Valor: deba ser mayor", - 1, vehiculo2.compareForValue( vehiculo1 ) );
     }
 }

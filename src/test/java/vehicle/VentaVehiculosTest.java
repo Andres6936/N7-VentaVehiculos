@@ -308,7 +308,7 @@ public class VentaVehiculosTest extends TestCase
         // Prueba con el escenario 1
         setupEscenario1( );
 
-        int pos = ventaVehiculos.buscarVehiculoMasEconomico( );
+        int pos = ventaVehiculos.getIndexOfVehicleMoreCheap( );
 
         assertTrue( "El vehiculo mas econmico no se encontr de forma correcta", pos != -1 );
 
@@ -320,7 +320,7 @@ public class VentaVehiculosTest extends TestCase
 
         // Prueba con el escenario 2
         setupEscenario2( );
-        pos = ventaVehiculos.buscarVehiculoMasEconomico( );
+        pos = ventaVehiculos.getIndexOfVehicleMoreCheap( );
 
         assertTrue( "El vehiculo mas nuevo no se encontr de forma correcta", pos != -1 );
 

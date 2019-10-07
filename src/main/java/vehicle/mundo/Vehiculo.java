@@ -241,7 +241,7 @@ public class Vehiculo
      *         Retorna -1 si el vehiculo v tiene una valor "MAYOR" para el valor. <br>
      *         Retorna 1 si el vehiculo v tiene una valor "MENOR" para el valor. <br>
      */
-    public int compararPorValor( final Vehiculo v )
+    public int compareForValue( final Vehiculo v )
     {
         return Integer.compare( valor, v.getValue( ) );
     }

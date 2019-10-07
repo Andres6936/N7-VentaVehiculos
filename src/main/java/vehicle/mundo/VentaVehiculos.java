@@ -188,52 +188,24 @@ public class VentaVehiculos
      * Busca el vehiculo mas econmico de todos
      * @return Se retorn la posicin donde se encuentra el vehiculo mas econmico. Si no hay vehiculos a la venta se retorn -1
      */
-    public int buscarVehiculoMasEconomico( )
+    public int getIndexOfVehicleMoreCheap( )
     {
-        int posicion = -1;
+        vehiculos.sort( Vehiculo::compareForValue );
 
-        if( vehiculos.size( ) > 0 )
-        {
-            Vehiculo vMasEconomico = vehiculos.get( 0 );
-            posicion = 0;
-            for( int i = 1; i < vehiculos.size( ); i++ )
-            {
-                Vehiculo vPosicion = vehiculos.get( i );
-
-                if( vMasEconomico.compararPorValor( vPosicion ) == 1 )
-                {
-                    posicion = i;
-                    vMasEconomico = vPosicion;
-                }
-            }
-        }
-        return posicion;
+        // Return 0, because the first element of the list is the more cheap.
+        return 0;
     }
 
     /**
      * Busca el vehiculo mas potente (con mayor cilindrada) de todos
      * @return Se retorn la posicin donde se encuentra el vehiculo mas nuevo. Si no hay vehiculos a la venta se retorn -1
      */
-    public int buscarVehiculoMasPotente( )
+    public int getIndexOfVehicleMorePowerful( )
     {
-        int posicion = -1;
+        vehiculos.sort( Vehiculo::compareForDisplacement );
 
-        if( vehiculos.size( ) > 0 )
-        {
-            Vehiculo vMasPotente = vehiculos.get( 0 );
-            posicion = 0;
-            for( int i = 1; i < vehiculos.size( ); i++ )
-            {
-                Vehiculo vPosicion = vehiculos.get( i );
-
-                if ( vMasPotente.compareForDisplacement( vPosicion ) == - 1 )
-                {
-                    posicion = i;
-                    vMasPotente = vPosicion;
-                }
-            }
-        }
-        return posicion;
+        // The last element always is more powerful
+        return vehiculos.size( ) - 1;
     }
 
     /**

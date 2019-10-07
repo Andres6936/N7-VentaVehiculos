@@ -286,7 +286,7 @@ public class InterfazVentaVehiculos extends JFrame
      */
     public void buscarMasPotente( )
     {
-        int posicion = ventaVehiculos.buscarVehiculoMasPotente( );
+        int posicion = ventaVehiculos.getIndexOfVehicleMorePowerful( );
 
         actualizarLista( );
         if( posicion != -1 )
@@ -304,7 +304,7 @@ public class InterfazVentaVehiculos extends JFrame
      */
     public void buscarMasEconomico( )
     {
-        int posicion = ventaVehiculos.buscarVehiculoMasEconomico( );
+        int posicion = ventaVehiculos.getIndexOfVehicleMoreCheap( );
 
         actualizarLista( );
         if( posicion != -1 )
