@@ -1,8 +1,6 @@
 package vehicle.interfaz;
 
-import java.awt.Color;
-import java.awt.FlowLayout;
-import java.io.File;
+import java.awt.*;
 import java.net.URL;
 
 import javax.swing.ImageIcon;
@@ -20,11 +18,6 @@ class PanelImagen extends JPanel
     // Atributos de Interfaz
     // -----------------------------------------------------------------
 
-    /**
-     * Imagen del titulo
-     */
-    private JLabel imagen;
-
     // -----------------------------------------------------------------
     // Constructores
     // -----------------------------------------------------------------
@@ -32,23 +25,17 @@ class PanelImagen extends JPanel
     /**
      * Constructor del panel
      */
-    public PanelImagen( )
+    PanelImagen( )
     {
-        FlowLayout layout = new FlowLayout( );
-        layout.setHgap( 0 );
-        layout.setVgap( 0 );
-        setLayout( layout );
-        //
-        // Carga la imagen
-        ImageIcon icono = new ImageIcon( getFileFromResource( "data/titulo.png" ) );
+        Image imageIcon = new ImageIcon( getFileFromResource( ) ).getImage( );
+        Image scaleIcon = imageIcon.getScaledInstance( 800, 100, Image.SCALE_SMOOTH );
 
-        // La agrega a la etiqueta
-        imagen = new JLabel( "" );
-        imagen.setIcon( icono );
+        JLabel imagen = new JLabel( );
+        imagen.setIcon( new ImageIcon( scaleIcon ) );
+
         add( imagen );
-        //
-        // Color de fondo blanco
-        setBackground( Color.WHITE );
+
+        setMinimumSize( new Dimension( 800, 100 ) );
         setBorder( new LineBorder( Color.GRAY ) );
     }
 
@@ -56,14 +43,13 @@ class PanelImagen extends JPanel
      * Método utilizado para cargar archivos desde el directorio /resource, es decir,
      * la estructura de proyectos basados en Maven y Gradle.
      *
-     * @param filename Nombre del archivo.
      * @return Referencia al archivo.
      */
-    private URL getFileFromResource( final String filename )
+    private URL getFileFromResource( )
     {
         ClassLoader classLoader = getClass().getClassLoader();
 
-        URL resource = classLoader.getResource( filename );
+        URL resource = classLoader.getResource( "data/titulo.png" );
 
         if (resource == null)
         {
