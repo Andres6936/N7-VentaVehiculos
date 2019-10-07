@@ -196,8 +196,7 @@ public class Vehiculo
      */
     public int compararPorCilindrada( Vehiculo v )
     {
-        int resultado = ( cilindrada == v.darCilindrada( ) ) ? 0 : ( ( cilindrada > v.darCilindrada( ) ) ? 1 : -1 );
-        return resultado;
+        return Integer.compare( cilindrada, v.darCilindrada( ) );
     }
 
     /**
@@ -221,8 +220,7 @@ public class Vehiculo
      */
     public int compararPorAnio( Vehiculo v )
     {
-        int resultado = ( anio == v.darAnio( ) ) ? 0 : ( ( anio > v.darAnio( ) ) ? 1 : -1 );
-        return resultado;
+        return Integer.compare( anio, v.darAnio( ) );
     }
 
     /**
@@ -234,8 +232,7 @@ public class Vehiculo
      */
     public int compararPorValor( Vehiculo v )
     {
-        int resultado = ( valor == v.darValor( ) ) ? 0 : ( ( valor > v.darValor( ) ) ? 1 : -1 );
-        return resultado;
+        return Integer.compare( valor, v.darValor( ) );
     }
 
     /**
@@ -259,6 +256,7 @@ public class Vehiculo
     // -----------------------------------------------------------------
     // Invariante
     // -----------------------------------------------------------------
+
     /**
      * Verifica el invariante de la clase <br>
      * <b>inv: </b> <br>
