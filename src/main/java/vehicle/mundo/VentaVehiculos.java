@@ -16,7 +16,7 @@ public class VentaVehiculos
     /**
      * Es la lista que contiene todos los vehiculos
      */
-    private ArrayList vehiculos;
+    private ArrayList< Vehiculo > vehiculos;
 
     // -----------------------------------------------------------------
     // Constructores
@@ -27,7 +27,7 @@ public class VentaVehiculos
      */
     public VentaVehiculos( )
     {
-        vehiculos = new ArrayList( );
+        vehiculos = new ArrayList<>( );
 
     }
 
@@ -36,14 +36,14 @@ public class VentaVehiculos
     // -----------------------------------------------------------------
 
     /**
-     * Retorna una lista de vehiculos. La lista que se retorna no es la misma que la almacenada en esta clase, <br>
+     * Retorna una lista de vehiculos.
+     * La lista que se retorna no es la misma que la almacenada en esta clase,
      * pero si tiene el mismo orden.
      * @return lista de vehiculos
      */
     public ArrayList darVehiculos( )
     {
-        ArrayList copiaLista = new ArrayList( vehiculos );
-        return copiaLista;
+        return new ArrayList<>( vehiculos );
     }
 
     /**
@@ -52,14 +52,12 @@ public class VentaVehiculos
      */
     public void ordenarPorMarca( )
     {
-        int inicial;
-
-        for( inicial = 0; inicial < vehiculos.size( ); inicial++ )
+        for ( int inicial = 0; inicial < vehiculos.size( ); inicial++ )
         {
             for( int i = vehiculos.size( ) - 1; i > inicial; i-- )
             {
-                Vehiculo p2 = ( Vehiculo )vehiculos.get( i );
-                Vehiculo p1 = ( Vehiculo )vehiculos.get( i - 1 );
+                Vehiculo p2 = vehiculos.get( i );
+                Vehiculo p1 = vehiculos.get( i - 1 );
 
                 if( p1.compararPorMarca( p2 ) > 0 )
                 {
@@ -77,16 +75,14 @@ public class VentaVehiculos
      */
     public void ordenarPorCilindrada( )
     {
-        int inicial;
-
         // En cada paso se sabe que:
         // 1. Las posiciones antes de vehiculos[inicial] estn ordenadas
         // En cada paso lo que se hace es encontrar en qu posicin entre vehiculos[0] y vehiculos[inicial] debera
         // estar el vehiculo que en este momento se encuentra en vehiculos[inicial]
 
-        for( inicial = 1; inicial < vehiculos.size( ); inicial++ )
+        for ( int inicial = 1; inicial < vehiculos.size( ); inicial++ )
         {
-            Vehiculo insertado = ( Vehiculo )vehiculos.get( inicial );
+            Vehiculo insertado = vehiculos.get( inicial );
 
             boolean termine = false;
             int i = inicial - 1;
@@ -94,7 +90,7 @@ public class VentaVehiculos
             while( !termine )
             {
                 // Si encuentra una cilindrada mayor, entonces hay que intercambiarlos
-                Vehiculo vehiculoPosicion = ( Vehiculo )vehiculos.get( i );
+                Vehiculo vehiculoPosicion = vehiculos.get( i );
 
                 if( vehiculoPosicion.compararPorCilindrada( insertado ) > 0 )
                 {
@@ -124,21 +120,19 @@ public class VentaVehiculos
      */
     public void ordenarPorAnio( )
     {
-        int inicial;
-
         // En cada paso se sabe que:
         // 1. Todos los valores antes de vehiculos[inicial] estn ordenados
         // 2. No hay ningn valor despus de vehiculos[inicial-1] que sea menor que vehiculos[inicial-1]
         // En cada paso se busca el menor entre vehiculos[inicial] y vehiculos[final] y se ubica en vehiculos[inicial]
 
-        for( inicial = 0; inicial < vehiculos.size( ); inicial++ )
+        for ( int inicial = 0; inicial < vehiculos.size( ); inicial++ )
         {
             int posicionMenor = inicial;
-            Vehiculo vehiculoMenor = ( Vehiculo )vehiculos.get( inicial );
+            Vehiculo vehiculoMenor = vehiculos.get( inicial );
 
             for( int i = inicial + 1; i < vehiculos.size( ); i++ )
             {
-                Vehiculo vehiculoPosicion = ( Vehiculo )vehiculos.get( i );
+                Vehiculo vehiculoPosicion = vehiculos.get( i );
 
                 // El vehiculo de la posicin actual es menor que el menor encontrado hasta el momento
                 if( vehiculoPosicion.compararPorAnio( vehiculoMenor ) < 0 )
@@ -150,7 +144,7 @@ public class VentaVehiculos
 
             if( posicionMenor != inicial )
             {
-                Vehiculo temp = ( Vehiculo )vehiculos.get( inicial );
+                Vehiculo temp = vehiculos.get( inicial );
                 vehiculos.set( inicial, vehiculoMenor );
                 vehiculos.set( posicionMenor, temp );
             }
@@ -172,7 +166,7 @@ public class VentaVehiculos
 
         for( int i = 0; i < vehiculos.size( ) && !termine; i++ )
         {
-            Vehiculo vehiculoPosicion = ( Vehiculo )vehiculos.get( i );
+            Vehiculo vehiculoPosicion = vehiculos.get( i );
             String modeloVehiculo = vehiculoPosicion.darModelo( );
 
             // Los modelos son iguales
@@ -226,7 +220,7 @@ public class VentaVehiculos
 
         for( int cont = 0; cont < vehiculos.size( ) && !comprado; cont++ )
         {
-            Vehiculo v = ( Vehiculo )vehiculos.get( cont );
+            Vehiculo v = vehiculos.get( cont );
 
             if( v.darAnio( ) == anio && v.darModelo( ).equalsIgnoreCase( modelo ) )
             {
@@ -248,11 +242,11 @@ public class VentaVehiculos
 
         if( vehiculos.size( ) > 0 )
         {
-            Vehiculo vMasAntiguo = ( Vehiculo )vehiculos.get( 0 );
+            Vehiculo vMasAntiguo = vehiculos.get( 0 );
             posicion = 0;
             for( int i = 1; i < vehiculos.size( ); i++ )
             {
-                Vehiculo vPosicion = ( Vehiculo )vehiculos.get( i );
+                Vehiculo vPosicion = vehiculos.get( i );
 
                 if( vMasAntiguo.compararPorAnio( vPosicion ) == 1 )
                 {
@@ -274,11 +268,11 @@ public class VentaVehiculos
 
         if( vehiculos.size( ) > 0 )
         {
-            Vehiculo vMasEconomico = ( Vehiculo )vehiculos.get( 0 );
+            Vehiculo vMasEconomico = vehiculos.get( 0 );
             posicion = 0;
             for( int i = 1; i < vehiculos.size( ); i++ )
             {
-                Vehiculo vPosicion = ( Vehiculo )vehiculos.get( i );
+                Vehiculo vPosicion = vehiculos.get( i );
 
                 if( vMasEconomico.compararPorValor( vPosicion ) == 1 )
                 {
@@ -300,11 +294,11 @@ public class VentaVehiculos
 
         if( vehiculos.size( ) > 0 )
         {
-            Vehiculo vMasPotente = ( Vehiculo )vehiculos.get( 0 );
+            Vehiculo vMasPotente = vehiculos.get( 0 );
             posicion = 0;
             for( int i = 1; i < vehiculos.size( ); i++ )
             {
-                Vehiculo vPosicion = ( Vehiculo )vehiculos.get( i );
+                Vehiculo vPosicion = vehiculos.get( i );
 
                 if( vMasPotente.compararPorCilindrada( vPosicion ) == -1 )
                 {
@@ -326,15 +320,13 @@ public class VentaVehiculos
     {
         int disminuidos = 0;
 
-        for( int cont = 0; cont < vehiculos.size( ); cont++ )
+        for ( Vehiculo v : vehiculos )
         {
-            Vehiculo v = ( Vehiculo )vehiculos.get( cont );
-
-            if( v.darValor( ) > valor )
+            if ( v.darValor( ) > valor )
             {
                 int nValor = ( int ) ( v.darValor( ) * 0.9 );
 
-                if( nValor > 0 )
+                if ( nValor > 0 )
                 {
                     v.cambiarValor( nValor );
                     disminuidos++;
@@ -365,12 +357,12 @@ public class VentaVehiculos
     {
         for( int i = 0; i < vehiculos.size( ); i++ )
         {
-            Vehiculo pi = ( Vehiculo )vehiculos.get( i );
+            Vehiculo pi = vehiculos.get( i );
             for( int j = 0; j < vehiculos.size( ); j++ )
             {
                 if( i != j )
                 {
-                    Vehiculo pj = ( Vehiculo )vehiculos.get( j );
+                    Vehiculo pj = vehiculos.get( j );
                     if( pj.darModelo( ).equals( pi.darModelo( ) ) && pj.darAnio( ) == pi.darAnio( ) )
                     {
                         return true;
