@@ -205,7 +205,7 @@ public class Vehiculo
      *         Retorna -1 si el vehiculo v tiene una valor "MAYOR" para la cilindrada. <br>
      *         Retorna 1 si el vehiculo v tiene una valor "MENOR" para la cilindrada. <br>
      */
-    public int compararPorCilindrada( final Vehiculo v )
+    public int compareForDisplacement( final Vehiculo v )
     {
         return Integer.compare( displacement, v.getDisplacement( ) );
     }
@@ -229,7 +229,7 @@ public class Vehiculo
      *         Retorna -1 si el vehiculo v es de un ao posterior. <br>
      *         Retorna 1 si el vehiculo v es de un ao anterior. <br>
      */
-    public int sortForYear( final Vehiculo v )
+    public int compareForYear( final Vehiculo v )
     {
         return Integer.compare( year, v.getYear( ) );
     }

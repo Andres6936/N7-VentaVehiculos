@@ -73,9 +73,9 @@ public class VehiculoTest extends TestCase
     {
         setupEscenario1( );
 
-        assertEquals( "Compar mal el ao: deba ser menor", - 1, vehiculo1.sortForYear( vehiculo2 ) );
-        assertEquals( "Compar mal el ao: deba ser igual", 0, vehiculo1.sortForYear( vehiculo1 ) );
-        assertEquals( "Compar mal el ao: deba ser mayor", 1, vehiculo2.sortForYear( vehiculo1 ) );
+        assertEquals( "Compar mal el ao: deba ser menor", - 1, vehiculo1.compareForYear( vehiculo2 ) );
+        assertEquals( "Compar mal el ao: deba ser igual", 0, vehiculo1.compareForYear( vehiculo1 ) );
+        assertEquals( "Compar mal el ao: deba ser mayor", 1, vehiculo2.compareForYear( vehiculo1 ) );
 
     }
 
@@ -94,9 +94,9 @@ public class VehiculoTest extends TestCase
     {
         setupEscenario1( );
 
-        assertEquals( "Compar mal la Cilindrada: deba ser menor", -1, vehiculo1.compararPorCilindrada( vehiculo2 ) );
-        assertEquals( "Compar mal la Cilindrada: deba ser igual", 0, vehiculo1.compararPorCilindrada( vehiculo1 ) );
-        assertEquals( "Compar mal la Cilindrada: deba ser mayor", 1, vehiculo2.compararPorCilindrada( vehiculo1 ) );
+        assertEquals( "Compar mal la Cilindrada: deba ser menor", - 1, vehiculo1.compareForDisplacement( vehiculo2 ) );
+        assertEquals( "Compar mal la Cilindrada: deba ser igual", 0, vehiculo1.compareForDisplacement( vehiculo1 ) );
+        assertEquals( "Compar mal la Cilindrada: deba ser mayor", 1, vehiculo2.compareForDisplacement( vehiculo1 ) );
     }
 
     /**

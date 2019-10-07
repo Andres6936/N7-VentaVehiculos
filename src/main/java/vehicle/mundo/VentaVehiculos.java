@@ -1,9 +1,5 @@
 package vehicle.mundo;
 
-import vehicle.mundo.comparator.VehicleComparatorByDisplacement;
-import vehicle.mundo.comparator.VehicleComparatorByTrademark;
-import vehicle.mundo.comparator.VehicleComparatorByYear;
-
 import java.util.ArrayList;
 
 /**
@@ -56,7 +52,7 @@ public class VentaVehiculos
      */
     public void sortForTrademark( )
     {
-        vehiculos.sort( new VehicleComparatorByTrademark( ) );
+        vehiculos.sort( Vehiculo::compareForTrademark );
 
         verificarInvariante( );
     }
@@ -67,7 +63,7 @@ public class VentaVehiculos
      */
     public void sortForDisplacement( )
     {
-        vehiculos.sort( new VehicleComparatorByDisplacement( ) );
+        vehiculos.sort( Vehiculo::compareForDisplacement );
 
         verificarInvariante( );
     }
@@ -78,7 +74,7 @@ public class VentaVehiculos
      */
     public void sortForYear( )
     {
-        vehiculos.sort( new VehicleComparatorByYear( ) );
+        vehiculos.sort( Vehiculo::compareForYear );
 
         verificarInvariante( );
     }
@@ -178,7 +174,7 @@ public class VentaVehiculos
             {
                 Vehiculo vPosicion = vehiculos.get( i );
 
-                if ( vMasAntiguo.sortForYear( vPosicion ) == 1 )
+                if ( vMasAntiguo.compareForYear( vPosicion ) == 1 )
                 {
                     posicion = i;
                     vMasAntiguo = vPosicion;
@@ -230,7 +226,7 @@ public class VentaVehiculos
             {
                 Vehiculo vPosicion = vehiculos.get( i );
 
-                if( vMasPotente.compararPorCilindrada( vPosicion ) == -1 )
+                if ( vMasPotente.compareForDisplacement( vPosicion ) == - 1 )
                 {
                     posicion = i;
                     vMasPotente = vPosicion;
