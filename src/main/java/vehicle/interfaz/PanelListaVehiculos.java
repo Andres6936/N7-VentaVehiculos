@@ -1,7 +1,6 @@
 package vehicle.interfaz;
 
-import java.awt.BorderLayout;
-import java.awt.Color;
+import java.awt.*;
 import java.util.ArrayList;
 
 import javax.swing.JList;
@@ -48,14 +47,15 @@ public class PanelListaVehiculos extends JPanel implements ListSelectionListener
      * Construye el panel e inicializa todos sus componentes
      * @param iec Es una referencia a la clase principal de la java.vehicle.interfaz - iec != null
      */
-    public PanelListaVehiculos( InterfazVentaVehiculos iec )
+    PanelListaVehiculos( InterfazVentaVehiculos iec )
     {
         ventanaPrincipal = iec;
+
         setLayout( new BorderLayout( ) );
 
-        JPanel panelListaYBotones = new JPanel( );
-        panelListaYBotones.setLayout( new BorderLayout( ) );
-        panelListaYBotones.setBorder( new CompoundBorder( new EmptyBorder( 4, 3, 3, 3 ), new TitledBorder( "vehiculos a la Venta" ) ) );
+        JPanel panelBorder = new JPanel( );
+        panelBorder.setLayout( new BorderLayout( ) );
+        panelBorder.setBorder( new CompoundBorder( new EmptyBorder( 3, 3, 3, 3 ), new TitledBorder( "vehiculos a la Venta" ) ) );
 
         listaVehiculos = new JList( );
         listaVehiculos.setSelectionMode( ListSelectionModel.SINGLE_SELECTION );
@@ -67,8 +67,11 @@ public class PanelListaVehiculos extends JPanel implements ListSelectionListener
         scroll.setBorder( new CompoundBorder( new EmptyBorder( 3, 3, 3, 3 ), new LineBorder( Color.BLACK, 1 ) ) );
         scroll.getViewport( ).add( listaVehiculos );
 
-        panelListaYBotones.add( scroll, BorderLayout.CENTER );
-        add( panelListaYBotones, BorderLayout.CENTER );
+        panelBorder.add( scroll, BorderLayout.CENTER );
+        add( panelBorder, BorderLayout.CENTER );
+
+        setSize( new Dimension( 400, 200 ) );
+        setMinimumSize( new Dimension( 400, 200 ) );
     }
 
     // -----------------------------------------------------------------
@@ -79,7 +82,7 @@ public class PanelListaVehiculos extends JPanel implements ListSelectionListener
      * Actualiza la lista de vehiculos que se est mostrando
      * @param listaActualizadaVehiculos Es una lista con los vehiculos que deben mostrarse
      */
-    public void actualizarLista( ArrayList listaActualizadaVehiculos )
+    void actualizarLista( ArrayList listaActualizadaVehiculos )
     {
         listaVehiculos.setListData( listaActualizadaVehiculos.toArray( ) );
         listaVehiculos.setSelectedIndex( 0 );
@@ -90,32 +93,23 @@ public class PanelListaVehiculos extends JPanel implements ListSelectionListener
      * Selecciona un elemento de la lista
      * @param seleccionado La posicin del elemento que se debe seleccionar
      */
-    public void seleccionar( int seleccionado )
+    void seleccionar( int seleccionado )
     {
         listaVehiculos.setSelectedIndex( seleccionado );
         listaVehiculos.ensureIndexIsVisible( seleccionado );
     }
 
     /**
-     * Informa si hay algn ndice seleccionado en la lista de vehiculos.
-     * @return true si hay un tem seleccionado, false de lo contrario
-     */
-    public boolean haySeleccionado( )
-    {
-        return !listaVehiculos.isSelectionEmpty( );
-    }
-
-    /**
      * Retorna el vehiculo seleccionado de la lista
      * @return Se retorn el vehiculo seleccionado de la lista. Si no hay vehiculo seleccionado se retorn null
      */
-    public Vehiculo darVehiculoSeleccionado( )
+    Vehiculo darVehiculoSeleccionado( )
     {
         Vehiculo vSeleccionado = null;
 
         if( listaVehiculos.getSelectedValue( ) != null )
         {
-            vSeleccionado = ( Vehiculo )listaVehiculos.getSelectedValue( );
+            vSeleccionado = ( Vehiculo ) listaVehiculos.getSelectedValue( );
         }
 
         return vSeleccionado;
@@ -129,7 +123,7 @@ public class PanelListaVehiculos extends JPanel implements ListSelectionListener
     {
         if( listaVehiculos.getSelectedValue( ) != null )
         {
-            Vehiculo vehiculo = ( Vehiculo )listaVehiculos.getSelectedValue( );
+            Vehiculo vehiculo = ( Vehiculo ) listaVehiculos.getSelectedValue( );
             ventanaPrincipal.verDatos( vehiculo );
         }
 
