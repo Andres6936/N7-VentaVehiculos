@@ -197,7 +197,7 @@ public class PanelDatosVehiculo extends JPanel
         etiquetaImagen.setIcon( new ImageIcon( getFileFromResource( imagen ) ) );
 
         txtModelo.setText( vehiculo.darModelo( ) );
-        txtMarca.setText( vehiculo.darMarca( ) );
+        txtMarca.setText( vehiculo.getTrademark( ) );
         txtTipo.setText( vehiculo.darTipo( ) );
         txtAnio.setText( "" + vehiculo.darAnio( ) );
         txtCilindrada.setText( "" + vehiculo.darCilindrada( ) );

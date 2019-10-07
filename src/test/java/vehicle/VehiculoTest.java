@@ -50,7 +50,7 @@ public class VehiculoTest extends TestCase
         setupEscenario1( );
 
         assertEquals( "El modelo del vehiculo est mal", "modelo1", vehiculo1.darModelo( ) );
-        assertEquals( "La marca del vehiculo est mal", "marca1", vehiculo1.darMarca( ) );
+        assertEquals( "La marca del vehiculo est mal", "marca1", vehiculo1.getTrademark( ) );
         assertEquals( "La imagen del vehiculo est mal", "imagen1", vehiculo1.darImagen( ) );
         assertEquals( "El tipo del vehiculo est mal", Vehiculo.AUTOMOVIL, vehiculo1.darTipo( ) );
         assertEquals( "La cilindrada del vehiculo est mal", 1, vehiculo1.darCilindrada( ) );
@@ -114,9 +114,9 @@ public class VehiculoTest extends TestCase
     {
         setupEscenario1( );
 
-        assertEquals( "Compar mal la marca: deba ser menor", -1, vehiculo1.compararPorMarca( vehiculo2 ) );
-        assertEquals( "Compar mal la marca: deba ser igual", 0, vehiculo1.compararPorMarca( vehiculo1 ) );
-        assertEquals( "Compar mal la marca: deba ser mayor", 1, vehiculo2.compararPorMarca( vehiculo1 ) );
+        assertEquals( "Compar mal la marca: deba ser menor", - 1, vehiculo1.compareForTrademark( vehiculo2 ) );
+        assertEquals( "Compar mal la marca: deba ser igual", 0, vehiculo1.compareForTrademark( vehiculo1 ) );
+        assertEquals( "Compar mal la marca: deba ser mayor", 1, vehiculo2.compareForTrademark( vehiculo1 ) );
 
     }
 

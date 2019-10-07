@@ -145,7 +145,7 @@ public class VentaVehiculosTest extends TestCase
 
         assertEquals( "No se debi modificar la informacin del vehiculo", v.darImagen( ), v2.darImagen( ) );
 
-        assertEquals( "No se debi modificar la informacin del vehiculo", v.darMarca( ), v2.darMarca( ) );
+        assertEquals( "No se debi modificar la informacin del vehiculo", v.getTrademark( ), v2.getTrademark( ) );
 
         assertEquals( "No se debi modificar la informacin del vehiculo", v.darModelo( ), v2.darModelo( ) );
 
@@ -256,7 +256,7 @@ public class VentaVehiculosTest extends TestCase
             Vehiculo v0 = ( Vehiculo )vehiculos.get( i - 1 );
             Vehiculo v1 = ( Vehiculo )vehiculos.get( i );
 
-            assertTrue( "No se orden bien por altura", v0.darMarca( ).compareTo( v1.darMarca( ) ) <= 0 );
+            assertTrue( "No se orden bien por altura", v0.getTrademark( ).compareTo( v1.getTrademark( ) ) <= 0 );
         }
     }
 

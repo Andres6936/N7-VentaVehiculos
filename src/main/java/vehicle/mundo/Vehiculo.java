@@ -50,7 +50,7 @@ public class Vehiculo
     /**
      * La marca del vehiculo
      */
-    private String marca;
+    private String trademark;
 
     /**
      * La ruta hasta la imagen del vehiculo
@@ -100,7 +100,7 @@ public class Vehiculo
     public Vehiculo( String modeloV, String marcaV, String imagenV, String tipoV, int anioV, int cilindradaV, int ejesV, int valorV )
     {
         modelo = modeloV;
-        marca = marcaV;
+        trademark = marcaV;
         imagen = imagenV;
         tipo = tipoV;
         anio = anioV;
@@ -128,9 +128,9 @@ public class Vehiculo
      * Retorna la marca del vehiculo
      * @return marca
      */
-    public String darMarca( )
+    public String getTrademark( )
     {
-        return marca;
+        return trademark;
     }
 
     /**
@@ -217,9 +217,9 @@ public class Vehiculo
      *         Retorna -1 si el vehiculo v tiene una valor "MAYOR" para la marca. <br>
      *         Retorna 1 si el vehiculo v tiene una valor "MENOR" para la marca. <br>
      */
-    public int compararPorMarca( final Vehiculo v )
+    public int compareForTrademark( final Vehiculo v )
     {
-        return marca.toLowerCase( ).compareTo( v.darMarca( ).toLowerCase( ) );
+        return trademark.toLowerCase( ).compareTo( v.getTrademark( ).toLowerCase( ) );
     }
 
     /**
@@ -252,7 +252,7 @@ public class Vehiculo
      */
     public String toString( )
     {
-        return marca + " " + modelo + " (" + anio + ")";
+        return trademark + " " + modelo + " (" + anio + ")";
     }
 
     // -----------------------------------------------------------------
@@ -277,7 +277,7 @@ public class Vehiculo
         assert ( anio > 0 ) : "El ao no puede ser 0";
         assert ( imagen != null ) : "La imagen no puede ser null";
         assert ( modelo != null ) : "El modelo no puede ser null";
-        assert ( marca != null ) : "La marca no puede ser null";
+        assert ( trademark != null ) : "La marca no puede ser null";
         assert ( cilindrada > 0 ) : "La cilindrada no puede ser 0";
         assert ( ejes > 1 ) : "El nmero de ejes debe ser mayor a 1";
         assert ( valor > 0 ) : "El vehiculo debe tener un valor mayor a 0";

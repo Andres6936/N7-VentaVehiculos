@@ -1,6 +1,9 @@
 package vehicle.mundo;
 
+import vehicle.mundo.comparator.VehicleComparatorByTrademark;
+
 import java.util.ArrayList;
+import java.util.Collections;
 
 /**
  * Es la clase que se encarga de manejar, organizar, cargar y salvar los vehiculos <br>
@@ -52,20 +55,8 @@ public class VentaVehiculos
      */
     public void ordenarPorMarca( )
     {
-        for ( int inicial = 0; inicial < vehiculos.size( ); inicial++ )
-        {
-            for( int i = vehiculos.size( ) - 1; i > inicial; i-- )
-            {
-                Vehiculo p2 = vehiculos.get( i );
-                Vehiculo p1 = vehiculos.get( i - 1 );
+        vehiculos.sort( new VehicleComparatorByTrademark( ) );
 
-                if( p1.compararPorMarca( p2 ) > 0 )
-                {
-                    vehiculos.set( i, p1 );
-                    vehiculos.set( i - 1, p2 );
-                }
-            }
-        }
         verificarInvariante( );
     }
 
