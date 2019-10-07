@@ -1,20 +1,9 @@
-/**
- * ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ 
- * $Id: PanelImagen.java,v 1.2 2006/11/26 18:09:51 da-romer Exp $ 
- * Universidad de los Andes (Bogot - Colombia)
- * Departamento de Ingeniera de Sistemas y Computacin
- * Todos los derechos reservados 2005 
- * 
- * Proyecto Cupi2 (http://cupi2.uniandes.edu.co)
- * Ejercicio: n7_ventaVehiculos
- * Autor: Daniel Romero - 17-Nov-2006
- * ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ 
- */
-
 package vehicle.interfaz;
 
 import java.awt.Color;
 import java.awt.FlowLayout;
+import java.io.File;
+import java.net.URL;
 
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
@@ -24,7 +13,7 @@ import javax.swing.border.LineBorder;
 /**
  * Es el panel donde se muestra una imagen decorativa
  */
-public class PanelImagen extends JPanel
+class PanelImagen extends JPanel
 {
 
     // -----------------------------------------------------------------

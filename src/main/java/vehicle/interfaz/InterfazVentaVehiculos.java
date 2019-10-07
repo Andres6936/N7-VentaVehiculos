@@ -20,10 +20,8 @@ import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
 import java.awt.Toolkit;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.IOException;
+import java.io.*;
+import java.net.URL;
 import java.util.Properties;
 
 import javax.swing.JFrame;
@@ -42,7 +40,8 @@ public class InterfazVentaVehiculos extends JFrame
     /**
      * Ruta donde se encuentra ubicado el archivo con los datos de los vehiculos
      */
-    public static final String ARCHIVO_VEHICULOS = "./data/vehiculos.dat";
+    public static final String ARCHIVO_VEHICULOS = "data/vehiculos.properties";
+
     // -----------------------------------------------------------------
     // Atributos
     // -----------------------------------------------------------------
@@ -406,7 +405,7 @@ public class InterfazVentaVehiculos extends JFrame
 
         try
         {
-            FileInputStream fis = new FileInputStream( new File( archivo ) );
+            FileInputStream fis = new FileInputStream( getFileFromResource( ARCHIVO_VEHICULOS ) );
             Properties propiedades = new Properties( );
             propiedades.load( fis );
 
@@ -465,13 +464,32 @@ public class InterfazVentaVehiculos extends JFrame
                 fis.close( );
             }
         }
-        catch( FileNotFoundException e )
-        {
-            JOptionPane.showMessageDialog( this, "Problemas al cargar la informacin de los vehiculos", "Error", JOptionPane.ERROR_MESSAGE );
-        }
         catch( IOException e )
         {
             JOptionPane.showMessageDialog( this, "Problemas al cargar la informacin de los vehiculos", "Error", JOptionPane.ERROR_MESSAGE );
+        }
+    }
+
+    /**
+     * Método utilizado para cargar archivos desde el directorio /resource, es decir,
+     * la estructura de proyectos basados en Maven y Gradle.
+     *
+     * @param filename Nombre del archivo.
+     * @return Referencia al archivo.
+     */
+    private File getFileFromResource( final String filename )
+    {
+        ClassLoader classLoader = getClass().getClassLoader();
+
+        URL resource = classLoader.getResource( filename );
+
+        if (resource == null)
+        {
+            throw new IllegalArgumentException( "File is not found." );
+        }
+        else
+        {
+            return new File( resource.getFile() );
         }
     }
 

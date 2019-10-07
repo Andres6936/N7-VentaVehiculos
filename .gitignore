@@ -48,7 +48,12 @@ Temporary Itemas
 
 ### JetBrains
 .idea/
+classes/
+out/
 N7-VentaVehiculos.iml
 
 ### Git
 .gitignore
+
+### Gradle
+.gradle/

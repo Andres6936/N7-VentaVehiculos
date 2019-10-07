@@ -270,7 +270,7 @@ public class PanelAgregarVehiculo extends JPanel implements ActionListener
         }
         else if( BUSCAR.equals( comando ) )
         {
-            JFileChooser fc = new JFileChooser( "./data" );
+            JFileChooser fc = new JFileChooser( "data" );
             fc.setDialogTitle( "Buscar imagen de vehiculo" );
             fc.setMultiSelectionEnabled( false );
 
