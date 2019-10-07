@@ -1,5 +1,6 @@
 package vehicle.mundo;
 
+import vehicle.mundo.comparator.VehicleComparatorByDisplacement;
 import vehicle.mundo.comparator.VehicleComparatorByTrademark;
 
 import java.util.ArrayList;
@@ -61,47 +62,18 @@ public class VentaVehiculos
     }
 
     /**
-     * Organiza la lista de vehiculos por cilindrada usando el algoritmo de insercin <br>
-     * <b>post: </b>La lista de vehiculos est ordenada por cilindrada
+     * Organiza la lista de vehiculos por cilindrada usando a Comparator. <br>
+     * @postcondition: La lista de vehiculos est ordenada por cilindrada
      */
-    public void ordenarPorCilindrada( )
+    public void sortForDisplacement( )
     {
         // En cada paso se sabe que:
         // 1. Las posiciones antes de vehiculos[inicial] estn ordenadas
         // En cada paso lo que se hace es encontrar en qu posicin entre vehiculos[0] y vehiculos[inicial] debera
         // estar el vehiculo que en este momento se encuentra en vehiculos[inicial]
 
-        for ( int inicial = 1; inicial < vehiculos.size( ); inicial++ )
-        {
-            Vehiculo insertado = vehiculos.get( inicial );
+        vehiculos.sort( new VehicleComparatorByDisplacement( ) );
 
-            boolean termine = false;
-            int i = inicial - 1;
-
-            while( !termine )
-            {
-                // Si encuentra una cilindrada mayor, entonces hay que intercambiarlos
-                Vehiculo vehiculoPosicion = vehiculos.get( i );
-
-                if( vehiculoPosicion.compararPorCilindrada( insertado ) > 0 )
-                {
-                    vehiculos.set( i, insertado );
-                    vehiculos.set( i + 1, vehiculoPosicion );
-                    i--;
-                }
-                // Si se encuentra un cilindrada igual o menor entonces ya se encontr la posicin
-                else
-                {
-                    termine = true;
-                }
-
-                // Si ya se lleg al principio de la lista no hay nada mas que hacer
-                if( i < 0 )
-                {
-                    termine = true;
-                }
-            }
-        }
         verificarInvariante( );
     }
 

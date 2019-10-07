@@ -139,7 +139,7 @@ public class VentaVehiculosTest extends TestCase
 
         assertEquals( "No se debi modificar la informacin del vehiculo", v.darAnio( ), v2.darAnio( ) );
 
-        assertEquals( "No se debi modificar la informacin del vehiculo", v.darCilindrada( ), v2.darCilindrada( ) );
+        assertEquals( "No se debi modificar la informacin del vehiculo", v.getDisplacement( ), v2.getDisplacement( ) );
 
         assertEquals( "No se debi modificar la informacin del vehiculo", v.darEjes( ), v2.darEjes( ) );
 
@@ -200,14 +200,14 @@ public class VentaVehiculosTest extends TestCase
     {
         setupEscenario2( );
 
-        ventaVehiculos.ordenarPorCilindrada( );
+        ventaVehiculos.sortForDisplacement( );
         ArrayList vehiculos = ventaVehiculos.darVehiculos( );
         for( int i = 1; i < vehiculos.size( ); i++ )
         {
             Vehiculo v0 = ( Vehiculo )vehiculos.get( i - 1 );
             Vehiculo v1 = ( Vehiculo )vehiculos.get( i );
 
-            assertTrue( "No se orden bien por Cilindrada", v0.darCilindrada( ) <= v1.darCilindrada( ) );
+            assertTrue( "No se orden bien por Cilindrada", v0.getDisplacement( ) <= v1.getDisplacement( ) );
         }
     }
 

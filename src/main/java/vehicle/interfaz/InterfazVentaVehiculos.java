@@ -163,7 +163,7 @@ public class InterfazVentaVehiculos extends JFrame
      */
     public void ordenarPorCilindrada( )
     {
-        ventaVehiculos.ordenarPorCilindrada( );
+        ventaVehiculos.sortForDisplacement( );
         panelDatos.limpiarDatos( );
         actualizarLista( );
     }

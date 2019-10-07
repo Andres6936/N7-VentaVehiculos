@@ -200,7 +200,7 @@ public class PanelDatosVehiculo extends JPanel
         txtMarca.setText( vehiculo.getTrademark( ) );
         txtTipo.setText( vehiculo.darTipo( ) );
         txtAnio.setText( "" + vehiculo.darAnio( ) );
-        txtCilindrada.setText( "" + vehiculo.darCilindrada( ) );
+        txtCilindrada.setText( "" + vehiculo.getDisplacement( ) );
         txtEjes.setText( "" + vehiculo.darEjes( ) );
         txtValor.setText( "" + vehiculo.getValue( ) );
 

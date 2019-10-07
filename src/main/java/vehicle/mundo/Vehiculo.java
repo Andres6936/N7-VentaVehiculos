@@ -70,7 +70,7 @@ public class Vehiculo
     /**
      * El cilindrada del vehiculo
      */
-    private int cilindrada;
+    private int displacement;
 
     /**
      * El nmero de Ejes
@@ -104,7 +104,7 @@ public class Vehiculo
         imagen = imagenV;
         tipo = tipoV;
         anio = anioV;
-        cilindrada = cilindradaV;
+        displacement = cilindradaV;
         ejes = ejesV;
         valor = valorV;
 
@@ -164,9 +164,9 @@ public class Vehiculo
      * Retorna la cilindrada del vehiculo
      * @return cilindrada
      */
-    public int darCilindrada( )
+    public int getDisplacement( )
     {
-        return cilindrada;
+        return displacement;
     }
 
     /**
@@ -207,7 +207,7 @@ public class Vehiculo
      */
     public int compararPorCilindrada( final Vehiculo v )
     {
-        return Integer.compare( cilindrada, v.darCilindrada( ) );
+        return Integer.compare( displacement, v.getDisplacement( ) );
     }
 
     /**
@@ -278,7 +278,7 @@ public class Vehiculo
         assert ( imagen != null ) : "La imagen no puede ser null";
         assert ( modelo != null ) : "El modelo no puede ser null";
         assert ( trademark != null ) : "La marca no puede ser null";
-        assert ( cilindrada > 0 ) : "La cilindrada no puede ser 0";
+        assert ( displacement > 0 ) : "La cilindrada no puede ser 0";
         assert ( ejes > 1 ) : "El nmero de ejes debe ser mayor a 1";
         assert ( valor > 0 ) : "El vehiculo debe tener un valor mayor a 0";
     }
