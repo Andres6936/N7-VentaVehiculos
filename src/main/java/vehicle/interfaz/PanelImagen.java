@@ -40,7 +40,7 @@ class PanelImagen extends JPanel
         setLayout( layout );
         //
         // Carga la imagen
-        ImageIcon icono = new ImageIcon( "data/titulo.png" );
+        ImageIcon icono = new ImageIcon( getFileFromResource( "data/titulo.png" ) );
 
         // La agrega a la etiqueta
         imagen = new JLabel( "" );
@@ -50,5 +50,28 @@ class PanelImagen extends JPanel
         // Color de fondo blanco
         setBackground( Color.WHITE );
         setBorder( new LineBorder( Color.GRAY ) );
+    }
+
+    /**
+     * Método utilizado para cargar archivos desde el directorio /resource, es decir,
+     * la estructura de proyectos basados en Maven y Gradle.
+     *
+     * @param filename Nombre del archivo.
+     * @return Referencia al archivo.
+     */
+    private URL getFileFromResource( final String filename )
+    {
+        ClassLoader classLoader = getClass().getClassLoader();
+
+        URL resource = classLoader.getResource( filename );
+
+        if (resource == null)
+        {
+            throw new IllegalArgumentException( "File is not found." );
+        }
+        else
+        {
+            return resource;
+        }
     }
 }

@@ -98,7 +98,7 @@ public class InterfazVentaVehiculos extends JFrame
     {
         ventaVehiculos = new VentaVehiculos( );
 
-        cargarVehiculos( ARCHIVO_VEHICULOS );
+        cargarVehiculos( );
 
         setLayout( new GridBagLayout( ) );
 
@@ -398,11 +398,9 @@ public class InterfazVentaVehiculos extends JFrame
 
     /**
      * Carga los carros iniciales de la venta a partir de un archivo de propiedades.
-     * @param archivo nombre del archivo de propiedades que contiene la informacin de los vehiculos - archivo!=null
      */
-    private void cargarVehiculos( String archivo )
+    private void cargarVehiculos( )
     {
-
         try
         {
             FileInputStream fis = new FileInputStream( getFileFromResource( ARCHIVO_VEHICULOS ) );
@@ -424,37 +422,37 @@ public class InterfazVentaVehiculos extends JFrame
             aux = propiedades.getProperty( dato );
             int cantidad = Integer.parseInt( aux );
 
-            for( int cont = 1; cont <= cantidad; cont++ )
+            for( int i = 1; i <= cantidad; i++ )
             {
                 // Carga un vehiculo
-                dato = "vehiculo" + cont + ".modelo";
+                dato = "vehiculo" + i + ".modelo";
                 modelo = propiedades.getProperty( dato );
 
-                dato = "vehiculo" + cont + ".marca";
+                dato = "vehiculo" + i + ".marca";
                 marca = propiedades.getProperty( dato );
 
-                dato = "vehiculo" + cont + ".marca";
+                dato = "vehiculo" + i + ".marca";
                 marca = propiedades.getProperty( dato );
 
-                dato = "vehiculo" + cont + ".imagen";
+                dato = "vehiculo" + i + ".imagen";
                 imagen = propiedades.getProperty( dato );
 
-                dato = "vehiculo" + cont + ".tipo";
+                dato = "vehiculo" + i + ".tipo";
                 tipo = propiedades.getProperty( dato );
 
-                dato = "vehiculo" + cont + ".anio";
+                dato = "vehiculo" + i + ".anio";
                 aux = propiedades.getProperty( dato );
                 anio = Integer.parseInt( aux );
 
-                dato = "vehiculo" + cont + ".cilindrada";
+                dato = "vehiculo" + i + ".cilindrada";
                 aux = propiedades.getProperty( dato );
                 cilandraje = Integer.parseInt( aux );
 
-                dato = "vehiculo" + cont + ".ejes";
+                dato = "vehiculo" + i + ".ejes";
                 aux = propiedades.getProperty( dato );
                 ejes = Integer.parseInt( aux );
 
-                dato = "vehiculo" + cont + ".valor";
+                dato = "vehiculo" + i + ".valor";
                 aux = propiedades.getProperty( dato );
                 valor = Integer.parseInt( aux );
 

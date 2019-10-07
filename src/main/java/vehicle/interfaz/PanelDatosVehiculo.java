@@ -17,6 +17,7 @@ import java.awt.Dimension;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
+import java.net.URL;
 
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
@@ -205,7 +206,7 @@ public class PanelDatosVehiculo extends JPanel
     public void mostrarDatos( Vehiculo vehiculo )
     {
         String imagen = vehiculo.darImagen( );
-        etiquetaImagen.setIcon( new ImageIcon( imagen ) );
+        etiquetaImagen.setIcon( new ImageIcon( getFileFromResource( imagen ) ) );
 
         txtModelo.setText( vehiculo.darModelo( ) );
         txtMarca.setText( vehiculo.darMarca( ) );
@@ -231,5 +232,28 @@ public class PanelDatosVehiculo extends JPanel
         txtCilindrada.setText( "" );
         txtEjes.setText( "" );
         txtValor.setText( "" );
+    }
+
+    /**
+     * Método utilizado para cargar archivos desde el directorio /resource, es decir,
+     * la estructura de proyectos basados en Maven y Gradle.
+     *
+     * @param filename Nombre del archivo.
+     * @return Referencia al archivo.
+     */
+    private URL getFileFromResource( final String filename )
+    {
+        ClassLoader classLoader = getClass().getClassLoader();
+
+        URL resource = classLoader.getResource( filename );
+
+        if (resource == null)
+        {
+            throw new IllegalArgumentException( "File is not found." );
+        }
+        else
+        {
+            return resource;
+        }
     }
 }
