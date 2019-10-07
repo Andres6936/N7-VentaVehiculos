@@ -55,7 +55,7 @@ public class VehiculoTest extends TestCase
         assertEquals( "El tipo del vehiculo est mal", Vehiculo.AUTOMOVIL, vehiculo1.darTipo( ) );
         assertEquals( "La cilindrada del vehiculo est mal", 1, vehiculo1.getDisplacement( ) );
         assertEquals( "El nmero de ejes del vehiculo est mal", 2, vehiculo1.darEjes( ) );
-        assertEquals( "El ao del vehiculo est mal", 1, vehiculo1.darAnio( ) );
+        assertEquals( "El ao del vehiculo est mal", 1, vehiculo1.getYear( ) );
         assertEquals( "El vehiculo del vehiculo est mal", 8000000, vehiculo1.getValue( ) );
     }
 
@@ -73,9 +73,9 @@ public class VehiculoTest extends TestCase
     {
         setupEscenario1( );
 
-        assertEquals( "Compar mal el ao: deba ser menor", -1, vehiculo1.compararPorAnio( vehiculo2 ) );
-        assertEquals( "Compar mal el ao: deba ser igual", 0, vehiculo1.compararPorAnio( vehiculo1 ) );
-        assertEquals( "Compar mal el ao: deba ser mayor", 1, vehiculo2.compararPorAnio( vehiculo1 ) );
+        assertEquals( "Compar mal el ao: deba ser menor", - 1, vehiculo1.sortForYear( vehiculo2 ) );
+        assertEquals( "Compar mal el ao: deba ser igual", 0, vehiculo1.sortForYear( vehiculo1 ) );
+        assertEquals( "Compar mal el ao: deba ser mayor", 1, vehiculo2.sortForYear( vehiculo1 ) );
 
     }
 

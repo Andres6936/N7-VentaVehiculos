@@ -173,7 +173,7 @@ public class InterfazVentaVehiculos extends JFrame
      */
     public void ordenarPorAnio( )
     {
-        ventaVehiculos.ordenarPorAnio( );
+        ventaVehiculos.sortForYear( );
         panelDatos.limpiarDatos( );
         actualizarLista( );
     }
@@ -326,7 +326,7 @@ public class InterfazVentaVehiculos extends JFrame
 
         if( v != null )
         {
-            ventaVehiculos.comprarVehiculo( v.darModelo( ), v.darAnio( ) );
+            ventaVehiculos.comprarVehiculo( v.darModelo( ), v.getYear( ) );
             panelDatos.limpiarDatos( );
             actualizarLista( );
         }

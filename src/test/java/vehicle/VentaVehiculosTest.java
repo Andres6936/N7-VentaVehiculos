@@ -131,13 +131,13 @@ public class VentaVehiculosTest extends TestCase
         Vehiculo v = ( Vehiculo )vehiculos.get( 0 );
         String modeloVehiculo = v.darModelo( );
 
-        assertFalse( "No debera haberse agregado el vehiculo porque el modelo y el ao estn repetidos", ventaVehiculos.agregarVehiculo( modeloVehiculo, modeloVehiculo, modeloVehiculo, Vehiculo.AUTOMOVIL, v.darAnio( ), 1000, 2, 500000 ) );
+        assertFalse( "No debera haberse agregado el vehiculo porque el modelo y el ao estn repetidos", ventaVehiculos.agregarVehiculo( modeloVehiculo, modeloVehiculo, modeloVehiculo, Vehiculo.AUTOMOVIL, v.getYear( ), 1000, 2, 500000 ) );
 
         assertEquals( "No se debi agregar el vehiculo", 12, vehiculos.size( ) );
 
         Vehiculo v2 = ( Vehiculo )vehiculos.get( 0 );
 
-        assertEquals( "No se debi modificar la informacin del vehiculo", v.darAnio( ), v2.darAnio( ) );
+        assertEquals( "No se debi modificar la informacin del vehiculo", v.getYear( ), v2.getYear( ) );
 
         assertEquals( "No se debi modificar la informacin del vehiculo", v.getDisplacement( ), v2.getDisplacement( ) );
 
@@ -169,11 +169,11 @@ public class VentaVehiculosTest extends TestCase
         setupEscenario2( );
 
         // Ordena los vehiculos segn el ao y saca el mas antiguo
-        ventaVehiculos.ordenarPorAnio( );
+        ventaVehiculos.sortForYear( );
         ArrayList vehiculos = ventaVehiculos.darVehiculos( );
         Vehiculo v0 = ( Vehiculo )vehiculos.get( 0 );
         String modeloVehiculo = v0.darModelo( );
-        int anioVehiculo = v0.darAnio( );
+        int anioVehiculo = v0.getYear( );
 
         // Ordena los modelos segn la marca para "desordenar" antes de buscar por el modelo
         ventaVehiculos.sortForTrademark( );
@@ -225,14 +225,14 @@ public class VentaVehiculosTest extends TestCase
     {
         setupEscenario2( );
 
-        ventaVehiculos.ordenarPorAnio( );
+        ventaVehiculos.sortForYear( );
         ArrayList vehiculos = ventaVehiculos.darVehiculos( );
         for( int i = 1; i < vehiculos.size( ); i++ )
         {
             Vehiculo v0 = ( Vehiculo )vehiculos.get( i - 1 );
             Vehiculo v1 = ( Vehiculo )vehiculos.get( i );
 
-            assertTrue( "No se orden bien por anio", v0.darAnio( ) <= v1.darAnio( ) );
+            assertTrue( "No se orden bien por anio", v0.getYear( ) <= v1.getYear( ) );
         }
     }
 
@@ -279,7 +279,7 @@ public class VentaVehiculosTest extends TestCase
 
         Vehiculo v = ( Vehiculo )ventaVehiculos.darVehiculos( ).get( pos );
 
-        assertEquals( "El vehiculo mas antiguo no se encontr de forma correcta", 1, v.darAnio( ) );
+        assertEquals( "El vehiculo mas antiguo no se encontr de forma correcta", 1, v.getYear( ) );
         assertEquals( "El vehiculo mas antiguo no se encontr de forma correcta", "modelo_1", v.darModelo( ) );
 
         // Prueba con el escenario 2
@@ -290,7 +290,7 @@ public class VentaVehiculosTest extends TestCase
 
         v = ( Vehiculo )ventaVehiculos.darVehiculos( ).get( pos );
 
-        assertEquals( "El vehiculo mas antiguo no se encontr de forma correcta", 1983, v.darAnio( ) );
+        assertEquals( "El vehiculo mas antiguo no se encontr de forma correcta", 1983, v.getYear( ) );
         assertEquals( "El vehiculo mas antiguo no se encontr de forma correcta", "S10 Pickup", v.darModelo( ) );
     }
 
@@ -316,7 +316,7 @@ public class VentaVehiculosTest extends TestCase
 
         assertEquals( "El vehiculo mas econmico no se encontr de forma correcta", 500, v.getValue( ) );
         assertEquals( "El vehiculo mas econmico no se encontr de forma correcta", "modelo_12", v.darModelo( ) );
-        assertEquals( "El vehiculo mas econmico no se encontr de forma correcta", 12, v.darAnio( ) );
+        assertEquals( "El vehiculo mas econmico no se encontr de forma correcta", 12, v.getYear( ) );
 
         // Prueba con el escenario 2
         setupEscenario2( );
@@ -328,7 +328,7 @@ public class VentaVehiculosTest extends TestCase
 
         assertEquals( "El vehiculo mas econmico no se encontr de forma correcta", 40000000, v.getValue( ) );
         assertEquals( "El vehiculo mas econmico no se encontr de forma correcta", "New Beetle", v.darModelo( ) );
-        assertEquals( "El vehiculo mas econmico no se encontr de forma correcta", 2000, v.darAnio( ) );
+        assertEquals( "El vehiculo mas econmico no se encontr de forma correcta", 2000, v.getYear( ) );
     }
 
     /**

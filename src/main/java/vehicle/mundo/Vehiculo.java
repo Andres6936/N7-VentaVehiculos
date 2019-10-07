@@ -65,7 +65,7 @@ public class Vehiculo
     /**
      * El ao de puesta en venta del modelo
      */
-    private int anio;
+    private int year;
 
     /**
      * El cilindrada del vehiculo
@@ -103,7 +103,7 @@ public class Vehiculo
         trademark = marcaV;
         imagen = imagenV;
         tipo = tipoV;
-        anio = anioV;
+        year = anioV;
         displacement = cilindradaV;
         ejes = ejesV;
         valor = valorV;
@@ -155,9 +155,9 @@ public class Vehiculo
      * Retorna el ao del vehiculo
      * @return anio
      */
-    public int darAnio( )
+    public int getYear( )
     {
-        return anio;
+        return year;
     }
 
     /**
@@ -229,9 +229,9 @@ public class Vehiculo
      *         Retorna -1 si el vehiculo v es de un ao posterior. <br>
      *         Retorna 1 si el vehiculo v es de un ao anterior. <br>
      */
-    public int compararPorAnio( final Vehiculo v )
+    public int sortForYear( final Vehiculo v )
     {
-        return Integer.compare( anio, v.darAnio( ) );
+        return Integer.compare( year, v.getYear( ) );
     }
 
     /**
@@ -252,7 +252,7 @@ public class Vehiculo
      */
     public String toString( )
     {
-        return trademark + " " + modelo + " (" + anio + ")";
+        return trademark + " " + modelo + " (" + year + ")";
     }
 
     // -----------------------------------------------------------------
@@ -274,7 +274,7 @@ public class Vehiculo
     private void verificarInvariante( )
     {
         assert ( tipo.equals( BUS ) || tipo.equals( AUTOMOVIL ) || tipo.equals( MOTOCICLETA ) || tipo.equals( CAMION )  ) : "El tipo debe ser uno de los valores vlidos";
-        assert ( anio > 0 ) : "El ao no puede ser 0";
+        assert ( year > 0 ) : "El ao no puede ser 0";
         assert ( imagen != null ) : "La imagen no puede ser null";
         assert ( modelo != null ) : "El modelo no puede ser null";
         assert ( trademark != null ) : "La marca no puede ser null";

@@ -2,9 +2,9 @@ package vehicle.mundo;
 
 import vehicle.mundo.comparator.VehicleComparatorByDisplacement;
 import vehicle.mundo.comparator.VehicleComparatorByTrademark;
+import vehicle.mundo.comparator.VehicleComparatorByYear;
 
 import java.util.ArrayList;
-import java.util.Collections;
 
 /**
  * Es la clase que se encarga de manejar, organizar, cargar y salvar los vehiculos <br>
@@ -67,52 +67,19 @@ public class VentaVehiculos
      */
     public void sortForDisplacement( )
     {
-        // En cada paso se sabe que:
-        // 1. Las posiciones antes de vehiculos[inicial] estn ordenadas
-        // En cada paso lo que se hace es encontrar en qu posicin entre vehiculos[0] y vehiculos[inicial] debera
-        // estar el vehiculo que en este momento se encuentra en vehiculos[inicial]
-
         vehiculos.sort( new VehicleComparatorByDisplacement( ) );
 
         verificarInvariante( );
     }
 
     /**
-     * Organiza la lista de vehiculos por el ao usando el algoritmo de seleccin <br>
+     * Organiza la lista de vehiculos por el ao usando a Comparator. <br>
      * @postcondition: La lista de vehiculos est ordenada por ao
      */
-    public void ordenarPorAnio( )
+    public void sortForYear( )
     {
-        // En cada paso se sabe que:
-        // 1. Todos los valores antes de vehiculos[inicial] estn ordenados
-        // 2. No hay ningn valor despus de vehiculos[inicial-1] que sea menor que vehiculos[inicial-1]
-        // En cada paso se busca el menor entre vehiculos[inicial] y vehiculos[final] y se ubica en vehiculos[inicial]
+        vehiculos.sort( new VehicleComparatorByYear( ) );
 
-        for ( int inicial = 0; inicial < vehiculos.size( ); inicial++ )
-        {
-            int posicionMenor = inicial;
-            Vehiculo vehiculoMenor = vehiculos.get( inicial );
-
-            for( int i = inicial + 1; i < vehiculos.size( ); i++ )
-            {
-                Vehiculo vehiculoPosicion = vehiculos.get( i );
-
-                // El vehiculo de la posicin actual es menor que el menor encontrado hasta el momento
-                if( vehiculoPosicion.compararPorAnio( vehiculoMenor ) < 0 )
-                {
-                    vehiculoMenor = vehiculoPosicion;
-                    posicionMenor = i;
-                }
-            }
-
-            if( posicionMenor != inicial )
-            {
-                Vehiculo temp = vehiculos.get( inicial );
-                vehiculos.set( inicial, vehiculoMenor );
-                vehiculos.set( posicionMenor, temp );
-            }
-
-        }
         verificarInvariante( );
     }
 
@@ -133,7 +100,7 @@ public class VentaVehiculos
             String modeloVehiculo = vehiculoPosicion.darModelo( );
 
             // Los modelos son iguales
-            if( modeloVehiculo.equals( modelo ) && vehiculoPosicion.darAnio( ) == anio )
+            if ( modeloVehiculo.equals( modelo ) && vehiculoPosicion.getYear( ) == anio )
             {
                 posicion = i;
                 termine = true;
@@ -185,7 +152,7 @@ public class VentaVehiculos
         {
             Vehiculo v = vehiculos.get( cont );
 
-            if( v.darAnio( ) == anio && v.darModelo( ).equalsIgnoreCase( modelo ) )
+            if ( v.getYear( ) == anio && v.darModelo( ).equalsIgnoreCase( modelo ) )
             {
                 vehiculos.remove( cont );
                 comprado = true;
@@ -211,7 +178,7 @@ public class VentaVehiculos
             {
                 Vehiculo vPosicion = vehiculos.get( i );
 
-                if( vMasAntiguo.compararPorAnio( vPosicion ) == 1 )
+                if ( vMasAntiguo.sortForYear( vPosicion ) == 1 )
                 {
                     posicion = i;
                     vMasAntiguo = vPosicion;
@@ -326,7 +293,7 @@ public class VentaVehiculos
                 if( i != j )
                 {
                     Vehiculo pj = vehiculos.get( j );
-                    if( pj.darModelo( ).equals( pi.darModelo( ) ) && pj.darAnio( ) == pi.darAnio( ) )
+                    if ( pj.darModelo( ).equals( pi.darModelo( ) ) && pj.getYear( ) == pi.getYear( ) )
                     {
                         return true;
                     }
