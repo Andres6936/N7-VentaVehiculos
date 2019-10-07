@@ -48,7 +48,7 @@ public class VentaVehiculos
 
     /**
      * Organiza la lista de vehiculos por marca usando a Comparator. <br>
-     * @postcondition: La lista de vehiculos est ordenada por marca
+     * @postcondition La lista de vehiculos est ordenada por marca
      */
     public void sortForTrademark( )
     {
@@ -59,7 +59,7 @@ public class VentaVehiculos
 
     /**
      * Organiza la lista de vehiculos por cilindrada usando a Comparator. <br>
-     * @postcondition: La lista de vehiculos est ordenada por cilindrada
+     * @postcondition La lista de vehiculos est ordenada por cilindrada
      */
     public void sortForDisplacement( )
     {
@@ -70,7 +70,7 @@ public class VentaVehiculos
 
     /**
      * Organiza la lista de vehiculos por el ao usando a Comparator. <br>
-     * @postcondition: La lista de vehiculos est ordenada por ao
+     * @postcondition La lista de vehiculos est ordenada por ao
      */
     public void sortForYear( )
     {
