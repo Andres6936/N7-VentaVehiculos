@@ -3,17 +3,12 @@ package vehicle.interfaz;
 import vehicle.mundo.Vehiculo;
 import vehicle.mundo.VentaVehiculos;
 
-import java.awt.Dimension;
-import java.awt.GridBagConstraints;
-import java.awt.GridBagLayout;
-import java.awt.Insets;
-import java.awt.Toolkit;
+import java.awt.*;
 import java.io.*;
 import java.net.URL;
 import java.util.Properties;
 
-import javax.swing.JFrame;
-import javax.swing.JOptionPane;
+import javax.swing.*;
 
 
 /**
@@ -82,44 +77,53 @@ public class InterfazVentaVehiculos extends JFrame
     /**
      * Construye la java.vehicle.interfaz e inicializa todos sus componentes
      */
-    public InterfazVentaVehiculos( )
+    private InterfazVentaVehiculos( )
     {
         ventaVehiculos = new VentaVehiculos( );
 
         cargarVehiculos( );
 
-        setLayout( new GridBagLayout( ) );
-
-        GridBagConstraints gbc = new GridBagConstraints( 1, 1, 1, 1, 1, 0.2, GridBagConstraints.CENTER, GridBagConstraints.BOTH, new Insets( 3, 5, 3, 5 ), 0, 0 );
-        panelDatos = new PanelDatosVehiculo( );
-        add( panelDatos, gbc );
-
-        gbc = new GridBagConstraints( 0, 1, 1, 1, 1, 1, GridBagConstraints.CENTER, GridBagConstraints.BOTH, new Insets( 3, 5, 3, 5 ), 0, 0 );
-        panelLista = new PanelListaVehiculos( this );
-        add( panelLista, gbc );
-
-        gbc = new GridBagConstraints( 0, 3, 2, 1, 1, 0, GridBagConstraints.CENTER, GridBagConstraints.BOTH, new Insets( 3, 5, 3, 5 ), 0, 0 );
-        panelExtension = new PanelExtension( this );
-        add( panelExtension, gbc );
-
-        panelBusquedaOrdenamiento = new PanelBusquedaOrdenamiento( this );
-        gbc = new GridBagConstraints( 0, 2, 1, 1, 1, 0, GridBagConstraints.CENTER, GridBagConstraints.BOTH, new Insets( 3, 5, 3, 5 ), 0, 0 );
-        add( panelBusquedaOrdenamiento, gbc );
-
-        panelConsultasOperaciones = new PanelConsultasOperaciones( this );
-        gbc = new GridBagConstraints( 1, 2, 1, 1, 1, 0, GridBagConstraints.CENTER, GridBagConstraints.BOTH, new Insets( 3, 5, 3, 5 ), 0, 0 );
-        add( panelConsultasOperaciones, gbc );
+        setLayout( new BoxLayout( getContentPane( ), BoxLayout.Y_AXIS ) );
 
         panelImagen = new PanelImagen( );
-        gbc = new GridBagConstraints( 0, 0, 2, 1, 1, 0, GridBagConstraints.CENTER, GridBagConstraints.BOTH, new Insets( 3, 5, 3, 5 ), 0, 0 );
-        add( panelImagen, gbc );
+        add( panelImagen );
+
+        // Layout : List <---> Data
+        JPanel panelDataAndList = new JPanel( );
+        panelDataAndList.setLayout( new BoxLayout( panelDataAndList, BoxLayout.X_AXIS ) );
+
+        panelLista = new PanelListaVehiculos( this );
+        panelDataAndList.add( panelLista );
+
+        panelDatos = new PanelDatosVehiculo( );
+        panelDataAndList.add( panelDatos );
+
+        add( panelDataAndList );
+
+        // Layout : Find <---> Consult
+        JPanel panelFindAndConsult = new JPanel( );
+        panelFindAndConsult.setLayout( new BoxLayout( panelFindAndConsult, BoxLayout.X_AXIS ) );
+
+        panelBusquedaOrdenamiento = new PanelBusquedaOrdenamiento( this );
+        panelFindAndConsult.add( panelBusquedaOrdenamiento );
+
+        panelConsultasOperaciones = new PanelConsultasOperaciones( this );
+        panelFindAndConsult.add( panelConsultasOperaciones );
+
+        add( panelFindAndConsult );
+
+        panelExtension = new PanelExtension( this );
+        add( panelExtension );
 
         actualizarLista( );
 
         setDefaultCloseOperation( JFrame.EXIT_ON_CLOSE );
         setTitle( "Venta de vehiculos" );
 
-        setSize( new Dimension( 911, 576 ) );
+        setSize( new Dimension( 800, 600 ) );
+        setMinimumSize( new Dimension( 800, 600 ) );
+        setMaximumSize( new Dimension( 800, 600 ) );
+
         setResizable( false );
 
         centrar( );
@@ -151,7 +155,7 @@ public class InterfazVentaVehiculos extends JFrame
     /**
      * Ordena los vehiculos por marca y actualiza la lista
      */
-    public void ordenarPorMarca( )
+    void ordenarPorMarca( )
     {
         ventaVehiculos.sortForTrademark( );
         panelDatos.limpiarDatos( );
@@ -161,7 +165,7 @@ public class InterfazVentaVehiculos extends JFrame
     /**
      * Ordena los vehiculos por cilindrada y actualiza la lista
      */
-    public void ordenarPorCilindrada( )
+    void ordenarPorCilindrada( )
     {
         ventaVehiculos.sortForDisplacement( );
         panelDatos.limpiarDatos( );
@@ -171,7 +175,7 @@ public class InterfazVentaVehiculos extends JFrame
     /**
      * Ordena los vehiculos por ao y actualiza la lista
      */
-    public void ordenarPorAnio( )
+    void ordenarPorAnio( )
     {
         ventaVehiculos.sortForYear( );
         panelDatos.limpiarDatos( );
@@ -181,7 +185,7 @@ public class InterfazVentaVehiculos extends JFrame
     /**
      * Busca un vehiculo usando el modelo y el ao y cuando lo encuentra lo selecciona en la lista y muestra sus datos
      */
-    public void buscar( )
+    void buscar( )
     {
         String nombreBuscado = JOptionPane.showInputDialog( this, "Modelo Buscado" );
 
@@ -220,7 +224,7 @@ public class InterfazVentaVehiculos extends JFrame
      * Muestra los datos de un vehiculo en el panel correspondiente
      * @param vehiculo El vehiculo del que se quieren ver los datos - vehiculo != null
      */
-    public void verDatos( Vehiculo vehiculo )
+    void verDatos( Vehiculo vehiculo )
     {
         panelDatos.mostrarDatos( vehiculo );
         pack( );
@@ -229,7 +233,7 @@ public class InterfazVentaVehiculos extends JFrame
     /**
      * Muestra el dilogo para agregar un vehiculo
      */
-    public void mostrarDialogoAgregarVehiculo( )
+    void mostrarDialogoAgregarVehiculo( )
     {
         DialogoAgregarVehiculo dav = new DialogoAgregarVehiculo( this );
         dav.setVisible( true );
@@ -247,7 +251,7 @@ public class InterfazVentaVehiculos extends JFrame
      * @param ejesV El nmero de ejes del vehiculo - ejesV > 0
      * @param valor El valor del vehiculo - valor > 0
      */
-    public void agregarVehiculo( DialogoAgregarVehiculo dialogo, String modeloV, String marcaV, String imagenV, String tipoV, int anioV, int cilindradaV, int ejesV, int valor )
+    void agregarVehiculo( DialogoAgregarVehiculo dialogo, String modeloV, String marcaV, String imagenV, String tipoV, int anioV, int cilindradaV, int ejesV, int valor )
     {
 
         boolean agregado = ventaVehiculos.agregarVehiculo( modeloV, marcaV, imagenV, tipoV, anioV, cilindradaV, ejesV, valor );
@@ -266,7 +270,7 @@ public class InterfazVentaVehiculos extends JFrame
     /**
      * Busca el vehiculo mas antiguo a la venta y muestra sus datos en el panel informacin
      */
-    public void buscarMasAntiguo( )
+    void buscarMasAntiguo( )
     {
         int posicion = ventaVehiculos.buscarVehiculoMasAntiguo( );
 
@@ -284,7 +288,7 @@ public class InterfazVentaVehiculos extends JFrame
     /**
      * Busca el vehiculo mas potente a la venta y muestra sus datos en el panel informacin
      */
-    public void buscarMasPotente( )
+    void buscarMasPotente( )
     {
         int posicion = ventaVehiculos.getIndexOfVehicleMorePowerful( );
 
@@ -302,7 +306,7 @@ public class InterfazVentaVehiculos extends JFrame
     /**
      * Busca el vehiculo mas econmico a la venta y muestra sus datos en el panel informacin
      */
-    public void buscarMasEconomico( )
+    void buscarMasEconomico( )
     {
         int posicion = ventaVehiculos.getIndexOfVehicleMoreCheap( );
 
@@ -320,7 +324,7 @@ public class InterfazVentaVehiculos extends JFrame
     /**
      * Compra el vehiculo seleccionado de la lista
      */
-    public void comprarVehiculo( )
+    void comprarVehiculo( )
     {
         Vehiculo v = panelLista.darVehiculoSeleccionado( );
 
@@ -339,7 +343,7 @@ public class InterfazVentaVehiculos extends JFrame
     /**
      * Disminuye el precio de todos los vehiculos cuyo valor sea mayor al dado por el usuario
      */
-    public void disminuirPrecio( )
+    void disminuirPrecio( )
     {
         String precio = JOptionPane.showInputDialog( this, "Precio para realizar el descuento" );
 
@@ -391,7 +395,7 @@ public class InterfazVentaVehiculos extends JFrame
     {
         try
         {
-            FileInputStream fis = new FileInputStream( getFileFromResource( ARCHIVO_VEHICULOS ) );
+            FileInputStream fis = new FileInputStream( getFileFromResource( ) );
             Properties propiedades = new Properties( );
             propiedades.load( fis );
 
@@ -460,14 +464,13 @@ public class InterfazVentaVehiculos extends JFrame
      * Método utilizado para cargar archivos desde el directorio /resource, es decir,
      * la estructura de proyectos basados en Maven y Gradle.
      *
-     * @param filename Nombre del archivo.
      * @return Referencia al archivo.
      */
-    private File getFileFromResource( final String filename )
+    private File getFileFromResource( )
     {
         ClassLoader classLoader = getClass().getClassLoader();
 
-        URL resource = classLoader.getResource( filename );
+        URL resource = classLoader.getResource( ARCHIVO_VEHICULOS );
 
         if (resource == null)
         {
@@ -486,7 +489,7 @@ public class InterfazVentaVehiculos extends JFrame
     /**
      * Ejecuta el punto de extensin 1
      */
-    public void reqFuncOpcion1( )
+    void reqFuncOpcion1( )
     {
         String respuesta = ventaVehiculos.metodo1( );
         JOptionPane.showMessageDialog( this, respuesta, "Respuesta", JOptionPane.INFORMATION_MESSAGE );
@@ -495,7 +498,7 @@ public class InterfazVentaVehiculos extends JFrame
     /**
      * Ejecuta el punto de extensin 2
      */
-    public void reqFuncOpcion2( )
+    void reqFuncOpcion2( )
     {
         String respuesta = ventaVehiculos.metodo2( );
         JOptionPane.showMessageDialog( this, respuesta, "Respuesta", JOptionPane.INFORMATION_MESSAGE );
