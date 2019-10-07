@@ -153,7 +153,7 @@ public class InterfazVentaVehiculos extends JFrame
      */
     public void ordenarPorMarca( )
     {
-        ventaVehiculos.ordenarPorMarca( );
+        ventaVehiculos.sortForTrademark( );
         panelDatos.limpiarDatos( );
         actualizarLista( );
     }

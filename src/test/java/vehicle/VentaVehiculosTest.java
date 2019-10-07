@@ -176,7 +176,7 @@ public class VentaVehiculosTest extends TestCase
         int anioVehiculo = v0.darAnio( );
 
         // Ordena los modelos segn la marca para "desordenar" antes de buscar por el modelo
-        ventaVehiculos.ordenarPorMarca( );
+        ventaVehiculos.sortForTrademark( );
 
         // Busca el vehiculo segn el modelo
         int posicion = ventaVehiculos.buscarVehiculo( modeloVehiculo, anioVehiculo );
@@ -249,7 +249,7 @@ public class VentaVehiculosTest extends TestCase
     {
         setupEscenario2( );
 
-        ventaVehiculos.ordenarPorMarca( );
+        ventaVehiculos.sortForTrademark( );
         ArrayList vehiculos = ventaVehiculos.darVehiculos( );
         for( int i = 1; i < vehiculos.size( ); i++ )
         {

@@ -51,10 +51,10 @@ public class VentaVehiculos
     }
 
     /**
-     * Organiza la lista de vehiculos por marca usando el algoritmo de burbuja <br>
-     * <b>post: </b>La lista de vehiculos est ordenada por marca
+     * Organiza la lista de vehiculos por marca usando a Comparator. <br>
+     * @postcondition: La lista de vehiculos est ordenada por marca
      */
-    public void ordenarPorMarca( )
+    public void sortForTrademark( )
     {
         vehiculos.sort( new VehicleComparatorByTrademark( ) );
 
@@ -79,7 +79,7 @@ public class VentaVehiculos
 
     /**
      * Organiza la lista de vehiculos por el ao usando el algoritmo de seleccin <br>
-     * <b>post: </b>La lista de vehiculos est ordenada por ao
+     * @postcondition: La lista de vehiculos est ordenada por ao
      */
     public void ordenarPorAnio( )
     {
