@@ -1,16 +1,10 @@
 package vehicle.interfaz;
 
-import java.awt.Color;
-import java.awt.Dimension;
-import java.awt.GridBagConstraints;
-import java.awt.GridBagLayout;
-import java.awt.Insets;
+import java.awt.*;
 import java.net.URL;
+import java.util.concurrent.Flow;
 
-import javax.swing.ImageIcon;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-import javax.swing.JTextField;
+import javax.swing.*;
 import javax.swing.border.CompoundBorder;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
@@ -109,77 +103,112 @@ public class PanelDatosVehiculo extends JPanel
     /**
      * Construye el panel e inicializa sus componentes
      */
-    public PanelDatosVehiculo( )
+    PanelDatosVehiculo( )
     {
-        setLayout( new GridBagLayout( ) );
-        setBorder( new CompoundBorder( new EmptyBorder( 4, 3, 3, 3 ), new TitledBorder( "Datos del vehiculo" ) ) );
+        setLayout( new BoxLayout( this, BoxLayout.X_AXIS ) );
+        setBorder( new CompoundBorder( new EmptyBorder( 3, 3, 3, 3 ), new TitledBorder( "Datos del vehiculo" ) ) );
 
-        GridBagConstraints gbcE = new GridBagConstraints( 0, 0, 1, 1, 0, 1, GridBagConstraints.SOUTHWEST, GridBagConstraints.NONE, new Insets( 5, 5, 5, 5 ), 0, 0 );
-        GridBagConstraints gbcC = new GridBagConstraints( 1, 0, 1, 1, 0, 0, GridBagConstraints.SOUTH, GridBagConstraints.HORIZONTAL, new Insets( 5, 5, 5, 5 ), 0, 0 );
+        // Label and Text <<< Left
+
+        JPanel panelModel = new JPanel( );
+        panelModel.setLayout( new BorderLayout( ) );
 
         etiquetaModelo = new JLabel( "Modelo: " );
         txtModelo = new JTextField( 10 );
         txtModelo.setEditable( false );
-        add( etiquetaModelo, gbcE );
-        add( txtModelo, gbcC );
 
-        gbcE.weighty = 0;
-        gbcE.gridy = 1;
-        gbcC.gridy = 1;
+        panelModel.add( etiquetaModelo, BorderLayout.WEST );
+        panelModel.add( txtModelo, BorderLayout.EAST );
+
+        JPanel panelTrademark = new JPanel( );
+        panelTrademark.setLayout( new BorderLayout( ) );
+
         etiquetaMarca = new JLabel( "Marca: " );
         txtMarca = new JTextField( 10 );
         txtMarca.setEditable( false );
-        add( etiquetaMarca, gbcE );
-        add( txtMarca, gbcC );
 
-        gbcE.gridy = 2;
-        gbcC.gridy = 2;
+        panelTrademark.add( etiquetaMarca, BorderLayout.WEST );
+        panelTrademark.add( txtMarca, BorderLayout.EAST );
+
+        JPanel panelType = new JPanel( );
+        panelType.setLayout( new BorderLayout( ) );
+
         etiquetaTipo = new JLabel( "Tipo: " );
         txtTipo = new JTextField( 10 );
         txtTipo.setEditable( false );
-        add( etiquetaTipo, gbcE );
-        add( txtTipo, gbcC );
 
-        gbcE.gridy = 3;
-        gbcC.gridy = 3;
+        panelType.add( etiquetaTipo, BorderLayout.WEST );
+        panelType.add( txtTipo, BorderLayout.EAST );
+
+        JPanel panelYear = new JPanel( );
+        panelYear.setLayout( new BorderLayout( ) );
+
         etiquetaAnio = new JLabel( "Ao: " );
         txtAnio = new JTextField( 10 );
         txtAnio.setEditable( false );
-        add( etiquetaAnio, gbcE );
-        add( txtAnio, gbcC );
 
-        gbcE.gridy = 4;
-        gbcC.gridy = 4;
+        panelYear.add( etiquetaAnio, BorderLayout.WEST );
+        panelYear.add( txtAnio, BorderLayout.EAST );
+
+        JPanel panelDisplacement = new JPanel( );
+        panelDisplacement.setLayout( new BorderLayout( ) );
+
         etiquetaCilindrada = new JLabel( "Cilindrada: " );
         txtCilindrada = new JTextField( 10 );
         txtCilindrada.setEditable( false );
-        add( etiquetaCilindrada, gbcE );
-        add( txtCilindrada, gbcC );
 
-        gbcE.gridy = 5;
-        gbcC.gridy = 5;
+        panelDisplacement.add( etiquetaCilindrada, BorderLayout.WEST );
+        panelDisplacement.add( txtCilindrada, BorderLayout.EAST );
+
+        JPanel panelEjes = new JPanel( );
+        panelEjes.setLayout( new BorderLayout( ) );
+
         etiquetaEjes = new JLabel( "Ejes: " );
         txtEjes = new JTextField( 10 );
         txtEjes.setEditable( false );
-        add( etiquetaEjes, gbcE );
-        add( txtEjes, gbcC );
 
-        gbcE.gridy = 6;
-        gbcC.gridy = 6;
+        panelEjes.add( etiquetaEjes, BorderLayout.WEST );
+        panelEjes.add( txtEjes, BorderLayout.EAST );
+
+        JPanel panelValue = new JPanel( );
+        panelValue.setLayout( new BorderLayout( ) );
+
         etiquetaValor = new JLabel( "Valor: " );
         txtValor = new JTextField( 10 );
         txtValor.setEditable( false );
-        add( etiquetaValor, gbcE );
-        add( txtValor, gbcC );
 
-        GridBagConstraints gbcI = new GridBagConstraints( 2, 0, 1, 7, 1, 1, GridBagConstraints.CENTER, GridBagConstraints.BOTH, new Insets( 5, 5, 5, 5 ), 0, 0 );
+        panelValue.add( etiquetaValor, BorderLayout.WEST );
+        panelValue.add( txtValor, BorderLayout.EAST );
 
-        JPanel panelImagen = new JPanel( new GridBagLayout( ) );
+        JPanel panelLabelAndText = new JPanel( );
+        panelLabelAndText.setLayout( new BoxLayout( panelLabelAndText, BoxLayout.Y_AXIS ) );
+
+        panelLabelAndText.add( Box.createRigidArea( new Dimension( 0, 20 ) ) );
+        panelLabelAndText.add( panelModel );
+        panelLabelAndText.add( panelTrademark );
+        panelLabelAndText.add( panelType );
+        panelLabelAndText.add( panelYear );
+        panelLabelAndText.add( panelDisplacement );
+        panelLabelAndText.add( panelEjes );
+        panelLabelAndText.add( panelValue );
+        panelLabelAndText.add( Box.createRigidArea( new Dimension( 0, 20 ) ) );
+
+        panelLabelAndText.setSize( new Dimension( 300, 200 ) );
+        panelLabelAndText.setBorder( BorderFactory.createEmptyBorder( 2, 2, 2, 2 ) );
+
+        add( panelLabelAndText );
+
         etiquetaImagen = new JLabel( );
         etiquetaImagen.setBorder( new LineBorder( Color.BLACK, 1 ) );
+        etiquetaImagen.setSize( new Dimension( 200, 200 ) );
         etiquetaImagen.setMinimumSize( new Dimension( 200, 200 ) );
-        panelImagen.add( etiquetaImagen );
-        add( panelImagen, gbcI );
+        etiquetaImagen.setMaximumSize( new Dimension( 200, 200 ) );
+
+        add( etiquetaImagen );
+
+        setSize( new Dimension( 500, 200 ) );
+        setMinimumSize( new Dimension( 500, 200 ) );
+        setMaximumSize( new Dimension( 500, 200 ) );
 
     }
 

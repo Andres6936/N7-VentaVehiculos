@@ -70,8 +70,9 @@ public class PanelListaVehiculos extends JPanel implements ListSelectionListener
         panelBorder.add( scroll, BorderLayout.CENTER );
         add( panelBorder, BorderLayout.CENTER );
 
-        setSize( new Dimension( 400, 200 ) );
-        setMinimumSize( new Dimension( 400, 200 ) );
+        setSize( new Dimension( 300, 200 ) );
+        setMinimumSize( new Dimension( 300, 200 ) );
+        setMaximumSize( new Dimension( 300, 200 ) );
     }
 
     // -----------------------------------------------------------------
