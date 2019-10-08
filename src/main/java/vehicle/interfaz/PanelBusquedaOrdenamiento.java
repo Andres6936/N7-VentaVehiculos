@@ -40,26 +40,6 @@ public class PanelBusquedaOrdenamiento extends JPanel implements ActionListener
     // Atributos de la Interfaz
     // -----------------------------------------------------------------
 
-    /**
-     * Es el botn para ordenar la lista de vehiculos por marca
-     */
-    private JButton botonOrdenarMarca;
-
-    /**
-     * Es el botn para ordenar la lista de vehiculos por cilindrada
-     */
-    private JButton botonOrdenarCilindrada;
-
-    /**
-     * Es el botn para ordenar la lista de vehiculos por ao
-     */
-    private JButton botonOrdenarAnio;
-
-    /**
-     * Es el botn para realizar una bsqueda
-     */
-    private JButton botonBuscar;
-
     // -----------------------------------------------------------------
     // Constructores
     // -----------------------------------------------------------------
@@ -68,16 +48,17 @@ public class PanelBusquedaOrdenamiento extends JPanel implements ActionListener
      * Construye el panel e inicializa todos sus componentes
      * @param iec Es una referencia a la clase principal de la java.vehicle.interfaz - iec != null
      */
-    public PanelBusquedaOrdenamiento( InterfazVentaVehiculos iec )
+    PanelBusquedaOrdenamiento( InterfazVentaVehiculos iec )
     {
         ventanaPrincipal = iec;
         setLayout( new GridBagLayout( ) );
 
         setBorder( new TitledBorder( "Bsqueda y Ordenamientos" ) );
 
-        botonOrdenarMarca = new JButton( "Ordenar por Marca" );
+        JButton botonOrdenarMarca = new JButton( "Ordenar por Marca" );
         botonOrdenarMarca.setActionCommand( ORDENAR_MARCA );
         botonOrdenarMarca.addActionListener( this );
+
         GridBagConstraints gbc = new GridBagConstraints( );
         gbc.gridx = 0;
         gbc.gridy = 0;
@@ -85,20 +66,20 @@ public class PanelBusquedaOrdenamiento extends JPanel implements ActionListener
         gbc.insets = new Insets( 3, 3, 3, 3 );
         add( botonOrdenarMarca, gbc );
 
-        botonOrdenarAnio = new JButton( "Ordenar por Ao" );
+        JButton botonOrdenarAnio = new JButton( "Ordenar por Ao" );
         botonOrdenarAnio.setActionCommand( ORDENAR_ANIO );
         botonOrdenarAnio.addActionListener( this );
         gbc.gridy = 1;
         add( botonOrdenarAnio, gbc );
 
-        botonOrdenarCilindrada = new JButton( "Ordenar por Cilindrada" );
+        JButton botonOrdenarCilindrada = new JButton( "Ordenar por Cilindrada" );
         botonOrdenarCilindrada.setActionCommand( ORDENAR_CILINDRADA );
         botonOrdenarCilindrada.addActionListener( this );
         gbc.gridx = 1;
         gbc.gridy = 0;
         add( botonOrdenarCilindrada, gbc );
 
-        botonBuscar = new JButton( "Buscar vehiculo" );
+        JButton botonBuscar = new JButton( "Buscar vehiculo" );
         botonBuscar.setActionCommand( BUSCAR );
         botonBuscar.addActionListener( this );
         gbc.gridy = 1;
