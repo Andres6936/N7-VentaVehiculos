@@ -40,16 +40,6 @@ public class PanelExtension extends JPanel implements ActionListener
     // Atributos de la Interfaz
     // -----------------------------------------------------------------
 
-    /**
-     * Es el botn 1
-     */
-    private JButton botonOpcion1;
-
-    /**
-     * Es el botn 2
-     */
-    private JButton botonOpcion2;
-
     // -----------------------------------------------------------------
     // Constructores
     // -----------------------------------------------------------------
@@ -58,7 +48,7 @@ public class PanelExtension extends JPanel implements ActionListener
      * Construye el panel con una referencia a la ventana principal de la aplicacin
      * @param iec Referencia a la ventana principal - ie!=null
      */
-    public PanelExtension( InterfazVentaVehiculos iec )
+    PanelExtension( InterfazVentaVehiculos iec )
     {
         ventanaPrincipal = iec;
         inicializar( );
@@ -76,11 +66,12 @@ public class PanelExtension extends JPanel implements ActionListener
         setBorder( new TitledBorder( "Puntos de Extensin" ) );
 
         setLayout( new FlowLayout( ) );
-        botonOpcion1 = new JButton( "Opcin 1" );
+
+        JButton botonOpcion1 = new JButton( "Opcin 1" );
         botonOpcion1.setActionCommand( OPCION_1 );
         botonOpcion1.addActionListener( this );
 
-        botonOpcion2 = new JButton( "Opcin 2" );
+        JButton botonOpcion2 = new JButton( "Opcin 2" );
         botonOpcion2.setActionCommand( OPCION_2 );
         botonOpcion2.addActionListener( this );
 
