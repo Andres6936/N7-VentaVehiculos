@@ -46,36 +46,6 @@ public class PanelConsultasOperaciones extends JPanel implements ActionListener
     // Atributos de la Interfaz
     // -----------------------------------------------------------------
 
-    /**
-     * Es el botn que se usa para agregar un vehiculo
-     */
-    private JButton botonAgregar;
-
-    /**
-     * Es el botn que se usa para buscar el vehiculo mas antiguo
-     */
-    private JButton botonMasAntiguo;
-
-    /**
-     * Es el botn que se usa para buscar el vehiculo mas antiguo
-     */
-    private JButton botonMasEconomico;
-
-    /**
-     * Es el botn que se usa para buscar el vehiculo mas potente
-     */
-    private JButton botonMasPotente;
-
-    /**
-     * Es el botn que se usa para disminuir el precio de los vehiculos
-     */
-    private JButton botonDisminuirPrecio;
-
-    /**
-     * Es el botn que se usa para comprar un vehiculo
-     */
-    private JButton botonComprar;
-
     // -----------------------------------------------------------------
     // Constructores
     // -----------------------------------------------------------------
@@ -84,14 +54,14 @@ public class PanelConsultasOperaciones extends JPanel implements ActionListener
      * Construye el panel e inicializa todos sus componentes
      * @param iec Es una referencia a la clase principal de la java.vehicle.interfaz - iec != null
      */
-    public PanelConsultasOperaciones( InterfazVentaVehiculos iec )
+    PanelConsultasOperaciones( InterfazVentaVehiculos iec )
     {
         ventanaPrincipal = iec;
         setLayout( new GridBagLayout( ) );
 
         setBorder( new CompoundBorder( new EmptyBorder( 4, 3, 3, 3 ), new TitledBorder( "Consultas y Operaciones" ) ) );
 
-        botonAgregar = new JButton( "Agregar vehiculo" );
+        JButton botonAgregar = new JButton( "Agregar vehiculo" );
         botonAgregar.setActionCommand( AGREGAR );
         botonAgregar.addActionListener( this );
         GridBagConstraints gbc = new GridBagConstraints( );
@@ -101,33 +71,33 @@ public class PanelConsultasOperaciones extends JPanel implements ActionListener
         gbc.insets = new Insets( 0, 0, 5, 5 );
         add( botonAgregar, gbc );
 
-        botonComprar = new JButton( "Comprar vehiculo" );
+        JButton botonComprar = new JButton( "Comprar vehiculo" );
         botonComprar.setActionCommand( COMPRAR );
         botonComprar.addActionListener( this );
         gbc.gridy = 1;
         add( botonComprar, gbc );
 
-        botonDisminuirPrecio = new JButton( "Disminuir Precio" );
+        JButton botonDisminuirPrecio = new JButton( "Disminuir Precio" );
         botonDisminuirPrecio.setActionCommand( DISMINUIR_PRECIO );
         botonDisminuirPrecio.addActionListener( this );
         gbc.gridx = 1;
         gbc.gridy = 0;
         add( botonDisminuirPrecio, gbc );
 
-        botonMasAntiguo = new JButton( "Ms Antiguo" );
+        JButton botonMasAntiguo = new JButton( "Ms Antiguo" );
         botonMasAntiguo.setActionCommand( MAS_ANTIGUO );
         botonMasAntiguo.addActionListener( this );
         gbc.gridy = 1;
         add( botonMasAntiguo, gbc );
 
-        botonMasEconomico = new JButton( "Ms Econmico" );
+        JButton botonMasEconomico = new JButton( "Ms Econmico" );
         botonMasEconomico.setActionCommand( MAS_ECONOMICO );
         botonMasEconomico.addActionListener( this );
         gbc.gridx = 2;
         gbc.gridy = 0;
         add( botonMasEconomico, gbc );
 
-        botonMasPotente = new JButton( "Ms Potente" );
+        JButton botonMasPotente = new JButton( "Ms Potente" );
         botonMasPotente.setActionCommand( MAS_POTENTE );
         botonMasPotente.addActionListener( this );
         gbc.gridy = 1;
