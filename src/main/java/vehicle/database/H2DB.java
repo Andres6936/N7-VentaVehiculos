@@ -4,14 +4,11 @@ import java.sql.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public class H2DB
+public class H2DB implements DataBase
 {
-    public void startDatabase( )
+    @Override
+    public void connection( String url, String user, String password )
     {
-        String url = "jdbc:h2:~/Test/Test";
-        String user = "Admin";
-        String password = "Admin";
-
         try
         {
             Connection connection = DriverManager.getConnection( url, user, password );

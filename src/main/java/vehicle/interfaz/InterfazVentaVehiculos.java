@@ -1,5 +1,6 @@
 package vehicle.interfaz;
 
+import vehicle.database.DataBase;
 import vehicle.database.H2DB;
 import vehicle.mundo.Vehiculo;
 import vehicle.mundo.VentaVehiculos;
@@ -515,7 +516,7 @@ public class InterfazVentaVehiculos extends JFrame
         InterfazVentaVehiculos iec = new InterfazVentaVehiculos( );
         iec.setVisible( true );
 
-        H2DB database = new H2DB( );
-        database.startDatabase( );
+        DataBase database = new H2DB( );
+        database.connection( "jdbc:h2:~/Test/Test", "Admin", "Admin" );
     }
 }
