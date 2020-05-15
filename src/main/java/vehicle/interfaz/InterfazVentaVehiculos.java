@@ -36,7 +36,7 @@ public class InterfazVentaVehiculos extends JFrame
     /**
      * Es una referencia a la exposicin de vehiculo
      */
-    private OutletVehicles outletVehicles;
+    private final OutletVehicles outletVehicles;
 
     // -----------------------------------------------------------------
     // Atributos de la Interfaz
@@ -45,34 +45,12 @@ public class InterfazVentaVehiculos extends JFrame
     /**
      * Es el panel donde se muestra la lista de vehiculo
      */
-    private PanelListaVehiculos panelLista;
+    private final PanelListaVehiculos panelLista;
 
     /**
      * Es el panel donde se muestran los datos de un vehiculo
      */
-    private PanelDatosVehiculo panelDatos;
-
-    /**
-     * Es el panel donde estn los botones para los puntos de extensin
-     */
-    private PanelExtension panelExtension;
-
-    /**
-     * Es el panel donde estn los botones para realizar bsquedas y ordenamiento sobre <br>
-     * la lista de vehiculos
-     */
-    private PanelBusquedaOrdenamiento panelBusquedaOrdenamiento;
-
-    /**
-     * Es el panel donde estn los botones para realizar consultas y operaciones <br>
-     * sobre la la lista de vehiculos
-     */
-    private PanelConsultasOperaciones panelConsultasOperaciones;
-
-    /**
-     * Panel con una imagen decorativa
-     */
-    private PanelImagen panelImagen;
+    private final PanelDatosVehiculo panelDatos;
 
     // -----------------------------------------------------------------
     // Constructores
@@ -85,53 +63,55 @@ public class InterfazVentaVehiculos extends JFrame
     {
         outletVehicles = new OutletVehicles();
 
-        cargarVehiculos( );
+        cargarVehiculos();
 
         // Layout : Banner
         // Layout : List | Data
         // Layout : Find | Consult
         // Layout : Extension
-        setLayout( new BoxLayout( getContentPane( ), BoxLayout.Y_AXIS ) );
+        setLayout(new BoxLayout(getContentPane(), BoxLayout.Y_AXIS));
 
         // Layout : Banner
-        panelImagen = new PanelImagen( );
-        add( panelImagen );
+
+        PanelImagen panelImagen = new PanelImagen();
+        add(panelImagen);
 
         // Layout : List | Data
-        JPanel panelDataAndList = new JPanel( );
-        panelDataAndList.setLayout( new BoxLayout( panelDataAndList, BoxLayout.X_AXIS ) );
+        JPanel panelDataAndList = new JPanel();
+        panelDataAndList.setLayout(new BoxLayout(panelDataAndList, BoxLayout.X_AXIS));
 
-        panelLista = new PanelListaVehiculos( this );
-        panelDataAndList.add( panelLista );
+        panelLista = new PanelListaVehiculos(this);
+        panelDataAndList.add(panelLista);
 
-        panelDatos = new PanelDatosVehiculo( );
-        panelDataAndList.add( panelDatos );
+        panelDatos = new PanelDatosVehiculo();
+        panelDataAndList.add(panelDatos);
 
-        add( panelDataAndList );
+        add(panelDataAndList);
 
         // Layout : Find | Consult
-        JPanel panelFindAndConsult = new JPanel( );
-        panelFindAndConsult.setLayout( new BoxLayout( panelFindAndConsult, BoxLayout.X_AXIS ) );
+        JPanel panelFindAndConsult = new JPanel();
+        panelFindAndConsult.setLayout(new BoxLayout(panelFindAndConsult, BoxLayout.X_AXIS));
 
-        panelBusquedaOrdenamiento = new PanelBusquedaOrdenamiento( this );
-        panelFindAndConsult.add( panelBusquedaOrdenamiento );
+        PanelBusquedaOrdenamiento panelBusquedaOrdenamiento = new PanelBusquedaOrdenamiento(this);
+        panelFindAndConsult.add(panelBusquedaOrdenamiento);
 
-        panelConsultasOperaciones = new PanelConsultasOperaciones( this );
-        panelFindAndConsult.add( panelConsultasOperaciones );
+        PanelConsultasOperaciones panelConsultasOperaciones = new PanelConsultasOperaciones(this);
+        panelFindAndConsult.add(panelConsultasOperaciones);
 
-        add( panelFindAndConsult );
+        add(panelFindAndConsult);
 
         // Layout : Extension
-        panelExtension = new PanelExtension( this );
-        add( panelExtension );
 
-        actualizarLista( );
+        PanelExtension panelExtension = new PanelExtension(this);
+        add(panelExtension);
 
-        setDefaultCloseOperation( JFrame.EXIT_ON_CLOSE );
-        setTitle( "Venta de vehiculos" );
+        actualizarLista();
 
-        setSize( new Dimension( 800, 600 ) );
-        setResizable( false );
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setTitle("Venta de vehiculos");
+
+        setSize(new Dimension(800, 600));
+        setResizable(false);
 
         // Center the windows
         setLocationRelativeTo( null );
