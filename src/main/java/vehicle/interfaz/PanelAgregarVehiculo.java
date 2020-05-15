@@ -40,7 +40,7 @@ public class PanelAgregarVehiculo extends JPanel implements ActionListener
     /**
      * Es una referencia al dilogo que contiene el panel
      */
-    private DialogoAgregarVehiculo dialogo;
+    private final DialogoAgregarVehiculo dialogo;
 
     // -----------------------------------------------------------------
     // Atributos de la Interfaz
@@ -49,92 +49,42 @@ public class PanelAgregarVehiculo extends JPanel implements ActionListener
     /**
      * Es el campo para la ruta hasta la imagen del vehiculo
      */
-    private JTextField txtImagen;
+    private final JTextField txtImagen;
 
     /**
      * Es el campo para el modelo del vehiculo
      */
-    private JTextField txtModelo;
+    private final JTextField txtModelo;
 
     /**
      * Es el campo para la marca del vehiculo
      */
-    private JTextField txtMarca;
+    private final JTextField txtMarca;
 
     /**
      * Es el campo para el ao del vehiculo
      */
-    private JTextField txtAnio;
+    private final JTextField txtAnio;
 
     /**
      * Es el campo para la cilindrada del vehiculo
      */
-    private JTextField txtCilindrada;
+    private final JTextField txtCilindrada;
 
     /**
      * Es el campo para el nmero de ejes del vehiculo
      */
-    private JTextField txtEjes;
+    private final JTextField txtEjes;
 
     /**
      * Es el campo para el valor comercial del vehiculo
      */
-    private JTextField txtValor;
+    private final JTextField txtValor;
 
     /**
      * El combo para seleccionar el tipo del vehiculo
      */
-    private JComboBox cbbTipo;
-
-    /**
-     * Es la etiqueta para la imagen del vehiculo
-     */
-    private JLabel etiquetaImagen;
-
-    /**
-     * Es la etiqueta para el modelo del vehiculo
-     */
-    private JLabel etiquetaModelo;
-
-    /**
-     * Es la etiqueta para la marca del vehiculo
-     */
-    private JLabel etiquetaMarca;
-
-    /**
-     * Es la etiqueta donde se muestra el tipo del vehiculo
-     */
-    private JLabel etiquetaTipo;
-
-    /**
-     * Es la etiqueta para el ao del vehiculo
-     */
-    private JLabel etiquetaAnio;
-
-    /**
-     * Es la etiqueta para la cilindrada del vehiculo
-     */
-    private JLabel etiquetaCilindrada;
-
-    /**
-     * Es la etiqueta para el nmero de ejes del vehiculo
-     */
-    private JLabel etiquetaEjes;
-
-    /**
-     * Es la etiqueta para el valor comercial del vehiculo
-     */
-    private JLabel etiquetaValor;
-
-    /**
-     * Es el botn que se usa para agregar un vehiculo
-     */
-    private JButton botonAgregar;
-
-    /**
-     * Es el botn que se usa para examinar el disco buscando la imagen del vehiculo
-     */
-    private JButton botonExaminar;
+    private final JComboBox<String> cbbTipo;
 
     // -----------------------------------------------------------------
     // Constructores
@@ -148,75 +98,78 @@ public class PanelAgregarVehiculo extends JPanel implements ActionListener
     {
         dialogo = dav;
 
-        setLayout( new BorderLayout( ) );
-        setBorder( new CompoundBorder( new EmptyBorder( 4, 3, 3, 3 ), new TitledBorder( "Agregar vehiculo" ) ) );
+        setLayout(new BorderLayout());
+        setBorder(new CompoundBorder(new EmptyBorder(4, 3, 3, 3), new TitledBorder("Agregar vehiculo")));
 
-        JPanel panelDatos = new JPanel( new GridLayout( 8, 2 ) );
+        JPanel panelDatos = new JPanel(new GridLayout(8, 2));
 
         // Modelo
-        etiquetaModelo = new JLabel( "Modelo: " );
-        panelDatos.add( etiquetaModelo );
-        txtModelo = new JTextField( "" );
-        panelDatos.add( txtModelo );
+        JLabel etiquetaModelo = new JLabel("Modelo: ");
+        panelDatos.add(etiquetaModelo);
+        txtModelo = new JTextField("");
+        panelDatos.add(txtModelo);
 
         // Marca
-        etiquetaMarca = new JLabel( "Marca: " );
-        panelDatos.add( etiquetaMarca );
-        txtMarca = new JTextField( "" );
-        panelDatos.add( txtMarca );
+        JLabel etiquetaMarca = new JLabel("Marca: ");
+        panelDatos.add(etiquetaMarca);
+        txtMarca = new JTextField("");
+        panelDatos.add(txtMarca);
 
         // Imagen
-        etiquetaImagen = new JLabel( "Imagen: " );
-        panelDatos.add( etiquetaImagen );
-        txtImagen = new JTextField( "" );
-        botonExaminar = new JButton( "Examinar" );
-        botonExaminar.setActionCommand( BUSCAR );
-        botonExaminar.addActionListener( this );
+        JLabel etiquetaImagen = new JLabel("Imagen: ");
+        panelDatos.add(etiquetaImagen);
+        txtImagen = new JTextField("");
 
-        JPanel panelImagen = new JPanel( new GridLayout( 1, 2 ) );
-        panelImagen.add( txtImagen );
-        panelImagen.add( botonExaminar );
-        panelDatos.add( panelImagen );
+        JButton botonExaminar = new JButton("Examinar");
+        botonExaminar.setActionCommand(BUSCAR);
+        botonExaminar.addActionListener(this);
+
+        JPanel panelImagen = new JPanel(new GridLayout(1, 2));
+        panelImagen.add(txtImagen);
+        panelImagen.add(botonExaminar);
+        panelDatos.add(panelImagen);
 
         // Tipo
-        etiquetaTipo = new JLabel( "Tipo: " );
-        panelDatos.add( etiquetaTipo );
-        cbbTipo = new JComboBox( TIPOS );
-        panelDatos.add( cbbTipo );
+        JLabel etiquetaTipo = new JLabel("Tipo: ");
+        panelDatos.add(etiquetaTipo);
+        cbbTipo = new JComboBox<>(TIPOS);
+        panelDatos.add(cbbTipo);
 
         // Ao
-        etiquetaAnio = new JLabel( "Ao: " );
-        panelDatos.add( etiquetaAnio );
-        txtAnio = new JTextField( "" );
-        panelDatos.add( txtAnio );
+
+        JLabel etiquetaAnio = new JLabel("Ao: ");
+        panelDatos.add(etiquetaAnio);
+        txtAnio = new JTextField("");
+        panelDatos.add(txtAnio);
 
         // Cilindrada
-        etiquetaCilindrada = new JLabel( "Cilindrada: " );
-        panelDatos.add( etiquetaCilindrada );
-        txtCilindrada = new JTextField( "" );
-        panelDatos.add( txtCilindrada );
+        JLabel etiquetaCilindrada = new JLabel("Cilindrada: ");
+        panelDatos.add(etiquetaCilindrada);
+        txtCilindrada = new JTextField("");
+        panelDatos.add(txtCilindrada);
 
         // Ejes
-        etiquetaEjes = new JLabel( "Ejes: " );
-        panelDatos.add( etiquetaEjes );
-        txtEjes = new JTextField( "" );
-        panelDatos.add( txtEjes );
+        JLabel etiquetaEjes = new JLabel("Ejes: ");
+        panelDatos.add(etiquetaEjes);
+        txtEjes = new JTextField("");
+        panelDatos.add(txtEjes);
 
         // Valor
-        etiquetaValor = new JLabel( "Valor: " );
-        panelDatos.add( etiquetaValor );
-        txtValor = new JTextField( "" );
-        panelDatos.add( txtValor );
+        JLabel etiquetaValor = new JLabel("Valor: ");
+        panelDatos.add(etiquetaValor);
+        txtValor = new JTextField("");
+        panelDatos.add(txtValor);
 
         // Botn agregar
-        JPanel panelBoton = new JPanel( );
-        botonAgregar = new JButton( "Agregar vehiculo" );
-        botonAgregar.setActionCommand( AGREGAR );
-        botonAgregar.addActionListener( this );
-        panelBoton.add( botonAgregar );
+        JPanel panelBoton = new JPanel();
 
-        add( panelDatos, BorderLayout.CENTER );
-        add( panelBoton, BorderLayout.SOUTH );
+        JButton botonAgregar = new JButton("Agregar vehiculo");
+        botonAgregar.setActionCommand(AGREGAR);
+        botonAgregar.addActionListener(this);
+        panelBoton.add(botonAgregar);
+
+        add(panelDatos, BorderLayout.CENTER);
+        add(panelBoton, BorderLayout.SOUTH);
     }
 
     // -----------------------------------------------------------------
@@ -225,47 +178,43 @@ public class PanelAgregarVehiculo extends JPanel implements ActionListener
 
     /**
      * Este es el mtodo que se ejecuta cuando se hace click sobre un botn
-     * @param evento Es el evento del click sobre el botn - evento!=null
+     *
+     * @param event Es el evento del click sobre el botn - evento!=null
      */
-    public void actionPerformed( ActionEvent evento )
+    public void actionPerformed(ActionEvent event)
     {
-        String comando = evento.getActionCommand( );
+        String command = event.getActionCommand();
 
-        if( AGREGAR.equals( comando ) )
-        {
-            try
-            {
-                String modelo = txtModelo.getText( );
-                String marca = txtMarca.getText( );
-                String imagen = txtImagen.getText( );
-                String tipo = ( String )cbbTipo.getSelectedItem( );
-                int anio = Integer.parseInt( txtAnio.getText( ) );
-                int cilindrada = Integer.parseInt( txtCilindrada.getText( ) );
-                int ejes = Integer.parseInt( txtEjes.getText( ) );
+        if (AGREGAR.equals(command)) {
+            try {
+                String modelo = txtModelo.getText();
+                String marca = txtMarca.getText();
+                String imagen = txtImagen.getText();
+                String type = (String)cbbTipo.getSelectedItem();
+                int anio = Integer.parseInt(txtAnio.getText());
+                int cilindrada = Integer.parseInt(txtCilindrada.getText());
+                int ejes = Integer.parseInt(txtEjes.getText());
                 int valor = Integer.parseInt( txtValor.getText( ) );
-                dialogo.agregarVehiculo( modelo, marca, imagen, tipo, anio, cilindrada, ejes, valor );
+                dialogo.agregarVehiculo(modelo, marca, imagen, type, anio, cilindrada, ejes, valor );
 
-                txtModelo.setText( "" );
-                txtMarca.setText( "" );
-                txtImagen.setText( "" );
-                txtAnio.setText( "" );
+                txtModelo.setText("");
+                txtMarca.setText("");
+                txtImagen.setText("");
+                txtAnio.setText("");
+            } catch (NumberFormatException e) {
+                String message = "The year, displacement, axes, and the value should be a number greater that 0.";
+                JOptionPane.showMessageDialog(this, message, "Error", JOptionPane.ERROR_MESSAGE);
             }
-            catch( NumberFormatException e )
-            {
-                JOptionPane.showMessageDialog( this, "El ao, la cilindrada, los ejes, y el valor deben ser un nmero entero positivo", "Error", JOptionPane.ERROR_MESSAGE );
-            }
-        }
-        else if( BUSCAR.equals( comando ) )
-        {
-            JFileChooser fc = new JFileChooser( "data" );
-            fc.setDialogTitle( "Buscar imagen de vehiculo" );
-            fc.setMultiSelectionEnabled( false );
+        } else
+            if (BUSCAR.equals(command)) {
+                JFileChooser fc = new JFileChooser("data");
+                fc.setDialogTitle("Buscar imagen de vehiculo");
+                fc.setMultiSelectionEnabled(false);
 
-            int resultado = fc.showOpenDialog( this );
-            if( resultado == JFileChooser.APPROVE_OPTION )
-            {
-                String imagen = fc.getSelectedFile( ).getAbsolutePath( );
-                txtImagen.setText( imagen );
+                int resultado = fc.showOpenDialog(this);
+                if (resultado == JFileChooser.APPROVE_OPTION) {
+                    String imagen = fc.getSelectedFile().getAbsolutePath();
+                    txtImagen.setText(imagen );
             }
         }
 
