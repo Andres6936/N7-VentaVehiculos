@@ -181,7 +181,7 @@ public class PanelAgregarVehiculo extends JPanel implements ActionListener
                 String marca = txtMarca.getText();
                 String imagen = txtImagen.getText();
 
-                String type = (String)cbbTipo.getSelectedItem();
+                TypeVehicle type = (TypeVehicle)cbbTipo.getSelectedItem();
 
                 int anio = Integer.parseInt(txtAnio.getText());
                 int cilindrada = Integer.parseInt(txtCilindrada.getText());

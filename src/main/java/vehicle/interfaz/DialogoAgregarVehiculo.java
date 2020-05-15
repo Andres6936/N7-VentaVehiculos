@@ -1,5 +1,7 @@
 package vehicle.interfaz;
 
+import vehicle.mundo.TypeVehicle;
+
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.Toolkit;
@@ -79,8 +81,8 @@ public class DialogoAgregarVehiculo extends JDialog
      * @param ejesV El nmero de ejes del vehiculo - ejesV > 0
      * @param valorV El valor del vehiculo - valorV > 0
      */
-    public void agregarVehiculo( String modeloV, String marcaV, String imagenV, String tipoV, int anioV, int cilindradaV, int ejesV, int valorV )
+    public void agregarVehiculo(String modeloV, String marcaV, String imagenV, TypeVehicle tipoV, int anioV, int cilindradaV, int ejesV, int valorV)
     {
-        ventanaPrincipal.agregarVehiculo( this, modeloV, marcaV, imagenV, tipoV, anioV, cilindradaV, ejesV, valorV );
+        ventanaPrincipal.agregarVehiculo(this, modeloV, marcaV, imagenV, tipoV, anioV, cilindradaV, ejesV, valorV);
     }
 }

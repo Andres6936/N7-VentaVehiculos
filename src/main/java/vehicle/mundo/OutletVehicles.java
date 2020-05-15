@@ -72,11 +72,11 @@ public final class OutletVehicles extends ArrayList<Vehicle>
      * @param valor El valor del vehiculo - valor > 0
      * @return Se retorn true si el vehiculo fue agregado o false en caso de que ya existiera un vehiculo con el mismo modelo y ao
      */
-    public boolean agregarVehiculo( String modeloV, String marcaV, String imagenP, String tipoV, int anioV, int cilindradaV, int ejesV, int valor )
+    public boolean agregarVehiculo(String modeloV, String marcaV, String imagenP, TypeVehicle tipoV, int anioV, int cilindradaV, int ejesV, int valor)
     {
         boolean agregado = false;
-        int vehiculoBuscado = buscarVehiculo( modeloV, anioV );
-        if( vehiculoBuscado == -1 ) {
+        int vehiculoBuscado = buscarVehiculo(modeloV, anioV);
+        if (vehiculoBuscado == -1) {
             Vehicle nuevovehiculo = new Vehicle(modeloV, marcaV, imagenP, tipoV, anioV, cilindradaV, ejesV, valor);
             add(nuevovehiculo);
             agregado = true;

@@ -3,6 +3,7 @@ package vehicle.interfaz;
 import com.formdev.flatlaf.FlatIntelliJLaf;
 import vehicle.database.DataBase;
 import vehicle.database.H2DB;
+import vehicle.mundo.TypeVehicle;
 import vehicle.mundo.Vehicle;
 import vehicle.mundo.OutletVehicles;
 
@@ -252,17 +253,15 @@ public class InterfazVentaVehiculos extends JFrame
      * @param ejesV El nmero de ejes del vehiculo - ejesV > 0
      * @param valor El valor del vehiculo - valor > 0
      */
-    void agregarVehiculo( DialogoAgregarVehiculo dialogo, String modeloV, String marcaV, String imagenV, String tipoV, int anioV, int cilindradaV, int ejesV, int valor )
+    void agregarVehiculo(DialogoAgregarVehiculo dialogo, String modeloV, String marcaV, String imagenV, TypeVehicle tipoV, int anioV, int cilindradaV, int ejesV, int valor)
     {
 
         boolean agregado = outletVehicles.agregarVehiculo(modeloV, marcaV, imagenV, tipoV, anioV, cilindradaV, ejesV, valor);
 
-        if( agregado )
-        {
-            actualizarLista( );
-            dialogo.dispose( );
-        }
-        else
+        if (agregado) {
+            actualizarLista();
+            dialogo.dispose();
+        } else
         {
             JOptionPane.showMessageDialog( this, "El vehiculo no pudo ser adicionado", "Error", JOptionPane.ERROR_MESSAGE );
         }
@@ -405,7 +404,7 @@ public class InterfazVentaVehiculos extends JFrame
             String modelo;
             String marca;
             String imagen;
-            String tipo;
+            TypeVehicle tipo;
             int anio;
             int cilandraje;
             int ejes;
@@ -431,7 +430,7 @@ public class InterfazVentaVehiculos extends JFrame
                 imagen = propiedades.getProperty( dato );
 
                 dato = "vehiculo" + i + ".tipo";
-                tipo = propiedades.getProperty( dato );
+                tipo = getEnumFrom(propiedades.getProperty(dato));
 
                 dato = "vehiculo" + i + ".anio";
                 aux = propiedades.getProperty( dato );
@@ -473,13 +472,26 @@ public class InterfazVentaVehiculos extends JFrame
 
         URL resource = classLoader.getResource( ARCHIVO_VEHICULOS );
 
-        if (resource == null)
-        {
-            throw new IllegalArgumentException( "File is not found." );
+        if (resource == null) {
+            throw new IllegalArgumentException("File is not found.");
+        } else {
+            return new File(resource.getFile());
         }
-        else
-        {
-            return new File( resource.getFile() );
+    }
+
+    private TypeVehicle getEnumFrom(String _string)
+    {
+        switch (_string) {
+            case "Bus":
+                return TypeVehicle.BUS;
+            case "Truck":
+                return TypeVehicle.TRUCK;
+            case "Automobile":
+                return TypeVehicle.AUTOMOBILE;
+            case "Motorcycle":
+                return TypeVehicle.MOTORCYCLE;
+            default:
+                return TypeVehicle.AUTOMOBILE;
         }
     }
 
@@ -490,7 +502,7 @@ public class InterfazVentaVehiculos extends JFrame
     /**
      * Ejecuta el punto de extensin 1
      */
-    void reqFuncOpcion1( )
+    void reqFuncOpcion1()
     {
         String respuesta = outletVehicles.metodo1();
         JOptionPane.showMessageDialog( this, respuesta, "Respuesta", JOptionPane.INFORMATION_MESSAGE );

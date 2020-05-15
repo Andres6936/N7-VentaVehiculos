@@ -60,7 +60,7 @@ public final class Vehicle
     /**
      * El tipo de vehiculo
      */
-    private final String tipo;
+    private final TypeVehicle tipo;
 
     /**
      * El ao de puesta en venta del modelo
@@ -97,7 +97,7 @@ public final class Vehicle
      * @param ejesV El nmero de ejes del vehiculo - ejesV > 0
      * @param valorV El valor del vehiculo - valor > 0
      */
-    public Vehicle(String modeloV, String marcaV, String imagenV, String tipoV, int anioV, int cilindradaV, int ejesV, int valorV)
+    public Vehicle(String modeloV, String marcaV, String imagenV, TypeVehicle tipoV, int anioV, int cilindradaV, int ejesV, int valorV)
     {
         modelo = modeloV;
         trademark = marcaV;
@@ -149,7 +149,7 @@ public final class Vehicle
      *
      * @return tipo
      */
-    public String getTipo()
+    public TypeVehicle getTipo()
     {
         return tipo;
     }
