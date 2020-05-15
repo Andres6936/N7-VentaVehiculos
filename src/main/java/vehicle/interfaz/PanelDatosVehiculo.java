@@ -222,8 +222,10 @@ public class PanelDatosVehiculo extends JPanel
      */
     public void mostrarDatos(Vehicle vehicle)
     {
-        String imagen = vehicle.getImagen();
-        etiquetaImagen.setIcon(new ImageIcon(getFileFromResource(imagen)));
+        String pathImage = vehicle.getImagen();
+        Image image = new ImageIcon(getFileFromResource(pathImage)).getImage();
+        Image scale = image.getScaledInstance(240, 180, Image.SCALE_SMOOTH);
+        etiquetaImagen.setIcon(new ImageIcon(scale));
 
         txtModelo.setText(vehicle.getModelo());
         txtMarca.setText(vehicle.getTrademark());
