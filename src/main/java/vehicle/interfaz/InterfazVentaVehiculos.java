@@ -131,9 +131,6 @@ public class InterfazVentaVehiculos extends JFrame
         setTitle( "Venta de vehiculos" );
 
         setSize( new Dimension( 800, 600 ) );
-        setMinimumSize( new Dimension( 800, 600 ) );
-        setMaximumSize( new Dimension( 800, 600 ) );
-
         setResizable( false );
 
         // Center the windows

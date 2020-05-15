@@ -55,8 +55,8 @@ public class PanelListaVehiculos extends JPanel implements ListSelectionListener
         setLayout( new BorderLayout( ) );
 
         JPanel panelBorder = new JPanel( );
-        panelBorder.setLayout( new BorderLayout( ) );
-        panelBorder.setBorder( new CompoundBorder( new EmptyBorder( 3, 3, 3, 3 ), new TitledBorder( "vehiculos a la Venta" ) ) );
+        panelBorder.setLayout(new BorderLayout());
+        panelBorder.setBorder(new CompoundBorder(new EmptyBorder(3, 3, 3, 3), new TitledBorder("Outlet Vehicle")));
 
         listaVehiculos = new JList<>();
         listaVehiculos.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
@@ -64,16 +64,14 @@ public class PanelListaVehiculos extends JPanel implements ListSelectionListener
 
         JScrollPane scroll = new JScrollPane( );
         scroll.setHorizontalScrollBarPolicy( JScrollPane.HORIZONTAL_SCROLLBAR_NEVER );
-        scroll.setVerticalScrollBarPolicy( JScrollPane.VERTICAL_SCROLLBAR_ALWAYS );
-        scroll.setBorder( new CompoundBorder( new EmptyBorder( 3, 3, 3, 3 ), new LineBorder( Color.BLACK, 1 ) ) );
-        scroll.getViewport( ).add( listaVehiculos );
+        scroll.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
+        scroll.setBorder(new CompoundBorder(new EmptyBorder(3, 3, 3, 3), new LineBorder(Color.LIGHT_GRAY, 1)));
+        scroll.getViewport().add(listaVehiculos);
 
         panelBorder.add( scroll, BorderLayout.CENTER );
         add( panelBorder, BorderLayout.CENTER );
 
-        setSize( new Dimension( 300, 200 ) );
-        setMinimumSize( new Dimension( 300, 200 ) );
-        setMaximumSize( new Dimension( 300, 200 ) );
+        setSize(new Dimension(250, 200));
     }
 
     // -----------------------------------------------------------------

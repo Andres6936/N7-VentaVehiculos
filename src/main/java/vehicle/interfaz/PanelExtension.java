@@ -34,11 +34,7 @@ public class PanelExtension extends JPanel implements ActionListener
     /**
      * Es la referencia a la java.vehicle.interfaz de la aplicacin
      */
-    private InterfazVentaVehiculos ventanaPrincipal;
-
-    // -----------------------------------------------------------------
-    // Atributos de la Interfaz
-    // -----------------------------------------------------------------
+    private final InterfazVentaVehiculos ventanaPrincipal;
 
     // -----------------------------------------------------------------
     // Constructores
@@ -51,33 +47,24 @@ public class PanelExtension extends JPanel implements ActionListener
     PanelExtension( InterfazVentaVehiculos iec )
     {
         ventanaPrincipal = iec;
-        inicializar( );
+        setBorder(new TitledBorder("Extension Point"));
+        setLayout(new FlowLayout());
+
+        JButton botonOpcion1 = new JButton("Option One");
+        botonOpcion1.setActionCommand(OPCION_1);
+        botonOpcion1.addActionListener(this);
+
+        JButton botonOpcion2 = new JButton("Option Two");
+        botonOpcion2.setActionCommand(OPCION_2);
+        botonOpcion2.addActionListener(this);
+
+        add(botonOpcion1);
+        add(botonOpcion2);
     }
 
     // -----------------------------------------------------------------
     // Mtodos
     // -----------------------------------------------------------------
-
-    /**
-     * Inicializa los componentes del panel
-     */
-    private void inicializar( )
-    {
-        setBorder( new TitledBorder( "Puntos de Extensin" ) );
-
-        setLayout( new FlowLayout( ) );
-
-        JButton botonOpcion1 = new JButton( "Opcin 1" );
-        botonOpcion1.setActionCommand( OPCION_1 );
-        botonOpcion1.addActionListener( this );
-
-        JButton botonOpcion2 = new JButton( "Opcin 2" );
-        botonOpcion2.setActionCommand( OPCION_2 );
-        botonOpcion2.addActionListener( this );
-
-        add( botonOpcion1 );
-        add( botonOpcion2 );
-    }
 
     /**
      * Este mtodo se llama cuando se presiona uno de los botones
