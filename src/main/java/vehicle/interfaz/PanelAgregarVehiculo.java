@@ -1,22 +1,14 @@
 package vehicle.interfaz;
 
-import java.awt.BorderLayout;
-import java.awt.GridLayout;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+import vehicle.mundo.TypeVehicle;
 
-import javax.swing.JButton;
-import javax.swing.JComboBox;
-import javax.swing.JFileChooser;
-import javax.swing.JLabel;
-import javax.swing.JOptionPane;
-import javax.swing.JPanel;
-import javax.swing.JTextField;
+import javax.swing.*;
 import javax.swing.border.CompoundBorder;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.TitledBorder;
-
-import vehicle.mundo.Vehicle;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 /**
  * Este es el panel donde se agregan vehiculos
@@ -30,8 +22,6 @@ public class PanelAgregarVehiculo extends JPanel implements ActionListener
     private static final String AGREGAR = "Agregarvehiculo";
 
     private static final String BUSCAR = "BuscarImagen";
-
-    private static final String[] TIPOS = new String[]{Vehicle.BUS, Vehicle.AUTOMOVIL, Vehicle.CAMION, Vehicle.MOTOCICLETA};
 
     // -----------------------------------------------------------------
     // Atributos
@@ -84,7 +74,7 @@ public class PanelAgregarVehiculo extends JPanel implements ActionListener
     /**
      * El combo para seleccionar el tipo del vehiculo
      */
-    private final JComboBox<String> cbbTipo;
+    private final JComboBox<TypeVehicle> cbbTipo;
 
     // -----------------------------------------------------------------
     // Constructores
@@ -132,7 +122,7 @@ public class PanelAgregarVehiculo extends JPanel implements ActionListener
         // Tipo
         JLabel etiquetaTipo = new JLabel("Tipo: ");
         panelDatos.add(etiquetaTipo);
-        cbbTipo = new JComboBox<>(TIPOS);
+        cbbTipo = new JComboBox<>(TypeVehicle.values());
         panelDatos.add(cbbTipo);
 
         // Ao
@@ -190,7 +180,9 @@ public class PanelAgregarVehiculo extends JPanel implements ActionListener
                 String modelo = txtModelo.getText();
                 String marca = txtMarca.getText();
                 String imagen = txtImagen.getText();
+
                 String type = (String)cbbTipo.getSelectedItem();
+
                 int anio = Integer.parseInt(txtAnio.getText());
                 int cilindrada = Integer.parseInt(txtCilindrada.getText());
                 int ejes = Integer.parseInt(txtEjes.getText());
