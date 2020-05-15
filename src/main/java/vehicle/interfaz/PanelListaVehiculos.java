@@ -2,6 +2,7 @@ package vehicle.interfaz;
 
 import java.awt.*;
 import java.util.ArrayList;
+import java.util.Vector;
 
 import javax.swing.JList;
 import javax.swing.JPanel;
@@ -28,7 +29,7 @@ public class PanelListaVehiculos extends JPanel implements ListSelectionListener
     /**
      * Es una referencia a la clase principal de la java.vehicle.interfaz
      */
-    private InterfazVentaVehiculos ventanaPrincipal;
+    private final InterfazVentaVehiculos ventanaPrincipal;
 
     // -----------------------------------------------------------------
     // Atributos de la Interfaz
@@ -37,7 +38,7 @@ public class PanelListaVehiculos extends JPanel implements ListSelectionListener
     /**
      * Es la lista que se muestra
      */
-    private JList listaVehiculos;
+    private final JList<Vehicle> listaVehiculos;
 
     // -----------------------------------------------------------------
     // Constructores
@@ -57,8 +58,8 @@ public class PanelListaVehiculos extends JPanel implements ListSelectionListener
         panelBorder.setLayout( new BorderLayout( ) );
         panelBorder.setBorder( new CompoundBorder( new EmptyBorder( 3, 3, 3, 3 ), new TitledBorder( "vehiculos a la Venta" ) ) );
 
-        listaVehiculos = new JList( );
-        listaVehiculos.setSelectionMode( ListSelectionModel.SINGLE_SELECTION );
+        listaVehiculos = new JList<>();
+        listaVehiculos.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
         listaVehiculos.addListSelectionListener( this );
 
         JScrollPane scroll = new JScrollPane( );
@@ -81,12 +82,13 @@ public class PanelListaVehiculos extends JPanel implements ListSelectionListener
 
     /**
      * Actualiza la lista de vehiculos que se est mostrando
+     *
      * @param listaActualizadaVehiculos Es una lista con los vehiculos que deben mostrarse
      */
-    void actualizarLista( ArrayList listaActualizadaVehiculos )
+    void actualizarLista(ArrayList<Vehicle> listaActualizadaVehiculos)
     {
-        listaVehiculos.setListData( listaActualizadaVehiculos.toArray( ) );
-        listaVehiculos.setSelectedIndex( 0 );
+        listaVehiculos.setListData(new Vector<>(listaActualizadaVehiculos));
+        listaVehiculos.setSelectedIndex(0);
 
     }
 
