@@ -12,7 +12,7 @@ package vehicle.mundo;
  * ejes > 1 <br>
  * valor>0
  */
-public class Vehiculo
+public final class Vehicle
 {
     // -----------------------------------------------------------------
     // Constantes
@@ -45,37 +45,37 @@ public class Vehiculo
     /**
      * El modelo del vehiculo
      */
-    private String modelo;
+    private final String modelo;
 
     /**
      * La marca del vehiculo
      */
-    private String trademark;
+    private final String trademark;
 
     /**
      * La ruta hasta la imagen del vehiculo
      */
-    private String imagen;
+    private final String imagen;
 
     /**
      * El tipo de vehiculo
      */
-    private String tipo;
+    private final String tipo;
 
     /**
      * El ao de puesta en venta del modelo
      */
-    private int year;
+    private final int year;
 
     /**
      * El cilindrada del vehiculo
      */
-    private int displacement;
+    private final int displacement;
 
     /**
      * El nmero de Ejes
      */
-    private int ejes;
+    private final int ejes;
 
     /**
      * El valor comercial del vehiculo
@@ -97,7 +97,7 @@ public class Vehiculo
      * @param ejesV El nmero de ejes del vehiculo - ejesV > 0
      * @param valorV El valor del vehiculo - valor > 0
      */
-    public Vehiculo( String modeloV, String marcaV, String imagenV, String tipoV, int anioV, int cilindradaV, int ejesV, int valorV )
+    public Vehicle(String modeloV, String marcaV, String imagenV, String tipoV, int anioV, int cilindradaV, int ejesV, int valorV)
     {
         modelo = modeloV;
         trademark = marcaV;
@@ -108,7 +108,7 @@ public class Vehiculo
         ejes = ejesV;
         valor = valorV;
 
-        verificarInvariante( );
+        verifyInvariant();
     }
 
     // -----------------------------------------------------------------
@@ -117,9 +117,10 @@ public class Vehiculo
 
     /**
      * Retorna el modelo del vehiculo
+     *
      * @return modelo
      */
-    public String darModelo( )
+    public String getModelo()
     {
         return modelo;
     }
@@ -135,18 +136,20 @@ public class Vehiculo
 
     /**
      * Retorna la ruta a la imagen del vehiculo
+     *
      * @return imagen
      */
-    public String darImagen( )
+    public String getImagen()
     {
         return imagen;
     }
 
     /**
      * Retorna el tipo del vehiculo
+     *
      * @return tipo
      */
-    public String darTipo( )
+    public String getTipo()
     {
         return tipo;
     }
@@ -171,9 +174,10 @@ public class Vehiculo
 
     /**
      * Retorna el nmero de ejes del vehiculo
+     *
      * @return ejes
      */
-    public int darEjes( )
+    public int getEjes()
     {
         return ejes;
     }
@@ -189,9 +193,9 @@ public class Vehiculo
 
     /**
      * Cambia el valor del vehiculo.
+     * Precondition: The new value must be greater to 0.
      *
      * @param nValor Nuevo valor del vehiculo.
-     * @precondition The new value must be greater to 0.
      */
     void setValue( final int nValor )
     {
@@ -200,50 +204,54 @@ public class Vehiculo
 
     /**
      * Compara dos vehiculos segn su cilindrada
+     *
      * @param v El vehiculo contra el que se est comparando - e!=null
      * @return Retorna 0 si los vehiculos tienen la misma cilindrada. <br>
-     *         Retorna -1 si el vehiculo v tiene una valor "MAYOR" para la cilindrada. <br>
-     *         Retorna 1 si el vehiculo v tiene una valor "MENOR" para la cilindrada. <br>
+     * Retorna -1 si el vehiculo v tiene una valor "MAYOR" para la cilindrada. <br>
+     * Retorna 1 si el vehiculo v tiene una valor "MENOR" para la cilindrada. <br>
      */
-    public int compareForDisplacement( final Vehiculo v )
+    public int compareDisplacement(final Vehicle v)
     {
-        return Integer.compare( displacement, v.getDisplacement( ) );
+        return Integer.compare(displacement, v.getDisplacement());
     }
 
     /**
      * Compara dos vehiculos segn su marca
+     *
      * @param v El vehiculo contra el que se est comparando - e!=null
      * @return Retorna 0 si los vehiculos tienen la misma marca. <br>
-     *         Retorna -1 si el vehiculo v tiene una valor "MAYOR" para la marca. <br>
-     *         Retorna 1 si el vehiculo v tiene una valor "MENOR" para la marca. <br>
+     * Retorna -1 si el vehiculo v tiene una valor "MAYOR" para la marca. <br>
+     * Retorna 1 si el vehiculo v tiene una valor "MENOR" para la marca. <br>
      */
-    public int compareForTrademark( final Vehiculo v )
+    public int compareTrademark(final Vehicle v)
     {
-        return trademark.toLowerCase( ).compareTo( v.getTrademark( ).toLowerCase( ) );
+        return trademark.toLowerCase().compareTo(v.getTrademark().toLowerCase( ) );
     }
 
     /**
      * Compara dos vehiculos segn su ao
+     *
      * @param v El vehiculo contra el que se est comparando - e!=null
      * @return Retorna 0 si los vehiculos son del mismo ao. <br>
-     *         Retorna -1 si el vehiculo v es de un ao posterior. <br>
-     *         Retorna 1 si el vehiculo v es de un ao anterior. <br>
+     * Retorna -1 si el vehiculo v es de un ao posterior. <br>
+     * Retorna 1 si el vehiculo v es de un ao anterior. <br>
      */
-    public int compareForYear( final Vehiculo v )
+    public int compareYear(final Vehicle v)
     {
-        return Integer.compare( year, v.getYear( ) );
+        return Integer.compare(year, v.getYear() );
     }
 
     /**
      * Compara dos vehiculos segn su valor
+     *
      * @param v El vehiculo contra el que se est comparando - v!=null
      * @return Retorna 0 si los vehiculos tienen el mismo valor. <br>
-     *         Retorna -1 si el vehiculo v tiene una valor "MAYOR" para el valor. <br>
-     *         Retorna 1 si el vehiculo v tiene una valor "MENOR" para el valor. <br>
+     * Retorna -1 si el vehiculo v tiene una valor "MAYOR" para el valor. <br>
+     * Retorna 1 si el vehiculo v tiene una valor "MENOR" para el valor. <br>
      */
-    public int compareForValue( final Vehiculo v )
+    public int compareValue(final Vehicle v)
     {
-        return Integer.compare( valor, v.getValue( ) );
+        return Integer.compare(valor, v.getValue());
     }
 
     /**
@@ -271,15 +279,15 @@ public class Vehiculo
      * ejes > 1 <br>
      * valor > 0
      */
-    private void verificarInvariante( )
+    private void verifyInvariant()
     {
-        assert ( tipo.equals( BUS ) || tipo.equals( AUTOMOVIL ) || tipo.equals( MOTOCICLETA ) || tipo.equals( CAMION )  ) : "El tipo debe ser uno de los valores vlidos";
-        assert ( year > 0 ) : "El ao no puede ser 0";
-        assert ( imagen != null ) : "La imagen no puede ser null";
-        assert ( modelo != null ) : "El modelo no puede ser null";
-        assert ( trademark != null ) : "La marca no puede ser null";
-        assert ( displacement > 0 ) : "La cilindrada no puede ser 0";
-        assert ( ejes > 1 ) : "El nmero de ejes debe ser mayor a 1";
-        assert ( valor > 0 ) : "El vehiculo debe tener un valor mayor a 0";
+        assert (tipo.equals(BUS) || tipo.equals(AUTOMOVIL) || tipo.equals(MOTOCICLETA) || tipo.equals(CAMION)) : "El tipo debe ser uno de los valores vlidos";
+        assert (year > 0) : "El ao no puede ser 0";
+        assert (imagen != null) : "La imagen no puede ser null";
+        assert (modelo != null) : "El modelo no puede ser null";
+        assert (trademark != null) : "La marca no puede ser null";
+        assert (displacement > 0) : "La cilindrada no puede ser 0";
+        assert (ejes > 1) : "El nmero de ejes debe ser mayor a 1";
+        assert (valor > 0) : "El vehiculo debe tener un valor mayor a 0";
     }
 }

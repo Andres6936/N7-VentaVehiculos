@@ -16,7 +16,7 @@ public class VentaVehiculos
     /**
      * Es la lista que contiene todos los vehiculos
      */
-    private ArrayList< Vehiculo > vehiculos;
+    private ArrayList<Vehicle> vehicles;
 
     // -----------------------------------------------------------------
     // Constructores
@@ -27,7 +27,7 @@ public class VentaVehiculos
      */
     public VentaVehiculos( )
     {
-        vehiculos = new ArrayList<>( );
+        vehicles = new ArrayList<>();
 
     }
 
@@ -43,7 +43,7 @@ public class VentaVehiculos
      */
     public ArrayList darVehiculos( )
     {
-        return new ArrayList<>( vehiculos );
+        return new ArrayList<>(vehicles);
     }
 
     /**
@@ -52,7 +52,7 @@ public class VentaVehiculos
      */
     public void sortForTrademark( )
     {
-        vehiculos.sort( Vehiculo::compareForTrademark );
+        vehicles.sort(Vehicle::compareTrademark);
 
         verificarInvariante( );
     }
@@ -63,7 +63,7 @@ public class VentaVehiculos
      */
     public void sortForDisplacement( )
     {
-        vehiculos.sort( Vehiculo::compareForDisplacement );
+        vehicles.sort(Vehicle::compareDisplacement);
 
         verificarInvariante( );
     }
@@ -74,7 +74,7 @@ public class VentaVehiculos
      */
     public void sortForYear( )
     {
-        vehiculos.sort( Vehiculo::compareForYear );
+        vehicles.sort(Vehicle::compareYear);
 
         verificarInvariante( );
     }
@@ -90,14 +90,12 @@ public class VentaVehiculos
         int posicion = -1;
         boolean termine = false;
 
-        for( int i = 0; i < vehiculos.size( ) && !termine; i++ )
-        {
-            Vehiculo vehiculoPosicion = vehiculos.get( i );
-            String modeloVehiculo = vehiculoPosicion.darModelo( );
+        for (int i = 0; i < vehicles.size() && !termine; i++) {
+            Vehicle vehiclePosicion = vehicles.get(i);
+            String modeloVehiculo = vehiclePosicion.getModelo();
 
             // Los modelos son iguales
-            if ( modeloVehiculo.equals( modelo ) && vehiculoPosicion.getYear( ) == anio )
-            {
+            if (modeloVehiculo.equals(modelo) && vehiclePosicion.getYear() == anio) {
                 posicion = i;
                 termine = true;
             }
@@ -122,12 +120,11 @@ public class VentaVehiculos
     {
         boolean agregado = false;
         int vehiculoBuscado = buscarVehiculo( modeloV, anioV );
-        if( vehiculoBuscado == -1 )
-        {
-            Vehiculo nuevovehiculo = new Vehiculo( modeloV, marcaV, imagenP, tipoV, anioV, cilindradaV, ejesV, valor );
-            vehiculos.add( nuevovehiculo );
+        if( vehiculoBuscado == -1 ) {
+            Vehicle nuevovehiculo = new Vehicle(modeloV, marcaV, imagenP, tipoV, anioV, cilindradaV, ejesV, valor);
+            vehicles.add(nuevovehiculo);
             agregado = true;
-            verificarInvariante( );
+            verificarInvariante();
         }
 
         return agregado;
@@ -144,13 +141,11 @@ public class VentaVehiculos
     {
         boolean comprado = false;
 
-        for( int cont = 0; cont < vehiculos.size( ) && !comprado; cont++ )
-        {
-            Vehiculo v = vehiculos.get( cont );
+        for (int cont = 0; cont < vehicles.size() && !comprado; cont++) {
+            Vehicle v = vehicles.get(cont);
 
-            if ( v.getYear( ) == anio && v.darModelo( ).equalsIgnoreCase( modelo ) )
-            {
-                vehiculos.remove( cont );
+            if (v.getYear() == anio && v.getModelo().equalsIgnoreCase(modelo)) {
+                vehicles.remove(cont);
                 comprado = true;
             }
         }
@@ -164,7 +159,7 @@ public class VentaVehiculos
      */
     public int buscarVehiculoMasAntiguo( )
     {
-        vehiculos.sort( Vehiculo::compareForYear );
+        vehicles.sort(Vehicle::compareYear);
 
         // The first element of list always is the more old.
         return 0;
@@ -176,7 +171,7 @@ public class VentaVehiculos
      */
     public int getIndexOfVehicleMoreCheap( )
     {
-        vehiculos.sort( Vehiculo::compareForValue );
+        vehicles.sort(Vehicle::compareValue);
 
         // Return 0, because the first element of the list is the more cheap.
         return 0;
@@ -188,10 +183,10 @@ public class VentaVehiculos
      */
     public int getIndexOfVehicleMorePowerful( )
     {
-        vehiculos.sort( Vehiculo::compareForDisplacement );
+        vehicles.sort(Vehicle::compareDisplacement);
 
         // The last element always is more powerful
-        return vehiculos.size( ) - 1;
+        return vehicles.size() - 1;
     }
 
     /**
@@ -204,15 +199,12 @@ public class VentaVehiculos
     {
         int disminuidos = 0;
 
-        for ( Vehiculo v : vehiculos )
-        {
-            if ( v.getValue( ) > valor )
-            {
-                int nValor = ( int ) ( v.getValue( ) * 0.9 );
+        for (Vehicle v : vehicles) {
+            if (v.getValue() > valor) {
+                int nValor = (int)(v.getValue() * 0.9);
 
-                if ( nValor > 0 )
-                {
-                    v.setValue( nValor );
+                if (nValor > 0) {
+                    v.setValue(nValor);
                     disminuidos++;
                 }
             }
@@ -229,8 +221,8 @@ public class VentaVehiculos
      */
     private void verificarInvariante( )
     {
-        assert ( vehiculos != null ) : "La lista de vehiculos no debe ser null";
-        assert ( !buscarVehiculosModeloYAnioRepetido( ) ) : "Hay dos vehiculos del mismo modelo y ao";
+        assert (vehicles != null) : "La lista de vehiculos no debe ser null";
+        assert (!buscarVehiculosModeloYAnioRepetido()) : "Hay dos vehiculos del mismo modelo y ao";
     }
 
     /**
@@ -239,16 +231,12 @@ public class VentaVehiculos
      */
     private boolean buscarVehiculosModeloYAnioRepetido( )
     {
-        for( int i = 0; i < vehiculos.size( ); i++ )
-        {
-            Vehiculo pi = vehiculos.get( i );
-            for( int j = 0; j < vehiculos.size( ); j++ )
-            {
-                if( i != j )
-                {
-                    Vehiculo pj = vehiculos.get( j );
-                    if ( pj.darModelo( ).equals( pi.darModelo( ) ) && pj.getYear( ) == pi.getYear( ) )
-                    {
+        for (int i = 0; i < vehicles.size(); i++) {
+            Vehicle pi = vehicles.get(i);
+            for (int j = 0; j < vehicles.size(); j++) {
+                if (i != j) {
+                    Vehicle pj = vehicles.get(j);
+                    if (pj.getModelo().equals(pi.getModelo()) && pj.getYear() == pi.getYear()) {
                         return true;
                     }
                 }

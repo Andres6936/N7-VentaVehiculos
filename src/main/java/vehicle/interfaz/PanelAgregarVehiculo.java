@@ -16,7 +16,7 @@ import javax.swing.border.CompoundBorder;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.TitledBorder;
 
-import vehicle.mundo.Vehiculo;
+import vehicle.mundo.Vehicle;
 
 /**
  * Este es el panel donde se agregan vehiculos
@@ -31,7 +31,7 @@ public class PanelAgregarVehiculo extends JPanel implements ActionListener
 
     private static final String BUSCAR = "BuscarImagen";
 
-    private static final String[] TIPOS = new String[]{ Vehiculo.BUS, Vehiculo.AUTOMOVIL, Vehiculo.CAMION, Vehiculo.MOTOCICLETA };
+    private static final String[] TIPOS = new String[]{Vehicle.BUS, Vehicle.AUTOMOVIL, Vehicle.CAMION, Vehicle.MOTOCICLETA};
 
     // -----------------------------------------------------------------
     // Atributos

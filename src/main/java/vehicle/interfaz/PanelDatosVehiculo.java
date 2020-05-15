@@ -2,7 +2,6 @@ package vehicle.interfaz;
 
 import java.awt.*;
 import java.net.URL;
-import java.util.concurrent.Flow;
 
 import javax.swing.*;
 import javax.swing.border.CompoundBorder;
@@ -10,7 +9,7 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
 import javax.swing.border.TitledBorder;
 
-import vehicle.mundo.Vehiculo;
+import vehicle.mundo.Vehicle;
 
 /**
  * Es el panel donde se muestran los datos de un vehiculo
@@ -218,22 +217,23 @@ public class PanelDatosVehiculo extends JPanel
 
     /**
      * Muestra los datos del vehiculo
-     * @param vehiculo El vehiculo del que se quieren mostrar los datos - vehiculo != null
+     *
+     * @param vehicle El vehiculo del que se quieren mostrar los datos - vehiculo != null
      */
-    public void mostrarDatos( Vehiculo vehiculo )
+    public void mostrarDatos(Vehicle vehicle)
     {
-        String imagen = vehiculo.darImagen( );
-        etiquetaImagen.setIcon( new ImageIcon( getFileFromResource( imagen ) ) );
+        String imagen = vehicle.getImagen();
+        etiquetaImagen.setIcon(new ImageIcon(getFileFromResource(imagen)));
 
-        txtModelo.setText( vehiculo.darModelo( ) );
-        txtMarca.setText( vehiculo.getTrademark( ) );
-        txtTipo.setText( vehiculo.darTipo( ) );
-        txtAnio.setText( "" + vehiculo.getYear( ) );
-        txtCilindrada.setText( "" + vehiculo.getDisplacement( ) );
-        txtEjes.setText( "" + vehiculo.darEjes( ) );
-        txtValor.setText( "" + vehiculo.getValue( ) );
+        txtModelo.setText(vehicle.getModelo());
+        txtMarca.setText(vehicle.getTrademark());
+        txtTipo.setText(vehicle.getTipo());
+        txtAnio.setText("" + vehicle.getYear());
+        txtCilindrada.setText("" + vehicle.getDisplacement());
+        txtEjes.setText("" + vehicle.getEjes());
+        txtValor.setText("" + vehicle.getValue());
 
-        validate( );
+        validate();
     }
 
     /**

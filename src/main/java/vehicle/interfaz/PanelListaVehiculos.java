@@ -14,7 +14,7 @@ import javax.swing.border.TitledBorder;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
-import vehicle.mundo.Vehiculo;
+import vehicle.mundo.Vehicle;
 
 /**
  * Es el panel donde se muestra la lista de vehiculos
@@ -102,15 +102,15 @@ public class PanelListaVehiculos extends JPanel implements ListSelectionListener
 
     /**
      * Retorna el vehiculo seleccionado de la lista
+     *
      * @return Se retorn el vehiculo seleccionado de la lista. Si no hay vehiculo seleccionado se retorn null
      */
-    Vehiculo darVehiculoSeleccionado( )
+    Vehicle darVehiculoSeleccionado()
     {
-        Vehiculo vSeleccionado = null;
+        Vehicle vSeleccionado = null;
 
-        if( listaVehiculos.getSelectedValue( ) != null )
-        {
-            vSeleccionado = ( Vehiculo ) listaVehiculos.getSelectedValue( );
+        if (listaVehiculos.getSelectedValue() != null) {
+            vSeleccionado = (Vehicle)listaVehiculos.getSelectedValue();
         }
 
         return vSeleccionado;
@@ -122,10 +122,9 @@ public class PanelListaVehiculos extends JPanel implements ListSelectionListener
      */
     public void valueChanged( ListSelectionEvent e )
     {
-        if( listaVehiculos.getSelectedValue( ) != null )
-        {
-            Vehiculo vehiculo = ( Vehiculo ) listaVehiculos.getSelectedValue( );
-            ventanaPrincipal.verDatos( vehiculo );
+        if( listaVehiculos.getSelectedValue( ) != null ) {
+            Vehicle vehicle = (Vehicle)listaVehiculos.getSelectedValue();
+            ventanaPrincipal.verDatos(vehicle);
         }
 
     }

@@ -1,10 +1,9 @@
 package vehicle.interfaz;
 
 import com.formdev.flatlaf.FlatIntelliJLaf;
-import com.formdev.flatlaf.FlatLightLaf;
 import vehicle.database.DataBase;
 import vehicle.database.H2DB;
-import vehicle.mundo.Vehiculo;
+import vehicle.mundo.Vehicle;
 import vehicle.mundo.VentaVehiculos;
 
 import java.awt.*;
@@ -205,7 +204,7 @@ public class InterfazVentaVehiculos extends JFrame
                     if( posicion != -1 )
                     {
                         panelLista.seleccionar( posicion );
-                        Vehiculo p = ( Vehiculo )ventaVehiculos.darVehiculos( ).get( posicion );
+                        Vehicle p = (Vehicle)ventaVehiculos.darVehiculos().get(posicion);
                         verDatos( p );
                     }
                     else
@@ -223,12 +222,13 @@ public class InterfazVentaVehiculos extends JFrame
 
     /**
      * Muestra los datos de un vehiculo en el panel correspondiente
-     * @param vehiculo El vehiculo del que se quieren ver los datos - vehiculo != null
+     *
+     * @param vehicle El vehiculo del que se quieren ver los datos - vehiculo != null
      */
-    void verDatos( Vehiculo vehiculo )
+    void verDatos(Vehicle vehicle)
     {
-        panelDatos.mostrarDatos( vehiculo );
-        pack( );
+        panelDatos.mostrarDatos(vehicle);
+        pack();
     }
 
     /**
@@ -327,11 +327,11 @@ public class InterfazVentaVehiculos extends JFrame
      */
     void comprarVehiculo( )
     {
-        Vehiculo v = panelLista.darVehiculoSeleccionado( );
+        Vehicle v = panelLista.darVehiculoSeleccionado( );
 
         if( v != null )
         {
-            ventaVehiculos.comprarVehiculo( v.darModelo( ), v.getYear( ) );
+            ventaVehiculos.comprarVehiculo(v.getModelo(), v.getYear());
             panelDatos.limpiarDatos( );
             actualizarLista( );
         }

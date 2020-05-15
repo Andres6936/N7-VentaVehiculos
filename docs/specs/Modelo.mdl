@@ -141,7 +141,7 @@
 		    (object Operation "void verDatos"
 			quid       	"702DFEB676F8"
 			parameters 	(list Parameters
-			    (object Parameter "Vehiculo vehiculo"
+			    (object Parameter "Vehiculo vehicle"
 				quid       	"4569D9720362"))
 			concurrency 	"Sequential"
 			opExportControl 	"Public"
@@ -541,7 +541,7 @@
 						    (object Operation "void mostrarDatos"
 							quid       	"91799F08926C"
 							parameters 	(list Parameters
-							    (object Parameter "Vehiculo vehiculo"
+							    (object Parameter "Vehiculo vehicle"
 								quid       	"4569D972038D"))
 							concurrency 	"Sequential"
 							opExportControl 	"Public"
@@ -764,11 +764,11 @@
 						class_attributes 	(list class_attribute_list
 						    (object ClassAttribute "String BUS = \"Bus\""
 							quid       	"253D363CCF2A")
-						    (object ClassAttribute "String AUTOMOVIL = \"Automóvil\""
+						    (object ClassAttribute "String AUTOMOVIL = \"Automï¿½vil\""
 							quid       	"2B611AFD9ADC")
 						    (object ClassAttribute "String MOTOCICLETA = \"Moto\""
 							quid       	"815DEE8D09A1")
-						    (object ClassAttribute "String CAMION = \"Camión\""
+						    (object ClassAttribute "String CAMION = \"Camiï¿½n\""
 							quid       	"12E23B1FE6E6")
 						    (object ClassAttribute "String modelo"
 							quid       	"20880164BF11")
@@ -1048,7 +1048,7 @@
 			    max_width  	1447
 			    label      	
 |Vehiculo
-|Es la clase que representa a un vehículo
+|Es la clase que representa a un vehï¿½culo
 | inv:
 | modelo != null
 | imagen != null
@@ -1081,9 +1081,9 @@
 			    max_width  	1540
 			    label      	
 |VentaVehiculos
-|Es la clase que se encarga de manejar, organizar, cargar y salvar los vehículos
+|Es la clase que se encarga de manejar, organizar, cargar y salvar los vehï¿½culos
 |inv
-|vehículos != null y no hay dos vehículos con el mismo nombre
+|vehï¿½culos != null y no hay dos vehï¿½culos con el mismo nombre
 			    )
 			fill_color 	13434879
 			width      	1600
@@ -1263,7 +1263,7 @@
 			    max_width  	922
 			    label      	
 |DialogoAgregarVehiculo
-|Este es el diálogo usado para agregar un vehículo
+|Este es el diï¿½logo usado para agregar un vehï¿½culo
 			    )
 			fill_color 	14540253
 			width      	982
@@ -1311,7 +1311,7 @@
 			    max_width  	971
 			    label      	
 |PanelAgregarVehiculo
-|Este es el panel donde se agregan vehículos
+|Este es el panel donde se agregan vehï¿½culos
 			    )
 			fill_color 	14540253
 			width      	1031
@@ -1335,7 +1335,7 @@
 			    max_width  	1240
 			    label      	
 |PanelBusquedaOrdenamiento
-|Panel con las operaciones de búsqueda y ordenamiento sobre la venta de vehículos
+|Panel con las operaciones de bï¿½squeda y ordenamiento sobre la venta de vehï¿½culos
 			    )
 			fill_color 	14540253
 			width      	1300
@@ -1359,7 +1359,7 @@
 			    max_width  	783
 			    label      	
 |PanelConsultasOperaciones
-|Panel con diferentes operaciones y consultas sobre la venta de vehículos
+|Panel con diferentes operaciones y consultas sobre la venta de vehï¿½culos
 			    )
 			fill_color 	14540253
 			width      	843
@@ -1383,7 +1383,7 @@
 			    max_width  	990
 			    label      	
 |PanelDatosVehiculo
-|Es el panel donde se muestran los datos de un vehículo
+|Es el panel donde se muestran los datos de un vehï¿½culo
 			    )
 			fill_color 	14540253
 			width      	1050
@@ -1407,7 +1407,7 @@
 			    max_width  	941
 			    label      	
 |PanelExtension
-|Es el panel que contiene los botones de extensión
+|Es el panel que contiene los botones de extensiï¿½n
 			    )
 			fill_color 	14540253
 			width      	1001
@@ -1455,7 +1455,7 @@
 			    max_width  	883
 			    label      	
 |PanelListaVehiculos
-|Es el panel donde se muestra la lista de vehículos
+|Es el panel donde se muestra la lista de vehï¿½culos
 			    )
 			fill_color 	14540253
 			width      	943
@@ -1535,7 +1535,7 @@
 			    max_width  	740
 			    label      	
 |Vehiculo
-|Es la clase que representa a un vehículo
+|Es la clase que representa a un vehï¿½culo
 			    )
 			fill_color 	13434879
 			width      	800
@@ -1559,7 +1559,7 @@
 			    max_width  	559
 			    label      	
 |VentaVehiculos
-|Es la clase que se encarga de manejar, organizar, cargar y salvar los vehículos
+|Es la clase que se encarga de manejar, organizar, cargar y salvar los vehï¿½culos
 			    )
 			fill_color 	13434879
 			width      	619
@@ -3547,7 +3547,7 @@
 			    max_width  	559
 			    label      	
 |VentaVehiculos
-|Es la clase que se encarga de manejar, organizar, cargar y salvar los vehículos
+|Es la clase que se encarga de manejar, organizar, cargar y salvar los vehï¿½culos
 			    )
 			fill_color 	13434879
 			width      	619
@@ -3571,7 +3571,7 @@
 			    max_width  	740
 			    label      	
 |Vehiculo
-|Es la clase que representa a un vehículo
+|Es la clase que representa a un vehï¿½culo
 			    )
 			fill_color 	13434879
 			width      	800

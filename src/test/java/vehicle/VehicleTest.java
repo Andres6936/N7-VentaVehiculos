@@ -2,12 +2,12 @@ package vehicle;
 
 import junit.framework.TestCase;
 
-import vehicle.mundo.Vehiculo;
+import vehicle.mundo.Vehicle;
 
 /**
  * Es la clase de pruebas para la clase Vehiculo
  */
-public class VehiculoTest extends TestCase
+public class VehicleTest extends TestCase
 {
     // -----------------------------------------------------------------
     // Atributos
@@ -16,12 +16,12 @@ public class VehiculoTest extends TestCase
     /**
      * Es el primer vehiculo usado para las pruebas
      */
-    private Vehiculo vehiculo1;
+    private Vehicle vehicle1;
 
     /**
      * Es el segundo vehiculo usado para las pruebas
      */
-    private Vehiculo vehiculo2;
+    private Vehicle vehicle2;
 
     // -----------------------------------------------------------------
     // Mtodos
@@ -32,8 +32,8 @@ public class VehiculoTest extends TestCase
      */
     private void setupEscenario1( )
     {
-        vehiculo1 = new Vehiculo( "modelo1", "marca1", "imagen1", Vehiculo.AUTOMOVIL, 1, 1, 2, 8000000 );
-        vehiculo2 = new Vehiculo( "modelo2", "marca2", "imagen2", Vehiculo.AUTOMOVIL, 2, 2, 2, 4500000 );
+        vehicle1 = new Vehicle("modelo1", "marca1", "imagen1", Vehicle.AUTOMOVIL, 1, 1, 2, 8000000);
+        vehicle2 = new Vehicle("modelo2", "marca2", "imagen2", Vehicle.AUTOMOVIL, 2, 2, 2, 4500000);
     }
 
     /**
@@ -47,16 +47,16 @@ public class VehiculoTest extends TestCase
      */
     public void testVehiculo1( )
     {
-        setupEscenario1( );
+        setupEscenario1();
 
-        assertEquals( "El modelo del vehiculo est mal", "modelo1", vehiculo1.darModelo( ) );
-        assertEquals( "La marca del vehiculo est mal", "marca1", vehiculo1.getTrademark( ) );
-        assertEquals( "La imagen del vehiculo est mal", "imagen1", vehiculo1.darImagen( ) );
-        assertEquals( "El tipo del vehiculo est mal", Vehiculo.AUTOMOVIL, vehiculo1.darTipo( ) );
-        assertEquals( "La cilindrada del vehiculo est mal", 1, vehiculo1.getDisplacement( ) );
-        assertEquals( "El nmero de ejes del vehiculo est mal", 2, vehiculo1.darEjes( ) );
-        assertEquals( "El ao del vehiculo est mal", 1, vehiculo1.getYear( ) );
-        assertEquals( "El vehiculo del vehiculo est mal", 8000000, vehiculo1.getValue( ) );
+        assertEquals("El modelo del vehiculo est mal", "modelo1", vehicle1.getModelo());
+        assertEquals("La marca del vehiculo est mal", "marca1", vehicle1.getTrademark());
+        assertEquals("La imagen del vehiculo est mal", "imagen1", vehicle1.getImagen());
+        assertEquals("El tipo del vehiculo est mal", Vehicle.AUTOMOVIL, vehicle1.getTipo());
+        assertEquals("La cilindrada del vehiculo est mal", 1, vehicle1.getDisplacement());
+        assertEquals("El nmero de ejes del vehiculo est mal", 2, vehicle1.getEjes());
+        assertEquals("El ao del vehiculo est mal", 1, vehicle1.getYear());
+        assertEquals("El vehiculo del vehiculo est mal", 8000000, vehicle1.getValue());
     }
 
     /**
@@ -71,11 +71,11 @@ public class VehiculoTest extends TestCase
      */
     public void testCompararPorAnio( )
     {
-        setupEscenario1( );
+        setupEscenario1();
 
-        assertEquals( "Compar mal el ao: deba ser menor", - 1, vehiculo1.compareForYear( vehiculo2 ) );
-        assertEquals( "Compar mal el ao: deba ser igual", 0, vehiculo1.compareForYear( vehiculo1 ) );
-        assertEquals( "Compar mal el ao: deba ser mayor", 1, vehiculo2.compareForYear( vehiculo1 ) );
+        assertEquals("Compar mal el ao: deba ser menor", -1, vehicle1.compareYear(vehicle2));
+        assertEquals("Compar mal el ao: deba ser igual", 0, vehicle1.compareYear(vehicle1));
+        assertEquals("Compar mal el ao: deba ser mayor", 1, vehicle2.compareYear(vehicle1));
 
     }
 
@@ -92,11 +92,11 @@ public class VehiculoTest extends TestCase
      */
     public void testCompararPorCilindrada( )
     {
-        setupEscenario1( );
+        setupEscenario1();
 
-        assertEquals( "Compar mal la Cilindrada: deba ser menor", - 1, vehiculo1.compareForDisplacement( vehiculo2 ) );
-        assertEquals( "Compar mal la Cilindrada: deba ser igual", 0, vehiculo1.compareForDisplacement( vehiculo1 ) );
-        assertEquals( "Compar mal la Cilindrada: deba ser mayor", 1, vehiculo2.compareForDisplacement( vehiculo1 ) );
+        assertEquals("Compar mal la Cilindrada: deba ser menor", -1, vehicle1.compareDisplacement(vehicle2));
+        assertEquals("Compar mal la Cilindrada: deba ser igual", 0, vehicle1.compareDisplacement(vehicle1));
+        assertEquals("Compar mal la Cilindrada: deba ser mayor", 1, vehicle2.compareDisplacement(vehicle1));
     }
 
     /**
@@ -112,11 +112,11 @@ public class VehiculoTest extends TestCase
      */
     public void testCompararPorMarca( )
     {
-        setupEscenario1( );
+        setupEscenario1();
 
-        assertEquals( "Compar mal la marca: deba ser menor", - 1, vehiculo1.compareForTrademark( vehiculo2 ) );
-        assertEquals( "Compar mal la marca: deba ser igual", 0, vehiculo1.compareForTrademark( vehiculo1 ) );
-        assertEquals( "Compar mal la marca: deba ser mayor", 1, vehiculo2.compareForTrademark( vehiculo1 ) );
+        assertEquals("Compar mal la marca: deba ser menor", -1, vehicle1.compareTrademark(vehicle2));
+        assertEquals("Compar mal la marca: deba ser igual", 0, vehicle1.compareTrademark(vehicle1));
+        assertEquals("Compar mal la marca: deba ser mayor", 1, vehicle2.compareTrademark(vehicle1));
 
     }
 
@@ -133,10 +133,10 @@ public class VehiculoTest extends TestCase
      */
     public void testCompararPorValor( )
     {
-        setupEscenario1( );
+        setupEscenario1();
 
-        assertEquals( "Compar mal el Valor: deba ser menor", 1, vehiculo1.compareForValue( vehiculo2 ) );
-        assertEquals( "Compar mal el Valor: deba ser igual", 0, vehiculo1.compareForValue( vehiculo1 ) );
-        assertEquals( "Compar mal el Valor: deba ser mayor", - 1, vehiculo2.compareForValue( vehiculo1 ) );
+        assertEquals("Compar mal el Valor: deba ser menor", 1, vehicle1.compareValue(vehicle2));
+        assertEquals("Compar mal el Valor: deba ser igual", 0, vehicle1.compareValue(vehicle1));
+        assertEquals("Compar mal el Valor: deba ser mayor", -1, vehicle2.compareValue(vehicle1));
     }
 }
