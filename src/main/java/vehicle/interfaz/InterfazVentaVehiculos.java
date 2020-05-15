@@ -73,8 +73,8 @@ public class InterfazVentaVehiculos extends JFrame
 
         // Layout : Banner
 
-        PanelImagen panelImagen = new PanelImagen();
-        add(panelImagen);
+        PanelBanner panelBanner = new PanelBanner();
+        add(panelBanner);
 
         // Layout : List | Data
         JPanel panelDataAndList = new JPanel();

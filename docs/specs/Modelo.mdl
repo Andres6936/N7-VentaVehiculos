@@ -398,9 +398,9 @@
 	    (object Association "$UNNAMED$18"
 		quid       	"46144CFB0333"
 		roles      	(list role_list
-		    (object Role "panelImagen"
+		    (object Role "panelBanner"
 			quid       	"46144CFC01A4"
-			label      	"panelImagen"
+			label      	"panelBanner"
 			supplier   	"Logical View::uniandes::cupi2::ventaVehiculos::interfaz::PanelImagen"
 			quidu      	"6A60AA72F566"
 			exportControl 	"Implementation"
@@ -2934,7 +2934,7 @@
 			line_color 	3342489
 			quidu      	"46144CFB0333"
 			roleview_list 	(list RoleViews
-			    (object RoleView "panelImagen" @80
+			    (object RoleView "panelBanner" @80
 				Parent_View 	@79
 				location   	(-79, -775)
 				font       	(object Font
@@ -2963,7 +2963,7 @@
 				    nlines     	1
 				    max_width  	268
 				    justify    	0
-				    label      	"panelImagen"
+				    label      	"panelBanner"
 				    pctDist    	0.290323
 				    height     	160
 				    orientation 	0)

@@ -11,7 +11,7 @@ import javax.swing.border.LineBorder;
 /**
  * Es el panel donde se muestra una imagen decorativa
  */
-class PanelImagen extends JPanel
+class PanelBanner extends JPanel
 {
 
     // -----------------------------------------------------------------
@@ -25,17 +25,17 @@ class PanelImagen extends JPanel
     /**
      * Constructor del panel
      */
-    PanelImagen( )
+    PanelBanner()
     {
-        Image imageIcon = new ImageIcon( getFileFromResource( ) ).getImage( );
-        Image scaleIcon = imageIcon.getScaledInstance( 800, 100, Image.SCALE_SMOOTH );
+        Image imageIcon = new ImageIcon(getFileFromResource()).getImage();
+        Image scaleIcon = imageIcon.getScaledInstance(800, 100, Image.SCALE_SMOOTH);
 
-        JLabel imagen = new JLabel( );
-        imagen.setIcon( new ImageIcon( scaleIcon ) );
+        JLabel imagen = new JLabel();
+        imagen.setIcon(new ImageIcon(scaleIcon));
 
-        add( imagen );
+        add(imagen);
 
-        setMinimumSize( new Dimension( 800, 100 ) );
+        setMinimumSize(new Dimension(800, 100));
         setBorder( new LineBorder( Color.GRAY ) );
     }
 
