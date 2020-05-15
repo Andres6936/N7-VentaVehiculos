@@ -1,5 +1,6 @@
 package vehicle.interfaz;
 
+import com.formdev.flatlaf.FlatIntelliJLaf;
 import com.formdev.flatlaf.FlatLightLaf;
 import vehicle.database.DataBase;
 import vehicle.database.H2DB;
@@ -514,7 +515,7 @@ public class InterfazVentaVehiculos extends JFrame
      */
     public static void main( String[] args )
     {
-        FlatLightLaf.install();
+        FlatIntelliJLaf.install();
         InterfazVentaVehiculos iec = new InterfazVentaVehiculos( );
         iec.setVisible( true );
 
