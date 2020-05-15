@@ -8,14 +8,14 @@ import java.util.ArrayList;
 import java.util.Properties;
 
 import vehicle.mundo.Vehicle;
-import vehicle.mundo.VentaVehiculos;
+import vehicle.mundo.OutletVehicles;
 
 import junit.framework.TestCase;
 
 /**
  * Es la clase de pruebas para la clase VentaVehiculos
  */
-public class VentaVehiculosTest extends TestCase
+public class OutletVehiclesTest extends TestCase
 {
     // -----------------------------------------------------------------
     // Atributos
@@ -24,7 +24,7 @@ public class VentaVehiculosTest extends TestCase
     /**
      * Es el manejador al que se le agrega un vehiculo
      */
-    private VentaVehiculos ventaVehiculos;
+    private OutletVehicles outletVehicles;
 
     // -----------------------------------------------------------------
     // Mtodos
@@ -36,8 +36,8 @@ public class VentaVehiculosTest extends TestCase
     private void setupEscenario1( )
     {
 
-        ventaVehiculos = new VentaVehiculos( );
-        cargarVehiculos( "vehiculosTest1.properties" );
+        outletVehicles = new OutletVehicles();
+        cargarVehiculos("vehiculosTest1.properties");
 
     }
 
@@ -46,8 +46,8 @@ public class VentaVehiculosTest extends TestCase
      */
     private void setupEscenario2( )
     {
-        ventaVehiculos = new VentaVehiculos( );
-        cargarVehiculos( "vehiculosTest2.properties" );
+        outletVehicles = new OutletVehicles();
+        cargarVehiculos("vehiculosTest2.properties");
     }
 
     /**
@@ -63,57 +63,57 @@ public class VentaVehiculosTest extends TestCase
         // Prueba con el escenario 1
         setupEscenario1( );
 
-        int tamOriginal = ventaVehiculos.darVehiculos( ).size( );
+        int tamOriginal = outletVehicles.darVehiculos().size();
         int agregados = 10;
         for( int cont = tamOriginal + 1; cont <= tamOriginal + agregados; cont++ )
         {
             String modeloVehiculo = "modelo_" + cont;
             int anioVehiculo = cont;
-            boolean agregado = ventaVehiculos.agregarVehiculo(modeloVehiculo, modeloVehiculo, modeloVehiculo, Vehicle.AUTOMOVIL, anioVehiculo, 1000, 2, 50000000);
+            boolean agregado = outletVehicles.agregarVehiculo(modeloVehiculo, modeloVehiculo, modeloVehiculo, Vehicle.AUTOMOVIL, anioVehiculo, 1000, 2, 50000000);
             assertTrue( "No se agreg correctamente el vehiculo", agregado );
-            int posicion = ventaVehiculos.buscarVehiculo( modeloVehiculo, anioVehiculo );
+            int posicion = outletVehicles.buscarVehiculo(modeloVehiculo, anioVehiculo);
             assertTrue( "No se agreg correctamente el vehiculo", posicion != -1 );
         }
 
-        assertEquals( "El nmero de vehiculos agregados no es correcto", tamOriginal + agregados, ventaVehiculos.darVehiculos( ).size( ) );
+        assertEquals("El nmero de vehiculos agregados no es correcto", tamOriginal + agregados, outletVehicles.darVehiculos().size());
 
         // Prueba con el escenario 2
         setupEscenario2( );
 
-        ArrayList vehiculos = ventaVehiculos.darVehiculos( );
+        ArrayList vehiculos = outletVehicles.darVehiculos();
         assertEquals( "El nmero de vehiculos es incorrecto", 8, vehiculos.size( ) );
 
         String modelo = "SL2";
         int anio = 1996;
-        assertTrue( "No se encontr el " + modelo + " de " + anio, ventaVehiculos.buscarVehiculo( modelo, anio ) != -1 );
+        assertTrue("No se encontr el " + modelo + " de " + anio, outletVehicles.buscarVehiculo(modelo, anio) != -1);
 
         modelo = "Jetta";
         anio = 1998;
-        assertTrue( "No se encontr el " + modelo + " de " + anio, ventaVehiculos.buscarVehiculo( modelo, anio ) != -1 );
+        assertTrue("No se encontr el " + modelo + " de " + anio, outletVehicles.buscarVehiculo(modelo, anio) != -1);
 
         modelo = "Explorer";
         anio = 1999;
-        assertTrue( "No se encontr el " + modelo + " de " + anio, ventaVehiculos.buscarVehiculo( modelo, anio ) != -1 );
+        assertTrue("No se encontr el " + modelo + " de " + anio, outletVehicles.buscarVehiculo(modelo, anio) != -1);
 
         modelo = "New Beetle";
         anio = 2000;
-        assertTrue( "No se encontr el " + modelo + " de " + anio, ventaVehiculos.buscarVehiculo( modelo, anio ) != -1 );
+        assertTrue("No se encontr el " + modelo + " de " + anio, outletVehicles.buscarVehiculo(modelo, anio) != -1);
 
         modelo = "Caravan";
         anio = 2000;
-        assertTrue( "No se encontr el " + modelo + " de " + anio, ventaVehiculos.buscarVehiculo( modelo, anio ) != -1 );
+        assertTrue("No se encontr el " + modelo + " de " + anio, outletVehicles.buscarVehiculo(modelo, anio) != -1);
 
         modelo = "TT";
         anio = 2002;
-        assertTrue( "No se encontr el " + modelo + " de " + anio, ventaVehiculos.buscarVehiculo( modelo, anio ) != -1 );
+        assertTrue("No se encontr el " + modelo + " de " + anio, outletVehicles.buscarVehiculo(modelo, anio) != -1);
 
         modelo = "CLK430";
         anio = 2003;
-        assertTrue( "No se encontr el " + modelo + " de " + anio, ventaVehiculos.buscarVehiculo( modelo, anio ) != -1 );
+        assertTrue("No se encontr el " + modelo + " de " + anio, outletVehicles.buscarVehiculo(modelo, anio) != -1);
 
         modelo = "S10 Pickup";
         anio = 1983;
-        assertTrue( "No se encontr el " + modelo + " de " + anio, ventaVehiculos.buscarVehiculo( modelo, anio ) != -1 );
+        assertTrue("No se encontr el " + modelo + " de " + anio, outletVehicles.buscarVehiculo(modelo, anio) != -1);
     }
 
     /**
@@ -128,11 +128,11 @@ public class VentaVehiculosTest extends TestCase
     {
         setupEscenario1();
 
-        ArrayList vehiculos = ventaVehiculos.darVehiculos();
+        ArrayList vehiculos = outletVehicles.darVehiculos();
         Vehicle v = (Vehicle)vehiculos.get(0);
         String modeloVehiculo = v.getModelo();
 
-        assertFalse("No debera haberse agregado el vehiculo porque el modelo y el ao estn repetidos", ventaVehiculos.agregarVehiculo(modeloVehiculo, modeloVehiculo, modeloVehiculo, Vehicle.AUTOMOVIL, v.getYear(), 1000, 2, 500000));
+        assertFalse("No debera haberse agregado el vehiculo porque el modelo y el ao estn repetidos", outletVehicles.agregarVehiculo(modeloVehiculo, modeloVehiculo, modeloVehiculo, Vehicle.AUTOMOVIL, v.getYear(), 1000, 2, 500000));
 
         assertEquals("No se debi agregar el vehiculo", 12, vehiculos.size());
 
@@ -170,20 +170,20 @@ public class VentaVehiculosTest extends TestCase
         setupEscenario2();
 
         // Ordena los vehiculos segn el ao y saca el mas antiguo
-        ventaVehiculos.sortForYear();
-        ArrayList vehiculos = ventaVehiculos.darVehiculos();
+        outletVehicles.sortForYear();
+        ArrayList vehiculos = outletVehicles.darVehiculos();
         Vehicle v0 = (Vehicle)vehiculos.get(0);
         String modeloVehiculo = v0.getModelo();
         int anioVehiculo = v0.getYear();
 
         // Ordena los modelos segn la marca para "desordenar" antes de buscar por el modelo
-        ventaVehiculos.sortForTrademark();
+        outletVehicles.sortByTrademark();
 
         // Busca el vehiculo segn el modelo
-        int posicion = ventaVehiculos.buscarVehiculo(modeloVehiculo, anioVehiculo);
+        int posicion = outletVehicles.buscarVehiculo(modeloVehiculo, anioVehiculo);
         assertTrue("No se encontr el vehiculo", posicion != -1);
 
-        vehiculos = ventaVehiculos.darVehiculos();
+        vehiculos = outletVehicles.darVehiculos();
         Vehicle vn = (Vehicle)vehiculos.get(posicion);
         assertEquals("No se encontr el vehiculo buscado", vn.getModelo(), modeloVehiculo);
     }
@@ -199,11 +199,11 @@ public class VentaVehiculosTest extends TestCase
      */
     public void testOrdenarPorCilindrada( )
     {
-        setupEscenario2( );
+        setupEscenario2();
 
-        ventaVehiculos.sortForDisplacement( );
-        ArrayList vehiculos = ventaVehiculos.darVehiculos( );
-        for( int i = 1; i < vehiculos.size( ); i++ ) {
+        outletVehicles.sortForDisplacement();
+        ArrayList vehiculos = outletVehicles.darVehiculos();
+        for (int i = 1; i < vehiculos.size(); i++) {
             Vehicle v0 = (Vehicle)vehiculos.get(i - 1);
             Vehicle v1 = (Vehicle)vehiculos.get(i);
 
@@ -223,11 +223,11 @@ public class VentaVehiculosTest extends TestCase
      */
     public void testOrdenarPorAnio( )
     {
-        setupEscenario2( );
+        setupEscenario2();
 
-        ventaVehiculos.sortForYear( );
-        ArrayList vehiculos = ventaVehiculos.darVehiculos( );
-        for( int i = 1; i < vehiculos.size( ); i++ ) {
+        outletVehicles.sortForYear();
+        ArrayList vehiculos = outletVehicles.darVehiculos();
+        for (int i = 1; i < vehiculos.size(); i++) {
             Vehicle v0 = (Vehicle)vehiculos.get(i - 1);
             Vehicle v1 = (Vehicle)vehiculos.get(i);
 
@@ -246,11 +246,11 @@ public class VentaVehiculosTest extends TestCase
      */
     public void testOrdenarPorMarca( )
     {
-        setupEscenario2( );
+        setupEscenario2();
 
-        ventaVehiculos.sortForTrademark( );
-        ArrayList vehiculos = ventaVehiculos.darVehiculos( );
-        for( int i = 1; i < vehiculos.size( ); i++ ) {
+        outletVehicles.sortByTrademark();
+        ArrayList vehiculos = outletVehicles.darVehiculos();
+        for (int i = 1; i < vehiculos.size(); i++) {
             Vehicle v0 = (Vehicle)vehiculos.get(i - 1);
             Vehicle v1 = (Vehicle)vehiculos.get(i);
 
@@ -271,22 +271,22 @@ public class VentaVehiculosTest extends TestCase
         // Prueba con el escenario 1
         setupEscenario1( );
 
-        int pos = ventaVehiculos.buscarVehiculoMasAntiguo( );
+        int pos = outletVehicles.buscarVehiculoMasAntiguo();
 
         assertTrue( "El vehiculo mas antiguo no se encontr de forma correcta", pos != -1 );
 
-        Vehicle v = (Vehicle)ventaVehiculos.darVehiculos().get(pos);
+        Vehicle v = (Vehicle)outletVehicles.darVehiculos().get(pos);
 
         assertEquals("El vehiculo mas antiguo no se encontr de forma correcta", 1, v.getYear());
         assertEquals("El vehiculo mas antiguo no se encontr de forma correcta", "modelo_1", v.getModelo());
 
         // Prueba con el escenario 2
-        setupEscenario2( );
-        pos = ventaVehiculos.buscarVehiculoMasAntiguo( );
+        setupEscenario2();
+        pos = outletVehicles.buscarVehiculoMasAntiguo();
 
         assertTrue( "El vehiculo mas antiguo no se encontr de forma correcta", pos != -1 );
 
-        v = (Vehicle)ventaVehiculos.darVehiculos().get(pos);
+        v = (Vehicle)outletVehicles.darVehiculos().get(pos);
 
         assertEquals("El vehiculo mas antiguo no se encontr de forma correcta", 1983, v.getYear());
         assertEquals("El vehiculo mas antiguo no se encontr de forma correcta", "S10 Pickup", v.getModelo());
@@ -306,23 +306,23 @@ public class VentaVehiculosTest extends TestCase
         // Prueba con el escenario 1
         setupEscenario1( );
 
-        int pos = ventaVehiculos.getIndexOfVehicleMoreCheap( );
+        int pos = outletVehicles.getIndexOfVehicleMoreCheap();
 
         assertTrue( "El vehiculo mas econmico no se encontr de forma correcta", pos != -1 );
 
-        Vehicle v = (Vehicle)ventaVehiculos.darVehiculos().get(pos);
+        Vehicle v = (Vehicle)outletVehicles.darVehiculos().get(pos);
 
         assertEquals("El vehiculo mas econmico no se encontr de forma correcta", 500, v.getValue());
         assertEquals("El vehiculo mas econmico no se encontr de forma correcta", "modelo_12", v.getModelo());
         assertEquals("El vehiculo mas econmico no se encontr de forma correcta", 12, v.getYear());
 
         // Prueba con el escenario 2
-        setupEscenario2( );
-        pos = ventaVehiculos.getIndexOfVehicleMoreCheap( );
+        setupEscenario2();
+        pos = outletVehicles.getIndexOfVehicleMoreCheap();
 
         assertTrue( "El vehiculo mas nuevo no se encontr de forma correcta", pos != -1 );
 
-        v = (Vehicle)ventaVehiculos.darVehiculos().get(pos);
+        v = (Vehicle)outletVehicles.darVehiculos().get(pos);
 
         assertEquals("El vehiculo mas econmico no se encontr de forma correcta", 40000000, v.getValue());
         assertEquals("El vehiculo mas econmico no se encontr de forma correcta", "New Beetle", v.getModelo());
@@ -357,37 +357,37 @@ public class VentaVehiculosTest extends TestCase
         // Prueba con el escenario 1
         setupEscenario1( );
 
-        ArrayList vehiculos = ventaVehiculos.darVehiculos( );
-        int cantidad = vehiculos.size( );
+        ArrayList vehiculos = outletVehicles.darVehiculos();
+        int cantidad = vehiculos.size();
 
         for( int cont = 0; cont < cantidad; cont++ )
         {
-            assertTrue( "El vehiculo debera haberse comprado", ventaVehiculos.comprarVehiculo( "modelo_" + ( cont + 1 ), cont + 1 ) );
+            assertTrue("El vehiculo debera haberse comprado", outletVehicles.comprarVehiculo("modelo_" + (cont + 1), cont + 1));
         }
 
-        vehiculos = ventaVehiculos.darVehiculos( );
-        assertEquals( "No deberan haber vehiculos", 0, vehiculos.size( ) );
+        vehiculos = outletVehicles.darVehiculos();
+        assertEquals("No deberan haber vehiculos", 0, vehiculos.size());
 
         // Prueba con el escenario 2
         setupEscenario2( );
 
-        vehiculos = ventaVehiculos.darVehiculos( );
-        cantidad = vehiculos.size( );
+        vehiculos = outletVehicles.darVehiculos();
+        cantidad = vehiculos.size();
 
-        assertTrue( "El vehiculo debera haberse comprado", ventaVehiculos.comprarVehiculo( "CLK430", 2003 ) );
+        assertTrue("El vehiculo debera haberse comprado", outletVehicles.comprarVehiculo("CLK430", 2003));
 
-        assertTrue( "El vehiculo debera haberse comprado", ventaVehiculos.comprarVehiculo( "Explorer", 1999 ) );
+        assertTrue("El vehiculo debera haberse comprado", outletVehicles.comprarVehiculo("Explorer", 1999));
 
-        assertTrue( "El vehiculo debera haberse comprado", ventaVehiculos.comprarVehiculo( "New Beetle", 2000 ) );
+        assertTrue("El vehiculo debera haberse comprado", outletVehicles.comprarVehiculo("New Beetle", 2000));
 
-        vehiculos = ventaVehiculos.darVehiculos( );
-        assertEquals( "Los vehiculos no se compraron de forma correcta", cantidad - 3, vehiculos.size( ) );
+        vehiculos = outletVehicles.darVehiculos();
+        assertEquals("Los vehiculos no se compraron de forma correcta", cantidad - 3, vehiculos.size());
 
-        assertTrue( "El vehiculo debera haberse comprado", ventaVehiculos.buscarVehiculo( "CLK430", 2003 ) == -1 );
+        assertTrue("El vehiculo debera haberse comprado", outletVehicles.buscarVehiculo("CLK430", 2003) == -1);
 
-        assertTrue( "El vehiculo debera haberse comprado", ventaVehiculos.buscarVehiculo( "Explorer", 1999 ) == -1 );
+        assertTrue("El vehiculo debera haberse comprado", outletVehicles.buscarVehiculo("Explorer", 1999) == -1);
 
-        assertTrue( "El vehiculo debera haberse comprado", ventaVehiculos.buscarVehiculo( "New Beetle", 2000 ) == -1 );
+        assertTrue("El vehiculo debera haberse comprado", outletVehicles.buscarVehiculo("New Beetle", 2000) == -1);
     }
 
     /**
@@ -403,32 +403,32 @@ public class VentaVehiculosTest extends TestCase
         // Prueba con el escenario 1
         setupEscenario1( );
 
-        ArrayList vehiculos = ventaVehiculos.darVehiculos( );
-        int cantidad = vehiculos.size( );
+        ArrayList vehiculos = outletVehicles.darVehiculos();
+        int cantidad = vehiculos.size();
 
         for( int cont = 0; cont < cantidad; cont++ )
         {
-            assertFalse( "El vehiculo no debera haberse comprado", ventaVehiculos.comprarVehiculo( "modelo_" + ( cont + 1 ), cont ) );
+            assertFalse("El vehiculo no debera haberse comprado", outletVehicles.comprarVehiculo("modelo_" + (cont + 1), cont));
         }
 
-        vehiculos = ventaVehiculos.darVehiculos( );
-        assertEquals( "No deberan haber vehiculos", cantidad, vehiculos.size( ) );
+        vehiculos = outletVehicles.darVehiculos();
+        assertEquals("No deberan haber vehiculos", cantidad, vehiculos.size());
 
         // Prueba con el escenario 2
         setupEscenario2( );
 
-        vehiculos = ventaVehiculos.darVehiculos( );
-        cantidad = vehiculos.size( );
+        vehiculos = outletVehicles.darVehiculos();
+        cantidad = vehiculos.size();
 
-        assertTrue( "El vehiculo debera haberse comprado", ventaVehiculos.comprarVehiculo( "CLK430", 2003 ) );
+        assertTrue("El vehiculo debera haberse comprado", outletVehicles.comprarVehiculo("CLK430", 2003));
 
-        assertFalse( "El vehiculo no debera haberse comprado", ventaVehiculos.comprarVehiculo( "CLK430", 2003 ) );
+        assertFalse("El vehiculo no debera haberse comprado", outletVehicles.comprarVehiculo("CLK430", 2003));
 
-        assertFalse( "El vehiculo no debera haberse comprado", ventaVehiculos.comprarVehiculo( "Explorer", 1990 ) );
+        assertFalse("El vehiculo no debera haberse comprado", outletVehicles.comprarVehiculo("Explorer", 1990));
 
-        assertFalse( "El vehiculo debera haberse comprado", ventaVehiculos.comprarVehiculo( "New Beetless", 2000 ) );
+        assertFalse("El vehiculo debera haberse comprado", outletVehicles.comprarVehiculo("New Beetless", 2000));
 
-        vehiculos = ventaVehiculos.darVehiculos( );
+        vehiculos = outletVehicles.darVehiculos();
 
         assertEquals( "Los vehiculos no se compraron de forma correcta", cantidad - 1, vehiculos.size( ) );
     }
@@ -447,39 +447,39 @@ public class VentaVehiculosTest extends TestCase
         // Prueba con el escenario 1
         setupEscenario1();
 
-        Vehicle vehicle = (Vehicle)ventaVehiculos.darVehiculos().get(0);
+        Vehicle vehicle = (Vehicle)outletVehicles.darVehiculos().get(0);
         int valor = vehicle.getValue();
-        assertEquals("No se disminuy el precio de forma correcta", 1, ventaVehiculos.disminuirPrecio(11500));
+        assertEquals("No se disminuy el precio de forma correcta", 1, outletVehicles.disminuirPrecio(11500));
 
-        vehicle = (Vehicle)ventaVehiculos.darVehiculos().get(0);
+        vehicle = (Vehicle)outletVehicles.darVehiculos().get(0);
         int valorNuevo = vehicle.getValue();
 
         assertEquals("No se disminuy el precio de forma correcta", (int)(valor * 0.9), valorNuevo);
 
-        assertEquals("No se disminuy el precio de forma correcta", 0, ventaVehiculos.disminuirPrecio(12000));
+        assertEquals("No se disminuy el precio de forma correcta", 0, outletVehicles.disminuirPrecio(12000));
 
         // Prueba con el escenario 2
         setupEscenario2();
 
-        vehicle = (Vehicle)ventaVehiculos.darVehiculos().get(0);
+        vehicle = (Vehicle)outletVehicles.darVehiculos().get(0);
         valor = vehicle.getValue();
 
-        vehicle = (Vehicle)ventaVehiculos.darVehiculos().get(6);
+        vehicle = (Vehicle)outletVehicles.darVehiculos().get(6);
         int valor2 = vehicle.getValue();
 
-        assertEquals("No se disminuy el precio de forma correcta", 2, ventaVehiculos.disminuirPrecio(89000000));
+        assertEquals("No se disminuy el precio de forma correcta", 2, outletVehicles.disminuirPrecio(89000000));
 
-        vehicle = (Vehicle)ventaVehiculos.darVehiculos().get(0);
+        vehicle = (Vehicle)outletVehicles.darVehiculos().get(0);
         valorNuevo = vehicle.getValue();
 
-        vehicle = (Vehicle)ventaVehiculos.darVehiculos().get(6);
+        vehicle = (Vehicle)outletVehicles.darVehiculos().get(6);
         int valorNuevo2 = vehicle.getValue();
 
         assertEquals("No se disminuy el precio de forma correcta", (int)(valor * 0.9), valorNuevo);
 
         assertEquals("No se disminuy el precio de forma correcta", (int)(valor2 * 0.9), valorNuevo2);
 
-        assertEquals("No se disminuy el precio de forma correcta", 0, ventaVehiculos.disminuirPrecio(600000000));
+        assertEquals("No se disminuy el precio de forma correcta", 0, outletVehicles.disminuirPrecio(600000000));
     }
 
     // -----------------------------------------------------------------
@@ -545,7 +545,7 @@ public class VentaVehiculosTest extends TestCase
 
                 // Slo se carga el vehiculo si los datos son correctos
                 if( modelo != null && marca != null && imagen != null && tipo != null && anio > 0 && cilandraje > 0 && ejes > 0 && valor > 0 )
-                    ventaVehiculos.agregarVehiculo( modelo, marca, imagen, tipo, anio, cilandraje, ejes, valor );
+                    outletVehicles.agregarVehiculo(modelo, marca, imagen, tipo, anio, cilandraje, ejes, valor);
                 fis.close( );
             }
         }

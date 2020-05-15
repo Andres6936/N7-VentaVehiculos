@@ -3,58 +3,18 @@ package vehicle.mundo;
 import java.util.ArrayList;
 
 /**
- * Es la clase que se encarga de manejar, organizar, cargar y salvar los vehiculos <br>
- * <b>inv </b> <br>
- * vehiculos != null y no hay dos vehiculos con el mismo nombre
+ * Es la clase que se encarga de manejar, organizar, cargar y salvar los vehiculos.
  */
-public class VentaVehiculos
+public final class OutletVehicles extends ArrayList<Vehicle>
 {
-    // -----------------------------------------------------------------
-    // Atributos
-    // -----------------------------------------------------------------
-
-    /**
-     * Es la lista que contiene todos los vehiculos
-     */
-    private ArrayList<Vehicle> vehicles;
-
-    // -----------------------------------------------------------------
-    // Constructores
-    // -----------------------------------------------------------------
-
-    /**
-     * Construye un nuevo manejador de vehiculos vaco.
-     */
-    public VentaVehiculos( )
-    {
-        vehicles = new ArrayList<>();
-
-    }
-
-    // -----------------------------------------------------------------
-    // Mtodos
-    // -----------------------------------------------------------------
-
-    /**
-     * Retorna una lista de vehiculos.
-     * La lista que se retorna no es la misma que la almacenada en esta clase,
-     * pero si tiene el mismo orden.
-     * @return lista de vehiculos
-     */
-    public ArrayList darVehiculos( )
-    {
-        return new ArrayList<>(vehicles);
-    }
-
     /**
      * Organiza la lista de vehiculos por marca usando a Comparator. <br>
+     *
      * @postcondition La lista de vehiculos est ordenada por marca
      */
-    public void sortForTrademark( )
+    public void sortByTrademark()
     {
-        vehicles.sort(Vehicle::compareTrademark);
-
-        verificarInvariante( );
+        sort(Vehicle::compareTrademark);
     }
 
     /**
@@ -63,9 +23,7 @@ public class VentaVehiculos
      */
     public void sortForDisplacement( )
     {
-        vehicles.sort(Vehicle::compareDisplacement);
-
-        verificarInvariante( );
+        sort(Vehicle::compareDisplacement);
     }
 
     /**
@@ -74,9 +32,7 @@ public class VentaVehiculos
      */
     public void sortForYear( )
     {
-        vehicles.sort(Vehicle::compareYear);
-
-        verificarInvariante( );
+        sort(Vehicle::compareYear);
     }
 
     /**
@@ -85,13 +41,13 @@ public class VentaVehiculos
      * @param anio El ao del vehiculo buscado - anio > 0
      * @return Retorna la posicin donde se encuentra un vehiculo con el modelo y el ao dado. Si no se encuentra ningn vehiculo con ese modelo y ao retorna -1.
      */
-    public int buscarVehiculo( String modelo, int anio )
+    public int buscarVehiculo( String modelo, int anio)
     {
         int posicion = -1;
         boolean termine = false;
 
-        for (int i = 0; i < vehicles.size() && !termine; i++) {
-            Vehicle vehiclePosicion = vehicles.get(i);
+        for (int i = 0; i < size() && !termine; i++) {
+            Vehicle vehiclePosicion = get(i);
             String modeloVehiculo = vehiclePosicion.getModelo();
 
             // Los modelos son iguales
@@ -122,9 +78,8 @@ public class VentaVehiculos
         int vehiculoBuscado = buscarVehiculo( modeloV, anioV );
         if( vehiculoBuscado == -1 ) {
             Vehicle nuevovehiculo = new Vehicle(modeloV, marcaV, imagenP, tipoV, anioV, cilindradaV, ejesV, valor);
-            vehicles.add(nuevovehiculo);
+            add(nuevovehiculo);
             agregado = true;
-            verificarInvariante();
         }
 
         return agregado;
@@ -137,15 +92,15 @@ public class VentaVehiculos
      * @param anio Ao del vehiculo - anio>0
      * @return Se retorn true si el vehiculo fue comprado o false en caso contrario
      */
-    public boolean comprarVehiculo( String modelo, int anio )
+    public boolean comprarVehiculo( String modelo, int anio)
     {
         boolean comprado = false;
 
-        for (int cont = 0; cont < vehicles.size() && !comprado; cont++) {
-            Vehicle v = vehicles.get(cont);
+        for (int cont = 0; cont < size() && !comprado; cont++) {
+            Vehicle v = get(cont);
 
             if (v.getYear() == anio && v.getModelo().equalsIgnoreCase(modelo)) {
-                vehicles.remove(cont);
+                remove(cont);
                 comprado = true;
             }
         }
@@ -159,7 +114,7 @@ public class VentaVehiculos
      */
     public int buscarVehiculoMasAntiguo( )
     {
-        vehicles.sort(Vehicle::compareYear);
+        sort(Vehicle::compareYear);
 
         // The first element of list always is the more old.
         return 0;
@@ -171,7 +126,7 @@ public class VentaVehiculos
      */
     public int getIndexOfVehicleMoreCheap( )
     {
-        vehicles.sort(Vehicle::compareValue);
+        sort(Vehicle::compareValue);
 
         // Return 0, because the first element of the list is the more cheap.
         return 0;
@@ -183,10 +138,10 @@ public class VentaVehiculos
      */
     public int getIndexOfVehicleMorePowerful( )
     {
-        vehicles.sort(Vehicle::compareDisplacement);
+        sort(Vehicle::compareDisplacement);
 
         // The last element always is more powerful
-        return vehicles.size() - 1;
+        return size() - 1;
     }
 
     /**
@@ -199,7 +154,7 @@ public class VentaVehiculos
     {
         int disminuidos = 0;
 
-        for (Vehicle v : vehicles) {
+        for (Vehicle v : this) {
             if (v.getValue() > valor) {
                 int nValor = (int)(v.getValue() * 0.9);
 
@@ -209,40 +164,8 @@ public class VentaVehiculos
                 }
             }
         }
+
         return disminuidos;
-    }
-
-    // -----------------------------------------------------------------
-    // Invariante
-    // -----------------------------------------------------------------
-    /**
-     * Verifica el invariante de la clase
-     * 
-     */
-    private void verificarInvariante( )
-    {
-        assert (vehicles != null) : "La lista de vehiculos no debe ser null";
-        assert (!buscarVehiculosModeloYAnioRepetido()) : "Hay dos vehiculos del mismo modelo y ao";
-    }
-
-    /**
-     * Verifica si hay dos vehiculos con el mismo modelo y el mismo ao
-     * @return Retorna true si hay dos vehiculos con el mismo nombre y ao; retorna false en caso contrario.
-     */
-    private boolean buscarVehiculosModeloYAnioRepetido( )
-    {
-        for (int i = 0; i < vehicles.size(); i++) {
-            Vehicle pi = vehicles.get(i);
-            for (int j = 0; j < vehicles.size(); j++) {
-                if (i != j) {
-                    Vehicle pj = vehicles.get(j);
-                    if (pj.getModelo().equals(pi.getModelo()) && pj.getYear() == pi.getYear()) {
-                        return true;
-                    }
-                }
-            }
-        }
-        return false;
     }
 
     // -----------------------------------------------------------------

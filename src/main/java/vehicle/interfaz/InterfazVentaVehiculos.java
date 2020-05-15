@@ -4,7 +4,7 @@ import com.formdev.flatlaf.FlatIntelliJLaf;
 import vehicle.database.DataBase;
 import vehicle.database.H2DB;
 import vehicle.mundo.Vehicle;
-import vehicle.mundo.VentaVehiculos;
+import vehicle.mundo.OutletVehicles;
 
 import java.awt.*;
 import java.io.*;
@@ -35,7 +35,7 @@ public class InterfazVentaVehiculos extends JFrame
     /**
      * Es una referencia a la exposicin de vehiculo
      */
-    private VentaVehiculos ventaVehiculos;
+    private OutletVehicles outletVehicles;
 
     // -----------------------------------------------------------------
     // Atributos de la Interfaz
@@ -82,7 +82,7 @@ public class InterfazVentaVehiculos extends JFrame
      */
     private InterfazVentaVehiculos( )
     {
-        ventaVehiculos = new VentaVehiculos( );
+        outletVehicles = new OutletVehicles();
 
         cargarVehiculos( );
 
@@ -149,7 +149,7 @@ public class InterfazVentaVehiculos extends JFrame
      */
     private void actualizarLista( )
     {
-        panelLista.actualizarLista( ventaVehiculos.darVehiculos( ) );
+        panelLista.actualizarLista(outletVehicles);
     }
 
     /**
@@ -157,8 +157,8 @@ public class InterfazVentaVehiculos extends JFrame
      */
     void ordenarPorMarca( )
     {
-        ventaVehiculos.sortForTrademark( );
-        panelDatos.limpiarDatos( );
+        outletVehicles.sortByTrademark();
+        panelDatos.limpiarDatos();
         actualizarLista( );
     }
 
@@ -167,8 +167,8 @@ public class InterfazVentaVehiculos extends JFrame
      */
     void ordenarPorCilindrada( )
     {
-        ventaVehiculos.sortForDisplacement( );
-        panelDatos.limpiarDatos( );
+        outletVehicles.sortForDisplacement();
+        panelDatos.limpiarDatos();
         actualizarLista( );
     }
 
@@ -177,8 +177,8 @@ public class InterfazVentaVehiculos extends JFrame
      */
     void ordenarPorAnio( )
     {
-        ventaVehiculos.sortForYear( );
-        panelDatos.limpiarDatos( );
+        outletVehicles.sortForYear();
+        panelDatos.limpiarDatos();
         actualizarLista( );
     }
 
@@ -198,13 +198,13 @@ public class InterfazVentaVehiculos extends JFrame
                 {
                     int anio = Integer.parseInt( anioBuscado );
 
-                    int posicion = ventaVehiculos.buscarVehiculo( nombreBuscado, anio );
+                    int posicion = outletVehicles.buscarVehiculo(nombreBuscado, anio);
 
                     actualizarLista( );
                     if( posicion != -1 )
                     {
                         panelLista.seleccionar( posicion );
-                        Vehicle p = (Vehicle)ventaVehiculos.darVehiculos().get(posicion);
+                        Vehicle p = outletVehicles.get(posicion);
                         verDatos( p );
                     }
                     else
@@ -255,7 +255,7 @@ public class InterfazVentaVehiculos extends JFrame
     void agregarVehiculo( DialogoAgregarVehiculo dialogo, String modeloV, String marcaV, String imagenV, String tipoV, int anioV, int cilindradaV, int ejesV, int valor )
     {
 
-        boolean agregado = ventaVehiculos.agregarVehiculo( modeloV, marcaV, imagenV, tipoV, anioV, cilindradaV, ejesV, valor );
+        boolean agregado = outletVehicles.agregarVehiculo(modeloV, marcaV, imagenV, tipoV, anioV, cilindradaV, ejesV, valor);
 
         if( agregado )
         {
@@ -273,7 +273,7 @@ public class InterfazVentaVehiculos extends JFrame
      */
     void buscarMasAntiguo( )
     {
-        int posicion = ventaVehiculos.buscarVehiculoMasAntiguo( );
+        int posicion = outletVehicles.buscarVehiculoMasAntiguo();
 
         actualizarLista( );
         if( posicion != -1 )
@@ -291,7 +291,7 @@ public class InterfazVentaVehiculos extends JFrame
      */
     void buscarMasPotente( )
     {
-        int posicion = ventaVehiculos.getIndexOfVehicleMorePowerful( );
+        int posicion = outletVehicles.getIndexOfVehicleMorePowerful();
 
         actualizarLista( );
         if( posicion != -1 )
@@ -309,7 +309,7 @@ public class InterfazVentaVehiculos extends JFrame
      */
     void buscarMasEconomico( )
     {
-        int posicion = ventaVehiculos.getIndexOfVehicleMoreCheap( );
+        int posicion = outletVehicles.getIndexOfVehicleMoreCheap();
 
         actualizarLista( );
         if( posicion != -1 )
@@ -331,8 +331,8 @@ public class InterfazVentaVehiculos extends JFrame
 
         if( v != null )
         {
-            ventaVehiculos.comprarVehiculo(v.getModelo(), v.getYear());
-            panelDatos.limpiarDatos( );
+            outletVehicles.comprarVehiculo(v.getModelo(), v.getYear());
+            panelDatos.limpiarDatos();
             actualizarLista( );
         }
         else
@@ -362,7 +362,7 @@ public class InterfazVentaVehiculos extends JFrame
 
                     if( valor > 0 )
                     {
-                        int disminuidos = ventaVehiculos.disminuirPrecio( valor );
+                        int disminuidos = outletVehicles.disminuirPrecio(valor);
 
                         if( disminuidos > 0 )
                         {
@@ -451,7 +451,7 @@ public class InterfazVentaVehiculos extends JFrame
 
                 // Slo se carga el vehiculo si los datos son correctos
                 if( modelo != null && marca != null && imagen != null && tipo != null && anio > 0 && cilandraje > 0 && ejes > 0 && valor > 0 )
-                    ventaVehiculos.agregarVehiculo( modelo, marca, imagen, tipo, anio, cilandraje, ejes, valor );
+                    outletVehicles.agregarVehiculo(modelo, marca, imagen, tipo, anio, cilandraje, ejes, valor);
                 fis.close( );
             }
         }
@@ -492,7 +492,7 @@ public class InterfazVentaVehiculos extends JFrame
      */
     void reqFuncOpcion1( )
     {
-        String respuesta = ventaVehiculos.metodo1( );
+        String respuesta = outletVehicles.metodo1();
         JOptionPane.showMessageDialog( this, respuesta, "Respuesta", JOptionPane.INFORMATION_MESSAGE );
     }
 
@@ -501,7 +501,7 @@ public class InterfazVentaVehiculos extends JFrame
      */
     void reqFuncOpcion2( )
     {
-        String respuesta = ventaVehiculos.metodo2( );
+        String respuesta = outletVehicles.metodo2();
         JOptionPane.showMessageDialog( this, respuesta, "Respuesta", JOptionPane.INFORMATION_MESSAGE );
     }
 
